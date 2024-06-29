@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 from sklearn.decomposition import NMF
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.neural_network import MLPClassifier
 import xgboost as xgb
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import (
     roc_auc_score,
     accuracy_score,
@@ -86,17 +88,47 @@ def main():
     
     # Prepare training dataset
     X_train, y_train = prepare_dataset(df_regular, W, H, team_indices)
+
+#     param_grid = {
+#     'hidden_layer_sizes': [(50, 10), (100,), (50, 50)],
+#     'activation': ['relu', 'tanh'],
+#     'solver': ['adam', 'sgd'],
+#     'learning_rate': ['constant', 'adaptive'],
+#     'max_iter': [50, 200, 300],
+#     'alpha': [0.0001, 0.001, 0.01],
+#     'tol': [1e-3, 1e-4, 1e-5],
+#     'batch_size': [100, 200, 500],
+#     'learning_rate_init': [0.1, 0.2, 0.3],
+#     'momentum': [0.0, 0.5, 0.9]
+# }
+    param_grid = {
+    'hidden_layer_sizes': [(100,)],
+    'activation': ['relu'],
+    'solver': ['sgd'],
+    'learning_rate': ['constant'],
+    'max_iter': [200],
+    'alpha': [0.001],
+    'tol': [1e-3],
+    'batch_size': [200],
+    'learning_rate_init': [0.3],
+    'momentum': [0.5]
+}
+
     
     # Train classifier
-    clf = GradientBoostingClassifier(n_estimators=25, learning_rate=0.01, max_depth=4, subsample=1.0)
-    clf.fit(X_train, y_train)
+    mlp =  MLPClassifier(random_state=1)
+    grid_search = GridSearchCV(estimator=mlp, param_grid=param_grid, cv=3, scoring='roc_auc', verbose=2, n_jobs=-1)
+    grid_search.fit(X_train, y_train)
+
+    print("Best Parameters:", grid_search.best_params_)
+    best_model = grid_search.best_estimator_
     
     # Prepare test dataset
     X_test, y_test = prepare_dataset(df_postseason, W, H, team_indices)
     
     # Evaluate model
-    y_pred = clf.predict(X_test)
-    y_proba = clf.predict_proba(X_test)[:, 1]
+    y_pred = best_model.predict(X_test)
+    y_proba = best_model.predict_proba(X_test)[:, 1]
     
     roc_auc = roc_auc_score(y_test, y_proba)
     accuracy = accuracy_score(y_test, y_pred)
@@ -108,6 +140,8 @@ def main():
     # Precision-Recall AUC
     precision_values, recall_values, _ = precision_recall_curve(y_test, y_proba)
     pr_auc = auc(recall_values, precision_values)
+
+    print(f'Validation AUROC: {grid_search.best_score_}')
     
     print(f'ROC AUC: {roc_auc}')
     print(f'Accuracy: {accuracy}')
