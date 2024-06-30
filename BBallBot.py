@@ -15,6 +15,13 @@ from sklearn.metrics import (
     precision_recall_curve,
     auc
 )
+import sys
+import os
+
+# Add the parent directory (project directory) to the sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from cs135.hw0.hw0_split import split_into_train_and_test
 
 def load_data(regular_season_file_path, postseason_file_path):
     df_regular = pd.read_csv(regular_season_file_path)
@@ -82,12 +89,17 @@ def main():
     win_ratio_matrix_post = create_matrices(df_postseason, team_indices)
     
     # Apply NMF
-    nmf = NMF(n_components=5, init='random', random_state=0)
+    nmf = NMF(n_components=6, init='random', random_state=0)
     W = nmf.fit_transform(win_ratio_matrix_regular)
     H = nmf.components_.T
     
     # Prepare training dataset
     X_train, y_train = prepare_dataset(df_regular, W, H, team_indices)
+
+    y_train_2d = y_train.reshape(-1,1)
+
+    X_train, X_test = split_into_train_and_test(X_train, frac_test = 0.25, random_state=1)
+    y_train, y_test = split_into_train_and_test(y_train_2d, frac_test = 0.25, random_state=1)
 
 #     param_grid = {
 #     'hidden_layer_sizes': [(50, 10), (100,), (50, 50)],
@@ -124,7 +136,7 @@ def main():
     best_model = grid_search.best_estimator_
     
     # Prepare test dataset
-    X_test, y_test = prepare_dataset(df_postseason, W, H, team_indices)
+    # X_test, y_test = prepare_dataset(df_postseason, W, H, team_indices)
     
     # Evaluate model
     y_pred = best_model.predict(X_test)
