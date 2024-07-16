@@ -1,45 +1,62 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 import pandas as pd
 
-def scrape_odds(base_url, total_pages):
+def scrape_odds(base_url, total_pages, max_retries=3):
     all_data = []
 
     # Configure Selenium WebDriver
-    options = webdriver.ChromeOptions()
+    options = Options()
     options.add_argument("--headless")  # Run Chrome in headless mode
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
 
     for page_num in range(2, total_pages + 1):
-        page_url = f"{base_url}{page_num}"
-        print(f"Scraping page {page_num} - URL: {page_url}")
+        retries = 0
+        while retries < max_retries:
+            page_url = f"{base_url}{page_num}"
+            print(f"Scraping page {page_num} - URL: {page_url}, Attempt: {retries + 1}")
 
-        # Open a new tab
-        driver.execute_script("window.open('');")
-        driver.switch_to.window(driver.window_handles[page_num-2])
+            # Open a new tab
+            driver.execute_script("window.open('');")
+            driver.switch_to.window(driver.window_handles[page_num-2])
 
-        # Fetch page content with Selenium
-        driver.get(page_url)
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(8)  # Adjust sleep time as needed for content to load
-        
-        # Parse page content with BeautifulSoup
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+            # Fetch page content with Selenium
+            driver.get(page_url)
 
-        # Find all match containers
-        match_containers = soup.find_all(class_='eventRow flex w-full flex-col text-xs')
-        print(f"Match Containers: {len(match_containers)}")
+            # Scroll and wait until at least 20 elements are found
+            match_containers = []
+            for _ in range(10):
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(2)  # Adjust sleep time as needed for content to load
+                match_containers = driver.find_elements(By.CLASS_NAME, 'eventRow.flex.w-full.flex-col.text-xs')
+                if len(match_containers) >= 50:
+                    break
 
-        for idx, match_container in enumerate(match_containers):
+            if len(match_containers) <= 20:
+                print(f"Insufficient match containers found on page {page_num}. Retrying...")
+                retries += 1
+                continue  # Retry loading the page
+
+            # Parse page content with BeautifulSoup
+            soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+            # Find all match containers
+            match_containers = soup.find_all(class_='eventRow flex w-full flex-col text-xs')
+            print(f"Match Containers: {len(match_containers)}")
+
+            for idx, match_container in enumerate(match_containers):
                 print(f"Processing match container {idx + 1}")
 
                 date_element = match_container.find('div', class_='date time')
                 match_date = date_element.text.strip() if date_element else 'N/A'
-
 
                 # Extracting teams and scores dynamically
                 away_teams = match_container.find_all('a', class_='justify-content min-mt:!gap-2 flex basis-[50%] cursor-pointer items-center gap-1 overflow-hidden')
@@ -81,18 +98,20 @@ def scrape_odds(base_url, total_pages):
                     print(f"Team {idx + 1}: {team_name} ({team_score}) - Odds: {odds_text}")
                 print("-----------------------------")
 
+            break  # Exit the retry loop if scraping is successful
+
     driver.quit()  # Close the Selenium WebDriver
     return all_data
 
 def main():
-    base_url = 'https://www.oddsportal.com/basketball/usa/nba/results/#/page/'
+    base_url = 'https://www.oddsportal.com/basketball/usa/nba-2021-2022/results/#/page/'
     total_pages = 27  # Update with actual number of pages
     odds_data = scrape_odds(base_url, total_pages)
 
     if odds_data:
         df = pd.DataFrame(odds_data, columns=['Match Date','Home Team', 'Away Team', 'Home Score', 'Away Score', 'Home Odds', 'Away Odds'])
-        df.to_csv('odds_data.csv', index=False)
-        print("Data saved to odds_data.csv")
+        df.to_csv('odds_data_2022.csv', index=False)
+        print("Data saved to odds_data_2022.csv")
     else:
         print("No data scraped. Check the scraping process.")
 
