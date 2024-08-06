@@ -76,11 +76,15 @@ def prepare_x_y(team_indices, df, W, H):
     games, labels = [], []
     for _, row in df.iterrows():
         home_idx, away_idx = team_indices[row['Home Team']], team_indices[row['Away Team']]
-        home_odds = row['Home Odds']
-        away_odds = row['Away Odds']
+        # home_odds = row['Home Odds']
+        # away_odds = row['Away Odds']
 
-        home_vector = np.append(W[home_idx], home_odds)
-        away_vector = np.append(H[away_idx], away_odds)
+        # home_vector = np.append(W[home_idx], home_odds)
+        # away_vector = np.append(H[away_idx], away_odds)
+
+        home_vector = W[home_idx]
+        away_vector = H[away_idx]
+
         feature_vector = np.hstack([home_vector, away_vector])
         games.append(feature_vector)
         labels.append(1 if row['Home Score'] > row['Away Score'] else 0)
@@ -173,8 +177,8 @@ def objective(df_path, frac_test, trial):
     nmf_alpha_H=trial.suggest_float('alpha_H', 0.0001, 0.1001, step=0.005)
     nmf_alpha_W=trial.suggest_float('alpha_W', 0.0001, 0.1001, step=0.005)
     mlp_params = {
-        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 10, 100),
-        'second_layer_neurons': trial.suggest_int('second_layer_neurons', 10, 100),
+        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 10, 100, step=10),
+        'second_layer_neurons': trial.suggest_int('second_layer_neurons', 10, 100, step=10),
         # 'third_layer_neurons': trial.suggest_int('third_layer_neurons', 10, 100, step=10),
         'activation': trial.suggest_categorical('activation', ['tanh', 'relu']),
         'solver': trial.suggest_categorical('solver', ['sgd', 'adam']),
@@ -197,7 +201,7 @@ def objective(df_path, frac_test, trial):
     np.save(f'y_trial_{trial_id}.npy', y)
 
     pipeline = Pipeline([
-        # ('scaler', MinMaxScaler()),
+        ('scaler', MinMaxScaler()),
         ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'], mlp_params['second_layer_neurons']), 
                               activation=mlp_params['activation'],
                               solver=mlp_params['solver'],
@@ -242,7 +246,7 @@ def save_best_trial(best_trial, year):
     mlp_params = best_trial.params
 
     best_classifier = Pipeline([
-        # ('scaler', MinMaxScaler()),
+        ('scaler', MinMaxScaler()),
         ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'], mlp_params['second_layer_neurons']), 
                               activation=mlp_params['activation'],
                               solver=mlp_params['solver'],
@@ -273,7 +277,7 @@ def save_best_trial(best_trial, year):
 
 
 def main():
-    frac_test = 0.25
+    frac_test = 0.2
     year = 2024
     df_path = f'odds_data/odds_data_{year}.csv'
     df = pd.read_csv(df_path)
