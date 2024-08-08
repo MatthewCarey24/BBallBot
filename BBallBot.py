@@ -94,7 +94,9 @@ def prepare_x_y(team_indices, df, W, H):
 #################################test_profit###################################
 #
 # Use the df, y predictions and true values, betting stake and frac test to 
-# determine the profit or loss if the model was used for this season
+# determine the profit or loss if the model was used for this season Uses the 
+# Kelly Criterion to determine which percentage of wealth to use.
+#
 #
 # Inputs: 
 #           df: data frame that contains all game matchups and outcomes
@@ -108,44 +110,69 @@ def prepare_x_y(team_indices, df, W, H):
 #           predictions for the last {frac_test} of the season
 #
 ###############################################################################
-def test_profit(df_path, y_pred, y_test, stake, frac_test):
+def calculate_frac_wealth(odds):
+    """Calculate the fraction of wealth to bet based on odds."""
+    print(f"odds: {odds}")
+    if odds > 0:
+        return 0.5 - (0.5 / (odds / 100))
+    else:
+        return 0.5 - (0.5 / 100 / abs(odds))
+
+def get_team_info(df_odds, index, is_home_team):
+    """Get the team and odds information."""
+    team_column = "Home Team" if is_home_team else "Away Team"
+    odds_column = "Home Odds" if is_home_team else "Away Odds"
+    return df_odds.loc[index, team_column], df_odds.loc[index, odds_column]
+
+def print_bet_info(team, odds, frac_wealth, wealth, result):
+    """Print information about the bet and its outcome."""
+    print(f'Betting ${frac_wealth * wealth} on {team}')
+    if result == "win":
+        if odds > 0:
+            print(f'Won ${(odds / 100) * (frac_wealth * wealth)} with odds: {odds}')
+        else:
+            print(f'Won ${(100 / abs(odds)) * (frac_wealth * wealth)} with odds: {odds}')
+    elif result == "loss":
+        print(f'Lost ${frac_wealth * wealth}')
+
+def test_profit(df_path, y_pred, y_test, starting_wealth, frac_test):
     bets_won = 0
     bets_lost = 0
     df_odds = pd.read_csv(df_path)
     start_of_test = int(len(df_odds) * (1 - frac_test))
-    profit = 0
-
+    wealth = starting_wealth
+    
     for i in range(len(y_test)):
-        if(y_pred[i] == y_test[i]):
-            if(y_test[i] == 1):
-                odds = df_odds.loc[(int(i+start_of_test)), 'Home Odds']
-                print(f'Won betting on {df_odds.loc[int(i+start_of_test), "Home Team"]} with odds: {odds}')
-            elif(y_test[i] == 0):
-                odds = df_odds.loc[(int(i+start_of_test)), 'Away Odds']
-                print(f'Won betting on {df_odds.loc[(int(i+start_of_test)), "Away Team"]} with odds: {odds}')
+        index = int(i + start_of_test)
+        is_home_team = y_test[i] == 1
+        team, odds = get_team_info(df_odds, index, is_home_team)
+        frac_wealth = calculate_frac_wealth(odds)
+        print(f'frac_wealth: {frac_wealth}')
+        bet_amount = frac_wealth * wealth
+        
+        if y_pred[i] == y_test[i]:
+            result = "win"
+            print_bet_info(team, odds, frac_wealth, wealth, result)
+            if odds > 0:
+                wealth += (odds / 100) * bet_amount
+            else:
+                wealth += (100 / abs(odds)) * bet_amount
             bets_won += 1
-            # Determine which odds to use based on y_test
-            if(odds > 0):
-                profit += (odds / 100) * stake
-                print(f"Won ${(odds / 100) * stake}")
-            elif(odds < 0):
-                profit += (100 / abs(odds)) * stake
-                print(f"Won ${(100 / abs(odds)) * stake}")
         else:
-            if(y_test[i] == 1):
-                print(f'Lost betting on {df_odds.loc[int(i+start_of_test), "Home Team"]}')
-            elif(y_test[i] == 0):
-                print(f'Lost betting on {df_odds.loc[(int(i+start_of_test)), "Away Team"]}')
+            result = "loss"
+            print_bet_info(team, odds, frac_wealth, wealth, result)
+            wealth -= bet_amount
             bets_lost += 1
-            profit -= stake
-            print(f"Lost ${stake}")
-        print(f'Profit: {profit}')
-    print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nTotal Bets: {bets_lost+bets_won}\n')
-    return profit
+        
+        print(f'Wealth: {wealth}')
+    
+    print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nTotal Bets: {bets_won + bets_lost}\n')
+    return wealth
 
 #############################calculate_profit##################################
 #
-# Function to calculate profit based on true labels, predictions, and odds.
+# Function to calculate profit based on true labels, predictions, and odds. 
+# Uses the Kelly Criterion to determine which percentage of wealth to use.
 #
 # Inputs:
 #           y_true: Array of true labels (0 or 1).
@@ -157,15 +184,16 @@ def test_profit(df_path, y_pred, y_test, stake, frac_test):
 #           profit: Total profit.
 #
 ###############################################################################
-def calculate_profit(y_true, y_pred, df_odds, stake):
-    profit = 0
+def calculate_profit(y_true, y_pred, df_odds, starting_wealth):
+    wealth = starting_wealth
     for i in range(len(y_true)):
         odds = df_odds.loc[i, 'Home Odds'] if y_true[i] == 1 else df_odds.loc[i, 'Away Odds']
+        frac_wealth = 0.5-(0.5/(odds/100)) if odds > 0 else 0.5-(0.5/(100/abs(odds)))
         if y_pred[i] == y_true[i]:
-            profit += (odds / 100) * stake if odds > 0 else (100 / abs(odds)) * stake
+            wealth += (odds / 100) * (wealth*frac_wealth) if odds > 0 else (100 / abs(odds)) * (wealth*frac_wealth)
         else:
-            profit -= stake
-    return profit
+            wealth -= (wealth*frac_wealth)
+    return wealth
 
 #############################profit_scorer##################################
 #
@@ -248,8 +276,8 @@ def objective(df_path, frac_test, trial):
     y_train, y_test = split_into_train_and_test(y_2d, frac_test, random_state=1)
 
     custom_scorer = make_scorer(profit_scorer, df_odds=df, stake=100)
-    return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring=custom_scorer).mean()
-    # return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring='accuracy').mean()
+    # return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring=custom_scorer).mean()
+    return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring='accuracy').mean()
 
 
 ##############################save_best_trial##################################
@@ -309,8 +337,8 @@ def save_best_trial(best_trial, year):
 #
 ###############################################################################
 def main():
-    frac_test = 0.8
-    year = 2022
+    frac_test = 0.2
+    year = 2024
     df_path = f'odds_data/odds_data_{year}.csv'
     df = pd.read_csv(df_path)
 
