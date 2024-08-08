@@ -112,7 +112,6 @@ def prepare_x_y(team_indices, df, W, H):
 ###############################################################################
 def calculate_frac_wealth(odds):
     """Calculate the fraction of wealth to bet based on odds."""
-    print(f"odds: {odds}")
     if odds > 0:
         return 0.5 - (0.5 / (odds / 100))
     else:
@@ -147,12 +146,12 @@ def test_profit(df_path, y_pred, y_test, starting_wealth, frac_test):
         is_home_team = y_test[i] == 1
         team, odds = get_team_info(df_odds, index, is_home_team)
         frac_wealth = calculate_frac_wealth(odds)
-        print(f'frac_wealth: {frac_wealth}')
+        # print(f'frac_wealth: {frac_wealth}')
         bet_amount = frac_wealth * wealth
         
         if y_pred[i] == y_test[i]:
             result = "win"
-            print_bet_info(team, odds, frac_wealth, wealth, result)
+            # print_bet_info(team, odds, frac_wealth, wealth, result)
             if odds > 0:
                 wealth += (odds / 100) * bet_amount
             else:
@@ -160,11 +159,11 @@ def test_profit(df_path, y_pred, y_test, starting_wealth, frac_test):
             bets_won += 1
         else:
             result = "loss"
-            print_bet_info(team, odds, frac_wealth, wealth, result)
+            # print_bet_info(team, odds, frac_wealth, wealth, result)
             wealth -= bet_amount
             bets_lost += 1
         
-        print(f'Wealth: {wealth}')
+        # print(f'Wealth: {wealth}')
     
     print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nTotal Bets: {bets_won + bets_lost}\n')
     return wealth
@@ -232,16 +231,16 @@ import matplotlib.pyplot as plt
 def objective(df_path, frac_test, trial):
     df = pd.read_csv(df_path)
     # Parameters
-    nmf_n_components = trial.suggest_int('nmf_n_components', 5, 10)
+    nmf_n_components = trial.suggest_int('nmf_n_components', 5, 7)
     nmf_alpha_H=trial.suggest_float('alpha_H', 0.0001, 0.1001, step=0.005)
     nmf_alpha_W=trial.suggest_float('alpha_W', 0.0001, 0.1001, step=0.005)
     mlp_params = {
-        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 1),
-        # 'second_layer_neurons': trial.suggest_int('second_layer_neurons', 1, 2),
+        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 10),
+        # 'second_layer_neurons': trial.suggest_int('second_layer_neurons', 1, 10),
         # 'third_layer_neurons': trial.suggest_int('third_layer_neurons', 1, 10),
         'activation': trial.suggest_categorical('activation', ['tanh', 'relu']),
         'solver': trial.suggest_categorical('solver', ['sgd', 'adam']),
-        'alpha': trial.suggest_float('alpha', 1e-5, 1e-2, log=True),
+        'alpha': trial.suggest_float('alpha', 1e1, 1e2, log=True),
         'learning_rate': trial.suggest_categorical('learning_rate', ['constant', 'adaptive']),
         'max_iter':trial.suggest_int('max_iter', 2000, 2001),
         'learning_rate_init': trial.suggest_float('learning_rate_init', 0.0001, 0.1001, step=0.005),
@@ -276,8 +275,8 @@ def objective(df_path, frac_test, trial):
     y_train, y_test = split_into_train_and_test(y_2d, frac_test, random_state=1)
 
     custom_scorer = make_scorer(profit_scorer, df_odds=df, stake=100)
-    # return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring=custom_scorer).mean()
-    return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring='accuracy').mean()
+    return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring=custom_scorer).mean()
+    # return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring='accuracy').mean()
 
 
 ##############################save_best_trial##################################
@@ -298,7 +297,7 @@ def save_best_trial(best_trial, year):
 
     best_classifier = Pipeline([
         ('scaler', StandardScaler()),
-        ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'],),
+        ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'],), 
                               activation=mlp_params['activation'],
                               solver=mlp_params['solver'],
                               alpha=mlp_params['alpha'],
@@ -382,9 +381,10 @@ def main():
     y_pred = best_classifier.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    profit = test_profit(df_path, y_pred, y_test, 100, frac_test)
+    starting_wealth = 100
+    wealth = test_profit(df_path, y_pred, y_test, starting_wealth, frac_test)
 
-    print(f'frac_test={frac_test}\nAccuracy={accuracy}\nProfit={profit}')
+    print(f'frac_test={frac_test}\nAccuracy={accuracy}\nProfit={wealth-starting_wealth}')
 
 if __name__ == "__main__":
     main()
