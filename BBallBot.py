@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.decomposition import NMF
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, make_scorer
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
@@ -76,14 +76,14 @@ def prepare_x_y(team_indices, df, W, H):
     games, labels = [], []
     for _, row in df.iterrows():
         home_idx, away_idx = team_indices[row['Home Team']], team_indices[row['Away Team']]
-        # home_odds = row['Home Odds']
-        # away_odds = row['Away Odds']
+        home_odds = row['Home Odds']
+        away_odds = row['Away Odds']
 
-        # home_vector = np.append(W[home_idx], home_odds)
-        # away_vector = np.append(H[away_idx], away_odds)
+        home_vector = np.append(W[home_idx], home_odds)
+        away_vector = np.append(H[away_idx], away_odds)
 
-        home_vector = W[home_idx]
-        away_vector = H[away_idx]
+        # home_vector = W[home_idx]
+        # away_vector = H[away_idx]
 
         feature_vector = np.hstack([home_vector, away_vector])
         games.append(feature_vector)
@@ -112,47 +112,78 @@ def test_profit(df_path, y_pred, y_test, stake, frac_test):
     bets_won = 0
     bets_lost = 0
     df_odds = pd.read_csv(df_path)
-    start_of_test = (1-frac_test) * df_odds.shape[0]
+    start_of_test = int(len(df_odds) * (1 - frac_test))
     profit = 0
 
     for i in range(len(y_test)):
-        if(y_test[i] == 1):
-                odds = df_odds.loc[(int(i+start_of_test)), 'Home Odds']
-        elif(y_test[i] == 0):
-                odds = df_odds.loc[(int(i+start_of_test)), 'Away Odds']
         if(y_pred[i] == y_test[i]):
+            if(y_test[i] == 1):
+                odds = df_odds.loc[(int(i+start_of_test)), 'Home Odds']
+                print(f'Won betting on {df_odds.loc[int(i+start_of_test), "Home Team"]} with odds: {odds}')
+            elif(y_test[i] == 0):
+                odds = df_odds.loc[(int(i+start_of_test)), 'Away Odds']
+                print(f'Won betting on {df_odds.loc[(int(i+start_of_test)), "Away Team"]} with odds: {odds}')
             bets_won += 1
             # Determine which odds to use based on y_test
             if(odds > 0):
                 profit += (odds / 100) * stake
+                print(f"Won ${(odds / 100) * stake}")
             elif(odds < 0):
                 profit += (100 / abs(odds)) * stake
+                print(f"Won ${(100 / abs(odds)) * stake}")
         else:
+            if(y_test[i] == 1):
+                print(f'Lost betting on {df_odds.loc[int(i+start_of_test), "Home Team"]}')
+            elif(y_test[i] == 0):
+                print(f'Lost betting on {df_odds.loc[(int(i+start_of_test)), "Away Team"]}')
             bets_lost += 1
             profit -= stake
+            print(f"Lost ${stake}")
+        print(f'Profit: {profit}')
     print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nTotal Bets: {bets_lost+bets_won}\n')
     return profit
 
-import matplotlib.pyplot as plt
-
-#############################plot_learning_curve###############################
+#############################calculate_profit##################################
 #
-# Plots the SGD of the MLP fitting to see if its over or understepping
+# Function to calculate profit based on true labels, predictions, and odds.
 #
-# Inputs: 
-#           history: the training loss over iterations
-# 
-# Outputs: 
-#           Displays a graph of the loss after n iterations
+# Inputs:
+#           y_true: Array of true labels (0 or 1).
+#           y_pred: Array of predicted labels (0 or 1).
+#           df_odds: DataFrame with odds information.
+#           stake: Amount of stake placed on each bet.
+#
+# Outputs:
+#           profit: Total profit.
 #
 ###############################################################################
-def plot_learning_curve(history):
-    plt.figure(figsize=(10, 6))
-    plt.plot(history['train_loss'], label='Train Loss')
-    plt.xlabel('Iterations')
-    plt.ylabel('Loss')
-    plt.legend()
-    plt.show()
+def calculate_profit(y_true, y_pred, df_odds, stake):
+    profit = 0
+    for i in range(len(y_true)):
+        odds = df_odds.loc[i, 'Home Odds'] if y_true[i] == 1 else df_odds.loc[i, 'Away Odds']
+        if y_pred[i] == y_true[i]:
+            profit += (odds / 100) * stake if odds > 0 else (100 / abs(odds)) * stake
+        else:
+            profit -= stake
+    return profit
+
+#############################profit_scorer##################################
+#
+# Custom scorer to be used in cross-validation.
+#
+# Inputs:
+#           y_true: Array of true labels (0 or 1).
+#           y_pred: Array of predicted labels (0 or 1).
+#
+# Outputs:
+#           profit: Total profit.
+#
+###############################################################################
+def profit_scorer(y_true, y_pred, df_odds, stake):
+    return calculate_profit(y_true, y_pred, df_odds, stake)
+
+
+import matplotlib.pyplot as plt
 
 ###################################objective###################################
 #
@@ -177,9 +208,9 @@ def objective(df_path, frac_test, trial):
     nmf_alpha_H=trial.suggest_float('alpha_H', 0.0001, 0.1001, step=0.005)
     nmf_alpha_W=trial.suggest_float('alpha_W', 0.0001, 0.1001, step=0.005)
     mlp_params = {
-        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 10, 100, step=10),
-        'second_layer_neurons': trial.suggest_int('second_layer_neurons', 10, 100, step=10),
-        # 'third_layer_neurons': trial.suggest_int('third_layer_neurons', 10, 100, step=10),
+        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 1),
+        # 'second_layer_neurons': trial.suggest_int('second_layer_neurons', 1, 2),
+        # 'third_layer_neurons': trial.suggest_int('third_layer_neurons', 1, 10),
         'activation': trial.suggest_categorical('activation', ['tanh', 'relu']),
         'solver': trial.suggest_categorical('solver', ['sgd', 'adam']),
         'alpha': trial.suggest_float('alpha', 1e-5, 1e-2, log=True),
@@ -188,7 +219,7 @@ def objective(df_path, frac_test, trial):
         'learning_rate_init': trial.suggest_float('learning_rate_init', 0.0001, 0.1001, step=0.005),
     }
 
-    nmf = NMF(n_components=nmf_n_components, init='random', alpha_H=nmf_alpha_H, alpha_W=nmf_alpha_W, random_state=0, max_iter=1000)
+    nmf = NMF(n_components=nmf_n_components, init='random', alpha_H=nmf_alpha_H, alpha_W=nmf_alpha_W, random_state=0, max_iter=5000)
     win_ratio_matrix = create_win_loss_matrix(get_team_indices(df), df, frac_test)
     W, H = nmf.fit_transform(win_ratio_matrix), nmf.components_.T
 
@@ -201,8 +232,8 @@ def objective(df_path, frac_test, trial):
     np.save(f'y_trial_{trial_id}.npy', y)
 
     pipeline = Pipeline([
-        ('scaler', MinMaxScaler()),
-        ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'], mlp_params['second_layer_neurons']), 
+        ('scaler', StandardScaler()),
+        ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'],), 
                               activation=mlp_params['activation'],
                               solver=mlp_params['solver'],
                               alpha=mlp_params['alpha'],
@@ -215,18 +246,10 @@ def objective(df_path, frac_test, trial):
     # Fit model
     X_train, X_test = split_into_train_and_test(X, frac_test, random_state=1)
     y_train, y_test = split_into_train_and_test(y_2d, frac_test, random_state=1)
-    pipeline.fit(X_train, y_train.ravel())
-    y_pred = pipeline.predict(X_test)
 
-    # Track learning curve if it goes over 1000 iter to see whats going on 
-    history = {
-        'train_loss': pipeline.named_steps['clf'].loss_curve_ # or similar method
-    }
-    if(len(history['train_loss']) >= 1000):
-        plot_learning_curve(history)
-
-    return test_profit(df_path, y_pred, y_test, 100, frac_test)
-    # return cross_val_score(pipeline, X, y, cv=5, scoring='accuracy').mean()
+    custom_scorer = make_scorer(profit_scorer, df_odds=df, stake=100)
+    return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring=custom_scorer).mean()
+    # return cross_val_score(pipeline, X_train, y_train.ravel(), cv=5, scoring='accuracy').mean()
 
 
 ##############################save_best_trial##################################
@@ -246,8 +269,8 @@ def save_best_trial(best_trial, year):
     mlp_params = best_trial.params
 
     best_classifier = Pipeline([
-        ('scaler', MinMaxScaler()),
-        ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'], mlp_params['second_layer_neurons']), 
+        ('scaler', StandardScaler()),
+        ('clf', MLPClassifier(hidden_layer_sizes=(mlp_params['first_layer_neurons'],),
                               activation=mlp_params['activation'],
                               solver=mlp_params['solver'],
                               alpha=mlp_params['alpha'],
@@ -275,10 +298,19 @@ def save_best_trial(best_trial, year):
     print(f"Best trial parameters saved to {params_filename}")
 
 
-
+###################################main########################################
+#
+# Use the best trial from the optuna study to save the model and parameters to
+# a pkl file so they can be accessed without runnng the long study again
+#
+# Inputs: 
+# 
+# Outputs: 
+#
+###############################################################################
 def main():
-    frac_test = 0.2
-    year = 2024
+    frac_test = 0.8
+    year = 2022
     df_path = f'odds_data/odds_data_{year}.csv'
     df = pd.read_csv(df_path)
 
@@ -297,15 +329,23 @@ def main():
     best_classifier = joblib.load(f'best_mlp_model_{year}.pkl')
     with open(f'best_trial_params_{year}.pkl', 'rb') as f:
         best_params = pickle.load(f)
-
     with open(f'best_trial_{year}.pkl', 'rb') as f:
         best_trial = pickle.load(f)
     
     # Load x and y from the best trial
-    trial_id = best_trial.number
-    X = np.load(f'x_trial_{trial_id}.npy')
-    y = np.load(f'y_trial_{trial_id}.npy')
+    best_trial_id = best_trial.number
+    X = np.load(f'x_trial_{best_trial_id}.npy')
+    y = np.load(f'y_trial_{best_trial_id}.npy')
     y_2d = y.reshape(-1,1)
+
+    # Iterate over all files in the directory to remove unused xs and ys 
+    for filename in os.listdir('.'):
+    # Check if the file is not for the best trial
+        if filename.startswith('x_trial_') or filename.startswith('y_trial_'):
+            trial_number = filename.split('_')[2].split('.')[0]
+            if int(trial_number) != best_trial_id:
+                # Remove the file if it is not for the best trial
+                os.remove(os.path.join('.', filename))
 
     X_train, X_test = split_into_train_and_test(X, frac_test, random_state=1)
     y_train, y_test = split_into_train_and_test(y_2d, frac_test, random_state=1)
