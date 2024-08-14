@@ -115,21 +115,21 @@ def calculate_frac_wealth(win_odds, loss_odds, y_proba, index):
     """Calculate the fraction of wealth to bet based on odds."""
     implied_proba_win = calculate_implied_proba(win_odds)
     implied_proba_lose = calculate_implied_proba(loss_odds)
-    proba_win = implied_proba_win/(implied_proba_win+implied_proba_lose)
-    proba_lose = implied_proba_lose/(implied_proba_win+implied_proba_lose)
+    # proba_win = implied_proba_win/(implied_proba_win+implied_proba_lose)
+    # proba_lose = implied_proba_lose/(implied_proba_win+implied_proba_lose)
 
     # print(f'implied proba_win: {proba_win}')
     # print(f'implied proba_lose: {proba_lose}')
-
-    # proba_win = max(proba_win,(max(y_proba[index][0],y_proba[index][1])))
-    # proba_lose = 1-proba_win
+    proba_win = (max(y_proba[index][0],y_proba[index][1]))
+    proba_lose = 1-proba_win
 
     print(f'model proba_win: {proba_win}')
-    print(f'model proba_lose: {proba_lose}')
+    # print(f'model proba_lose: {proba_lose}')
 
     percent_gain = (win_odds / 100) if win_odds > 0 else (100 / abs(win_odds))
+    # print(f'percent gain: {percent_gain}')
 
-    frac_wealth = abs(proba_win - (proba_lose / percent_gain))
+    frac_wealth = (proba_win - (proba_lose / (percent_gain)))
 
     print(f'frac_wealth: {frac_wealth}')
 
@@ -232,13 +232,16 @@ def test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test):
     df_odds = pd.read_csv(df_path)
     start_of_test = int(len(df_odds) * (1 - frac_test))
     wealth = starting_wealth
+    total_stake = 0
     
     for i in range(len(y_test)):
         index = int(i + start_of_test)
-        is_home_team = y_test[i] == 1
+        is_home_team = y_pred[i] == 1
         team, win_odds, lose_odds = get_team_info(df_odds, index, is_home_team)
+        print(f"win odds: {win_odds}, loss odds: {lose_odds}")
         frac_wealth = calculate_frac_wealth(win_odds, lose_odds, y_proba, i)
         bet_amount = frac_wealth * wealth
+        total_stake += bet_amount
         if y_pred[i] == y_test[i]:
             result = "win"
             print_bet_info(team, win_odds, bet_amount, result)
@@ -249,14 +252,14 @@ def test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test):
             bets_won += 1
         else:
             result = "loss"
-            print_bet_info(team, lose_odds, bet_amount, result)
+            print_bet_info(team, win_odds, bet_amount, result)
             wealth -= bet_amount
             bets_lost += 1
         
         print(f'Wealth: {wealth}')
     
     print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nTotal Bets: {bets_won + bets_lost}\n')
-    return wealth
+    return wealth, total_stake
 
 #############################calculate_profit##################################
 #
@@ -432,13 +435,13 @@ def main():
     year = 2024
     df_path = f'odds_data/odds_data_{year}.csv'
     df = pd.read_csv(df_path)
-    starting_wealth = 100
+    starting_wealth = 1000
 
     def objective_function(trial):
         return objective(df_path, frac_test=frac_test, trial=trial)
 
     study = optuna.create_study(direction='maximize')
-    study.optimize(objective_function, n_trials=10)
+    study.optimize(objective_function, n_trials=5)
 
     best_trial = study.best_trial
     print(f"Best trial: Value={best_trial.value}, Params={best_trial.params}")
@@ -476,9 +479,9 @@ def main():
     y_proba = best_classifier.predict_proba(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    wealth = test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test)
+    wealth, total_stake = test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test)
 
-    print(f'frac_test={frac_test}\nAccuracy={accuracy}\nProfit={wealth-starting_wealth}')
+    print(f'frac_test={frac_test}\nAccuracy={accuracy}\nProfit={wealth-starting_wealth}\nProfit Percentage={(wealth-starting_wealth)/total_stake}%')
 
 if __name__ == "__main__":
     main()
