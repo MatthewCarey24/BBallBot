@@ -2,3 +2,6 @@ cline_scrap_odds.py
 node_modules/
 best*
 debug*
+*.pkl
+*.json
+odds_data/*
