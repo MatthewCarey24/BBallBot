@@ -5,3 +5,5 @@ debug*
 *.pkl
 *.json
 odds_data/*
+*.npy
+*.csv
