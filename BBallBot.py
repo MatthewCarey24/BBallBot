@@ -13,10 +13,42 @@ import sys
 import os
 import joblib
 import pickle
+import argparse
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from cs135.hw0.hw0_split import split_into_train_and_test
+def split_into_train_and_test(x_all_LF, frac_test=0.5, random_state=None):
+    if random_state is None:
+        random_state = np.random
+    elif isinstance(random_state, int):
+        random_state = np.random.RandomState(int(random_state))
+    if not hasattr(random_state, 'rand'):
+        raise ValueError("Not a valid random number generator")
+
+    L, F = x_all_LF.shape
+    shuffled_ids_L = np.arange(L)
+
+    # Determine the number of test examples N
+    N = int(np.ceil(L * float(frac_test)))
+    # Keep remaining M examples as training
+    M = L - N
+    # TODO use the first M row ids in shuffled_ids_L to make x_train_MF
+
+    # shuffled_ids_L[:M] gives us an array of first M random indexes
+    shuffled_ids_M = shuffled_ids_L[:M]
+
+    # We can index x_all_LF by this array of random indeces to get a copy of them
+    x_train_MF = x_all_LF[shuffled_ids_M].copy()
+
+    # TODO use the remaining N row ids to make x_test_NF
+    # HINT Use integer indexing
+    
+    shuffled_ids_N = shuffled_ids_L[M:L]
+    x_test_NF = x_all_LF[shuffled_ids_N].copy()
+
+    # TODO return both x_train_MF and x_test_NF
+    return x_train_MF, x_test_NF
+
 
 def get_team_indices(df):
     teams = pd.unique(df[['Away Team', 'Home Team']].values.ravel('K'))
@@ -131,7 +163,7 @@ def get_team_info(df_odds, index, is_home_team):
     team_column = "Home Team" if is_home_team else "Away Team"
     win_odds_column = "Home Odds" if is_home_team else "Away Odds"
     loss_odds_column = "Away Odds" if is_home_team else "Home Odds"
-    return df_odds.loc[index, team_column], df_odds.loc[index, win_odds_column], df_odds.loc[index, loss_odds_column]
+    return df_odds.loc[index, team_column], int(df_odds.loc[index, win_odds_column]), int(df_odds.loc[index, loss_odds_column])
 
 ################################print_bet_info#################################
 #
@@ -204,7 +236,12 @@ def calculate_frac_wealth(win_odds, loss_odds, y_proba, index):
 
     assert(frac_wealth < 1)
 
-    return frac_wealth if frac_wealth > 0 else 0
+    if frac_wealth > 0:
+        return frac_wealth
+    elif win_odds < -450:
+        return 0.1
+    else:
+        return 0
 
 #################################test_profit###################################
 #
@@ -234,6 +271,8 @@ def test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test):
     start_of_test = int(len(df_odds) * (1 - frac_test))
     wealth = starting_wealth
     total_stake = 0
+    no_bet_win_odds = 0
+    no_bet_loss_odds = 0
     
     for i in range(len(y_test)):
         index = int(i + start_of_test)
@@ -259,13 +298,16 @@ def test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test):
 
         if frac_wealth == 0:
             if y_pred[i] == y_test[i]:
+                no_bet_win_odds += win_odds
                 no_bet_win += 1
             else:
+                no_bet_loss_odds += win_odds
                 no_bet_loss += 1
         
         # print(f'Wealth: {wealth}')
     
-    print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nWouldve Won: {no_bet_win}\nWouldve Lost: {no_bet_loss}\nTotal Bets: {bets_won + bets_lost}\n')
+    print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nWouldve Won: {no_bet_win}\nWouldve Lost: {no_bet_loss}\nTotal Bets Placed: {bets_won + bets_lost}\n')
+    print(f"average odds on wouldve won: {no_bet_win_odds/no_bet_win}, average odds on wouldve lost: {no_bet_loss_odds/no_bet_loss}")
     print(f'Good Call Ratio: {(bets_won+no_bet_loss)/(bets_won+bets_lost+no_bet_loss+no_bet_win)}')
     return wealth, total_stake
 
@@ -439,8 +481,14 @@ def save_best_trial(best_trial, year):
 #
 ###############################################################################
 def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Run the script with a specified year.")
+    parser.add_argument('year', type=int, help="Year to use in the script (e.g., 2021)")
+    args = parser.parse_args()
+
+    # Use the provided year
+    year = args.year
     frac_test = 0.2
-    year = 2021
     df_path = f'odds_data/odds_data_{year}.csv'
     df = pd.read_csv(df_path)
     starting_wealth = 1000
@@ -455,10 +503,8 @@ def main():
     print(f"Best trial: Value={best_trial.value}, Params={best_trial.params}")
     save_best_trial(best_trial, year)
 
-
-     # Load the model
+    # Load the model
     best_classifier = joblib.load(f'best_mlp_model_{year}.pkl')
-    # best_classifier = CalibratedClassifierCV(best_mlp, method='sigmoid')
     with open(f'best_trial_params_{year}.pkl', 'rb') as f:
         best_params = pickle.load(f)
     with open(f'best_trial_{year}.pkl', 'rb') as f:
@@ -468,15 +514,13 @@ def main():
     best_trial_id = best_trial.number
     X = np.load(f'x_trial_{best_trial_id}.npy')
     y = np.load(f'y_trial_{best_trial_id}.npy')
-    y_2d = y.reshape(-1,1)
+    y_2d = y.reshape(-1, 1)
 
-    # Iterate over all files in the directory to remove unused xs and ys 
+    # Iterate over all files in the directory to remove unused xs and ys
     for filename in os.listdir('.'):
-    # Check if the file is not for the best trial
         if filename.startswith('x_trial_') or filename.startswith('y_trial_'):
             trial_number = filename.split('_')[2].split('.')[0]
             if int(trial_number) != best_trial_id:
-                # Remove the file if it is not for the best trial
                 os.remove(os.path.join('.', filename))
 
     X_train, X_test = split_into_train_and_test(X, frac_test, random_state=1)
@@ -489,7 +533,7 @@ def main():
     accuracy = accuracy_score(y_test, y_pred)
     wealth, total_stake = test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test)
 
-    print(f'frac_test={frac_test}\nAccuracy={accuracy}\nProfit={wealth-starting_wealth}\nProfit Percentage={(wealth-starting_wealth)/total_stake}%')
+    print(f'frac_test={frac_test}\nAccuracy={accuracy}\nProfit={wealth - starting_wealth}\nProfit Percentage={(wealth - starting_wealth) / total_stake}%')
 
 if __name__ == "__main__":
     main()

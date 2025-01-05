@@ -37,7 +37,7 @@ def scroll_and_wait(driver):
 import pandas as pd
 import os
 
-def process_page(driver, wait, page_number, year):
+def process_page(driver, wait, page_number, year, is_first_page=False):
     """Process a single page of matches and return the match count."""
     match_count = 0
     page_data = []  # List to store match data for DataFrame
@@ -102,11 +102,11 @@ def process_page(driver, wait, page_number, year):
         print(f"Error processing page {page_number}: {str(e)}")
     
     # Save data to CSV after processing the page
-    save_to_csv(page_data, year)
+    save_to_csv(page_data, year, is_first_page)
     
     return match_count
 
-def save_to_csv(page_data, year):
+def save_to_csv(page_data, year, is_first_page=False):
     """Save match data to a CSV file using pandas DataFrame."""
     # Create directory if it doesn't exist
     os.makedirs('odds_data', exist_ok=True)
@@ -117,11 +117,10 @@ def save_to_csv(page_data, year):
     # Create a DataFrame from the match data
     df = pd.DataFrame(page_data, columns=['Home Team', 'Away Team', 'Home Score', 'Away Score', 'Home Odds', 'Away Odds'])
     
-    # If the file already exists, append; otherwise, create it
-    if os.path.exists(file_path):
-        df.to_csv(file_path, mode='a', header=False, index=False)
-    else:
-        df.to_csv(file_path, mode='w', header=True, index=False)
+    # If it's the first page, overwrite the file. Otherwise, append.
+    mode = 'w' if is_first_page else 'a'
+    header = True if is_first_page else False
+    df.to_csv(file_path, mode=mode, header=header, index=False)
     
     print(f"\nSaved {len(page_data)} matches to {file_path}")
 
@@ -138,13 +137,14 @@ def enhanced_scrape():
     wait = WebDriverWait(driver, 20)
     
     total_matches = 0
-    year = 2021  # Set year manually as you requested
+    year = 2020  # Set year manually as you requested
+    last_page = 27
     
     try:
         base_url = f'https://www.oddsportal.com/basketball/usa/nba-{year-1}-{year}/results/'
         
-        # Process pages 2-25
-        for page in range(2, 26):
+        # Process pages 1-24 in ascending order
+        for page in range(2, last_page + 1):
             url = f"{base_url}#/page/{page}/"
             print(f"\nAccessing page {page}: {url}")
             driver.get(url)
@@ -155,12 +155,21 @@ def enhanced_scrape():
             time.sleep(2)  # Give the page time to load
             
             # Process the page and add to total matches
-            matches_on_page = process_page(driver, wait, page, year)
+            is_first_page = (page == 1)  # First page when starting from 1
+            matches_on_page = process_page(driver, wait, page, year, is_first_page)
             total_matches += matches_on_page
             print(f"\nProcessed {matches_on_page} matches on page {page}")
             print(f"Total matches so far: {total_matches}")
         
         print(f"\nGrand total of matches processed across all pages: {total_matches}")
+        
+        # After scraping is complete, reverse the CSV order
+        print("\nReversing CSV order...")
+        csv_path = f'odds_data/odds_data_{year}.csv'
+        df = pd.read_csv(csv_path)
+        df_reversed = df.iloc[::-1]  # Reverse the DataFrame
+        df_reversed.to_csv(csv_path, index=False)
+        print("CSV order reversed successfully")
         
     except Exception as e:
         print(f"An error occurred: {e}")
