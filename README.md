@@ -1,87 +1,71 @@
 # BBallBot
 
-BBallBot is a machine learning-based NBA game prediction and betting system that combines web scraping, data processing, and neural networks to make informed betting decisions.
+A machine learning system for basketball betting predictions using historical odds data.
+
+## Project Structure
+
+- `main.py` - Main entry point for training and using models
+- `config.py` - Configuration constants and file paths
+- `data_processor.py` - Data loading and preprocessing functions
+- `model_trainer.py` - Model training and optimization using Optuna
+- `betting.py` - Betting logic and profit calculations
+- `utils.py` - Utility functions for data manipulation
+- `odds_data/` - Directory containing historical odds data CSV files
 
 ## Components
 
-### Web Scraping (`scrape_odds.py` & `enhanced_scrape.py`)
+### Data Processing
+- Team indexing and win/loss matrix creation
+- Feature preparation using NMF (Non-negative Matrix Factorization)
+- Data splitting for training and testing
 
-The scraping component collects NBA game data from oddsportal.com, including:
-- Team matchups
-- Game scores
-- Betting odds (home and away)
+### Model Training
+- Neural network model using scikit-learn's MLPClassifier
+- Hyperparameter optimization with Optuna
+- Model evaluation using accuracy and profit metrics
 
-Features:
-- Uses Selenium WebDriver for dynamic content loading
-- Implements smart scrolling to ensure all content is loaded
-- Saves data to CSV files organized by season
-- Handles pagination and data extraction robustly
-- Includes error handling and progress tracking
-
-### Prediction System (`BBallBot.py`)
-
-The core prediction system uses machine learning to analyze historical game data and make predictions:
-
-#### Feature Engineering
-- Creates team performance matrices using Non-negative Matrix Factorization (NMF)
-- Generates latent vectors representing team characteristics
-- Combines team vectors with betting odds for feature creation
-
-#### Machine Learning Model
-- Uses Multi-layer Perceptron (MLP) classifier
-- Implements hyperparameter optimization using Optuna
-- Includes model calibration for probability estimates
-- Cross-validates performance using accuracy metrics
-
-#### Betting Strategy
-- Implements Kelly Criterion for optimal bet sizing
-- Calculates implied probabilities from betting odds
-- Tracks betting performance and profitability
-- Provides detailed statistics on betting outcomes
+### Betting Logic
+- Kelly Criterion for bet sizing
+- Profit calculation and tracking
+- Implied probability calculations from odds
 
 ## Usage
 
-1. Scrape historical NBA game data:
-```python
-python enhanced_scrape.py
+### Training a New Model
+
+```bash
+python main.py --year 2022 --train
 ```
 
-2. Train and evaluate the prediction model:
-```python
-python BBallBot.py
+This will:
+1. Load odds data for the specified year
+2. Train a model using Optuna for hyperparameter optimization
+3. Save the best model and its parameters
+4. Print accuracy and profit metrics
+
+### Loading a Trained Model
+
+```bash
+python main.py --year 2022
 ```
 
-## Data Structure
+This will load a previously trained model for the specified year.
 
-The system stores scraped data in the `odds_data` directory with files named by season (e.g., `odds_data_2021.csv`). Each file contains:
+## Requirements
+
+- Python 3.8+
+- NumPy
+- Pandas
+- scikit-learn
+- Optuna
+- joblib
+
+## Data Format
+
+The odds data CSV files should have the following columns:
 - Home Team
 - Away Team
 - Home Score
 - Away Score
 - Home Odds
 - Away Odds
-
-## Model Performance Metrics
-
-The system tracks several key performance indicators:
-- Prediction accuracy
-- Betting profitability
-- ROI on placed bets
-- Win/loss ratio
-- Kelly Criterion efficiency
-
-## Requirements
-
-- Python 3.x
-- Selenium WebDriver
-- Chrome WebDriver
-- BeautifulSoup4
-- pandas
-- numpy
-- scikit-learn
-- optuna
-- matplotlib
-
-## Note
-
-This project is for educational purposes only. Please be aware of and comply with all local laws and regulations regarding sports betting.

@@ -84,6 +84,8 @@ def process_page(driver, wait, page_number, year):
                     # Find odds
                     odds_elements = container.find_all('p', class_='height-content')
                     odds = [elem.text.strip() for elem in odds_elements if elem.text.strip()]
+
+                    game_time = container.find('p', class_="flex w-full").text.strip()
                     
                     if odds and len(odds) >= 2:
                         home_odds = odds[0]  # Assuming the first odds value is for the home team
@@ -91,9 +93,10 @@ def process_page(driver, wait, page_number, year):
                         
                         match_count += 1
                         # Store match data in page_data list
-                        page_data.append([home_name, away_name, home_score, away_score, home_odds, away_odds])
+                        page_data.append([game_time, home_name, away_name, home_score, away_score, home_odds, away_odds])
                         print(f"\nMatch #{match_count} on page {page_number}: {home_name} ({home_score}) vs {away_name} ({away_score})")
                         print(f"Home Odds: {home_odds}, Away Odds: {away_odds}")
+                        print(f"Time: {game_time}")
             except Exception as e:
                 print(f"Error processing a match: {str(e)}")
                 continue  # Continue to next container on error
@@ -115,7 +118,7 @@ def save_to_csv(page_data, year):
     file_path = f'odds_data/odds_data_{year}.csv'
     
     # Create a DataFrame from the match data
-    df = pd.DataFrame(page_data, columns=['Home Team', 'Away Team', 'Home Score', 'Away Score', 'Home Odds', 'Away Odds'])
+    df = pd.DataFrame(page_data, columns=['Time', 'Home Team', 'Away Team', 'Home Score', 'Away Score', 'Home Odds', 'Away Odds'])
     
     # If the file already exists, append; otherwise, create it
     if os.path.exists(file_path):

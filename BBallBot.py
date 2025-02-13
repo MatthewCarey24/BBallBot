@@ -204,7 +204,7 @@ def calculate_frac_wealth(win_odds, loss_odds, y_proba, index):
 
     assert(frac_wealth < 1)
 
-    return frac_wealth if frac_wealth > 0 else 0
+    return frac_wealth if frac_wealth > 0.1 else 0.1
 
 #################################test_profit###################################
 #
