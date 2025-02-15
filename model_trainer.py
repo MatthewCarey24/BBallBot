@@ -34,16 +34,24 @@ def create_model(params: Dict[str, Any]) -> Pipeline:
     Returns:
         Sklearn Pipeline object
     """
+    # Create hidden layer structure
+    hidden_layers = []
+    for i in range(params['n_hidden_layers']):
+        hidden_layers.append(params[f'layer_{i+1}_neurons'])
+    
     return Pipeline([
         ('scaler', StandardScaler()),
         ('clf', MLPClassifier(
-            hidden_layer_sizes=(params['first_layer_neurons'],),
+            hidden_layer_sizes=tuple(hidden_layers),
             activation=params['activation'],
             solver=params['solver'],
             alpha=params['alpha'],
             learning_rate=params['learning_rate'],
             learning_rate_init=params['learning_rate_init'],
             max_iter=params['max_iter'],
+            early_stopping=True,
+            validation_fraction=0.1,
+            n_iter_no_change=10,
             random_state=RANDOM_STATE
         ))
     ])
@@ -117,17 +125,21 @@ def objective(
     """
     # Define hyperparameters to optimize
     params = {
-        'nmf_n_components': trial.suggest_int('nmf_n_components', 5, 6),
-        'alpha_H': trial.suggest_float('alpha_H', 0.0001, 0.1001, step=0.005),
-        'alpha_W': trial.suggest_float('alpha_W', 0.0001, 0.1001, step=0.005),
-        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 5),
-        'activation': trial.suggest_categorical('activation', ['tanh', 'relu']),
-        'solver': trial.suggest_categorical('solver', ['sgd', 'adam']),
-        'alpha': trial.suggest_float('alpha', 1e1, 5e1, log=True),
-        'learning_rate': trial.suggest_categorical('learning_rate', ['constant', 'adaptive']),
-        'max_iter': trial.suggest_int('max_iter', 2000, 2001),
-        'learning_rate_init': trial.suggest_float('learning_rate_init', 0.0001, 0.1001, log=True),
+        'nmf_n_components': trial.suggest_int('nmf_n_components', 5, 20),
+        'alpha_H': trial.suggest_float('alpha_H', 0.0001, 0.5, log=True),
+        'alpha_W': trial.suggest_float('alpha_W', 0.0001, 0.5, log=True),
+        'n_hidden_layers': trial.suggest_int('n_hidden_layers', 1, 3),
+        'activation': trial.suggest_categorical('activation', ['tanh', 'relu', 'logistic']),
+        'solver': trial.suggest_categorical('solver', ['adam', 'sgd', 'lbfgs']),
+        'alpha': trial.suggest_float('alpha', 1e-5, 1e-1, log=True),
+        'learning_rate': trial.suggest_categorical('learning_rate', ['constant', 'adaptive', 'invscaling']),
+        'max_iter': trial.suggest_int('max_iter', 1000, 5000),
+        'learning_rate_init': trial.suggest_float('learning_rate_init', 0.0001, 0.1, log=True),
     }
+    
+    # Add layer-specific neuron counts
+    for i in range(params['n_hidden_layers']):
+        params[f'layer_{i+1}_neurons'] = trial.suggest_int(f'layer_{i+1}_neurons', 5, 100)
     
     # Create features
     df = pd.read_csv(df_path)

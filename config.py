@@ -9,7 +9,7 @@ FRAC_TEST = 0.2  # Fraction of season to use for testing (uses latter portion of
 STARTING_WEALTH = 1000  # Initial bankroll for betting simulation
 
 # NMF parameters
-NMF_MAX_ITER = 10000  # Maximum iterations for NMF convergence
+NMF_MAX_ITER = 20000  # Maximum iterations for NMF convergence
 NMF_INIT = 'nndsvdar'  # Initialization method for NMF
 
 # Optuna study parameters
