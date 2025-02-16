@@ -6,6 +6,7 @@ import joblib
 import pickle
 import os
 from typing import Dict, Any, Tuple
+import random
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -99,13 +100,19 @@ def cleanup_trial_files(best_trial_id: int) -> None:
             if int(trial_number) != best_trial_id:
                 os.remove(os.path.join('.', filename))
 
+def set_random_seeds(seed: int = RANDOM_STATE) -> None:
+    """Set random seeds for reproducibility."""
+    random.seed(seed)
+    np.random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+
 def objective(
     trial: optuna.Trial,
     df_path: str,
     frac_test: float
 ) -> float:
     """
-    Objective function for Optuna optimization.
+    Objective function for Optuna optimization using only training data.
     
     Args:
         trial: Optuna trial object
@@ -113,14 +120,17 @@ def objective(
         frac_test: Fraction of data to use for testing
         
     Returns:
-        Cross-validation accuracy score
+        Validation accuracy score
     """
+    # Set random seeds for reproducibility
+    set_random_seeds()
+    
     # Define hyperparameters to optimize
     params = {
         'nmf_n_components': trial.suggest_int('nmf_n_components', 5, 6),
         'alpha_H': trial.suggest_float('alpha_H', 0.0001, 0.1001, step=0.005),
         'alpha_W': trial.suggest_float('alpha_W', 0.0001, 0.1001, step=0.005),
-        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 5),
+        'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 20),
         'activation': trial.suggest_categorical('activation', ['tanh', 'relu']),
         'solver': trial.suggest_categorical('solver', ['sgd', 'adam']),
         'alpha': trial.suggest_float('alpha', 1e1, 5e1, log=True),
@@ -129,30 +139,32 @@ def objective(
         'learning_rate_init': trial.suggest_float('learning_rate_init', 0.0001, 0.1001, log=True),
     }
     
-    # Create features
+    # Read data and get training portion only
     df = pd.read_csv(df_path)
+    train_size = int(len(df) * (1 - frac_test))
+    df_train = df.iloc[:train_size]
+    
+    # Create features using only training data
     X, y = create_features(
-        df,
-        frac_test,
+        df_train,  # Only use training portion for feature creation
+        0.2,  # Use 20% of training data for validation
         params['nmf_n_components'],
         params['alpha_H'],
         params['alpha_W']
     )
     
-    # Save trial data
-    save_trial_data(trial.number, X, y)
-    
-    # Split data
-    X_train, X_test = split_into_train_and_test(X, frac_test, random_state=1)
-    y_train, y_test = split_into_train_and_test(y.reshape(-1, 1), frac_test, random_state=1)
+    # Split training data into train and validation
+    val_size = int(len(X) * 0.2)  # 20% of training data for validation
+    X_train, X_val = X[:-val_size], X[-val_size:]
+    y_train, y_val = y[:-val_size], y[-val_size:]
     
     # Create and train model
     model = create_model(params)
     model.fit(X_train, y_train.ravel())
     
-    # Evaluate
-    y_pred = model.predict(X_test)
-    return float(accuracy_score(y_test, y_pred))
+    # Evaluate on validation set
+    y_pred = model.predict(X_val)
+    return float(accuracy_score(y_val, y_pred))
 
 def train_and_evaluate(
     df_path: str,
@@ -161,6 +173,8 @@ def train_and_evaluate(
     n_trials: int,
     starting_wealth: float
 ) -> Tuple[float, float, float]:
+    # Set random seeds for reproducibility
+    set_random_seeds()
     """
     Train model using Optuna and evaluate its performance.
     
@@ -174,8 +188,9 @@ def train_and_evaluate(
     Returns:
         Tuple of (accuracy, profit, profit_percentage)
     """
-    # Create and run Optuna study
-    study = optuna.create_study(direction='maximize')
+    # Create and run Optuna study with fixed random seed
+    sampler = optuna.samplers.TPESampler(seed=RANDOM_STATE)
+    study = optuna.create_study(direction='maximize', sampler=sampler)
     study.optimize(
         lambda trial: objective(trial, df_path, frac_test),
         n_trials=n_trials
@@ -184,24 +199,44 @@ def train_and_evaluate(
     best_trial = study.best_trial
     print(f"Best trial: Value={best_trial.value}, Params={best_trial.params}")
     
-    # Save best trial
+    # Get full dataset for final model
+    df = pd.read_csv(df_path)
+    train_size = int(len(df) * (1 - frac_test))
+    df_train = df.iloc[:train_size]  # Only use training portion
+    
+    # Create features for final model using only training data
+    X_train, y_train = create_features(
+        df_train,
+        0.0,  # No test split needed since we're using all training data
+        best_trial.params['nmf_n_components'],
+        best_trial.params['alpha_H'],
+        best_trial.params['alpha_W']
+    )
+    
+    # Create and train final model with best parameters
+    best_model = create_model(best_trial.params)
+    best_model.fit(X_train, y_train.ravel())
+    
+    # Save model and trial info
     save_best_trial(best_trial, year)
     
-    # Load best model and data
-    best_classifier = joblib.load(MODEL_FILENAME.format(year=year))
-    X = np.load(TRIAL_X_FILENAME.format(trial_id=best_trial.number))
-    y = np.load(TRIAL_Y_FILENAME.format(trial_id=best_trial.number))
+    # Create features for full dataset to get test portion
+    features = create_features(
+        df,
+        frac_test,
+        best_trial.params['nmf_n_components'],
+        best_trial.params['alpha_H'],
+        best_trial.params['alpha_W']
+    )
+    X, y = features  # Explicitly unpack tuple
     
-    # Clean up trial files
-    cleanup_trial_files(best_trial.number)
+    # Get test portion and ensure numpy array types
+    X_test = np.array(X[train_size:])
+    y_test = np.array(y[train_size:])
     
-    # Split and evaluate
-    X_train, X_test = split_into_train_and_test(X, frac_test, random_state=1)
-    y_train, y_test = split_into_train_and_test(y.reshape(-1, 1), frac_test, random_state=1)
-    
-    best_classifier.fit(X_train, y_train.ravel())
-    y_pred = best_classifier.predict(X_test)
-    y_proba = best_classifier.predict_proba(X_test)
+    # Evaluate on test set
+    y_pred = np.array(best_model.predict(X_test))
+    y_proba = np.array(best_model.predict_proba(X_test))
     
     accuracy = float(accuracy_score(y_test, y_pred))
     wealth, total_stake = test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test)

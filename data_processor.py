@@ -32,6 +32,8 @@ def create_win_loss_matrix(team_indices: Dict[str, int], df: pd.DataFrame, frac_
     Returns:
         Win/loss ratio matrix
     """
+    # Sort DataFrame by date to ensure consistent ordering
+    df = df.sort_index()
     num_rows = int(len(df) * (1 - frac_test))
     num_teams = len(team_indices)
     wins_matrix = np.zeros((num_teams, num_teams))
