@@ -13,7 +13,7 @@ NMF_MAX_ITER = 20000  # Maximum iterations for NMF convergence
 NMF_INIT = 'nndsvdar'  # Initialization method for NMF
 
 # Optuna study parameters
-N_TRIALS = 50  # Number of trials for hyperparameter optimization
+N_TRIALS = 5  # Number of trials for hyperparameter optimization
 
 # Model file patterns
 MODEL_FILENAME = "best_mlp_model_{year}.pkl"  # Format: best_mlp_model_2022.pkl

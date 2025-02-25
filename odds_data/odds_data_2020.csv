@@ -1,1095 +1,995 @@
-Home Team,Away Team,Home Score,Away Score,Home Odds,Away Odds
-Toronto Raptors,New Orleans Pelicans,130,122,-278,229
-Los Angeles Clippers,Los Angeles Lakers,112,102,140,-164
-Orlando Magic,Cleveland Cavaliers,94,85,-526,393
-Indiana Pacers,Detroit Pistons,110,119,-303,248
-Charlotte Hornets,Chicago Bulls,126,125,140,-164
-Philadelphia 76ers,Boston Celtics,107,93,-244,200
-Miami Heat,Memphis Grizzlies,120,101,-286,231
-Brooklyn Nets,Minnesota Timberwolves,126,127,-159,133
-San Antonio Spurs,New York Knicks,120,111,-625,459
-Dallas Mavericks,Washington Wizards,108,100,-435,340
-Utah Jazz,Oklahoma City Thunder,100,95,-435,334
-Portland Trail Blazers,Denver Nuggets,100,108,100,-118
-Phoenix Suns,Sacramento Kings,124,95,-114,-104
-Detroit Pistons,Atlanta Hawks,100,117,-120,100
-Houston Rockets,Milwaukee Bucks,111,117,-118,-102
-Golden State Warriors,Los Angeles Clippers,122,141,-103,-114
-Charlotte Hornets,Minnesota Timberwolves,99,121,175,-213
-Boston Celtics,Toronto Raptors,112,106,-141,118
-Brooklyn Nets,New York Knicks,113,109,-357,282
-Oklahoma City Thunder,Washington Wizards,85,97,-400,313
-New Orleans Pelicans,Dallas Mavericks,116,123,-132,112
-Memphis Grizzlies,Chicago Bulls,102,110,112,-133
-Denver Nuggets,Phoenix Suns,108,107,-909,597
-Sacramento Kings,Portland Trail Blazers,112,122,-103,-116
-Los Angeles Lakers,Utah Jazz,95,86,-156,133
-Milwaukee Bucks,Miami Heat,126,131,-833,559
-Detroit Pistons,Philadelphia 76ers,111,117,144,-172
-New York Knicks,Boston Celtics,95,118,173,-208
-Atlanta Hawks,Orlando Magic,103,99,114,-135
-Utah Jazz,Sacramento Kings,113,81,-500,376
-Houston Rockets,New Orleans Pelicans,126,123,-1111,597
-Cleveland Cavaliers,Indiana Pacers,110,99,150,-196
-Chicago Bulls,Toronto Raptors,84,108,114,-147
-San Antonio Spurs,Washington Wizards,124,122,-909,584
-Phoenix Suns,Los Angeles Clippers,130,122,407,-556
-Oklahoma City Thunder,Golden State Warriors,120,92,-108,-111
-Memphis Grizzlies,Brooklyn Nets,134,133,154,-182
-Minnesota Timberwolves,Miami Heat,116,109,-286,234
-Dallas Mavericks,Portland Trail Blazers,119,121,-145,123
-Los Angeles Lakers,Charlotte Hornets,120,101,-1250,776
-New York Knicks,Chicago Bulls,105,98,108,-128
-Detroit Pistons,Indiana Pacers,96,94,104,-125
-Toronto Raptors,Orlando Magic,104,95,-196,163
-Atlanta Hawks,Philadelphia 76ers,103,105,227,-278
-New Orleans Pelicans,Golden State Warriors,123,134,-135,114
-Milwaukee Bucks,Cleveland Cavaliers,129,112,-2500,1166
-Houston Rockets,Oklahoma City Thunder,116,112,-588,425
-San Antonio Spurs,Portland Trail Blazers,113,110,-244,200
-Sacramento Kings,Denver Nuggets,94,101,172,-204
-Phoenix Suns,Utah Jazz,95,96,168,-200
-Los Angeles Clippers,Charlotte Hornets,111,96,-2500,1164
-Miami Heat,Atlanta Hawks,112,97,-385,304
-Denver Nuggets,Dallas Mavericks,106,109,-222,181
-Los Angeles Lakers,Memphis Grizzlies,120,91,-833,574
-Philadelphia 76ers,Minnesota Timberwolves,117,95,-303,243
-Orlando Magic,New York Knicks,95,83,-526,392
-Cleveland Cavaliers,Chicago Bulls,117,111,108,-128
-Toronto Raptors,Detroit Pistons,125,113,-476,373
-Brooklyn Nets,Indiana Pacers,108,118,-152,127
-Boston Celtics,Milwaukee Bucks,116,105,137,-161
-Washington Wizards,Houston Rockets,158,159,283,-357
-Oklahoma City Thunder,Portland Trail Blazers,99,102,104,-123
-Utah Jazz,Los Angeles Clippers,110,96,-286,229
-Sacramento Kings,Charlotte Hornets,111,118,-323,257
-Golden State Warriors,Phoenix Suns,110,121,-217,181
-Atlanta Hawks,Miami Heat,97,106,218,-263
-New Orleans Pelicans,Denver Nuggets,122,107,143,-169
-Los Angeles Clippers,San Antonio Spurs,103,97,-196,165
-Orlando Magic,Milwaukee Bucks,91,123,161,-189
-Indiana Pacers,Cleveland Cavaliers,102,95,-294,239
-Brooklyn Nets,Houston Rockets,123,116,161,-189
-Boston Celtics,New York Knicks,104,102,-526,388
-Chicago Bulls,Detroit Pistons,112,106,-179,152
-Dallas Mavericks,Los Angeles Lakers,110,119,-111,-106
-Sacramento Kings,Utah Jazz,102,101,156,-182
-Golden State Warriors,San Antonio Spurs,110,127,239,-294
-Oklahoma City Thunder,New Orleans Pelicans,115,104,-133,114
-Orlando Magic,Denver Nuggets,87,91,144,-169
-Detroit Pistons,Brooklyn Nets,113,109,152,-179
-Washington Wizards,Minnesota Timberwolves,109,131,-147,125
-Milwaukee Bucks,Toronto Raptors,115,105,-263,215
-Memphis Grizzlies,Phoenix Suns,105,114,125,-149
-Golden State Warriors,Charlotte Hornets,87,93,206,-250
-Portland Trail Blazers,Philadelphia 76ers,128,129,-108,-111
-Indiana Pacers,Chicago Bulls,108,95,-130,110
-New York Knicks,Sacramento Kings,92,113,102,-122
-Miami Heat,Houston Rockets,129,100,131,-154
-San Antonio Spurs,Los Angeles Lakers,96,103,104,-123
-Cleveland Cavaliers,Dallas Mavericks,111,131,184,-222
-Los Angeles Clippers,Utah Jazz,105,94,-192,163
-Washington Wizards,Detroit Pistons,115,99,-167,142
-Brooklyn Nets,New Orleans Pelicans,135,125,-164,141
-Minnesota Timberwolves,Milwaukee Bucks,106,134,272,-345
-Memphis Grizzlies,Houston Rockets,100,107,202,-244
-Phoenix Suns,Philadelphia 76ers,114,109,-112,-105
-Golden State Warriors,Portland Trail Blazers,127,118,596,-909
-Cleveland Cavaliers,Boston Celtics,113,119,206,-250
-Charlotte Hornets,Indiana Pacers,122,120,116,-137
-Atlanta Hawks,San Antonio Spurs,108,100,197,-238
-Oklahoma City Thunder,Orlando Magic,102,94,-147,124
-Chicago Bulls,Los Angeles Lakers,112,118,246,-303
-Denver Nuggets,Miami Heat,109,89,-208,174
-Indiana Pacers,Washington Wizards,121,106,-143,122
-Detroit Pistons,New York Knicks,122,102,-167,143
-Toronto Raptors,Sacramento Kings,124,120,-370,294
-Houston Rockets,Golden State Warriors,129,112,-2500,1196
-Atlanta Hawks,Chicago Bulls,93,113,-106,-112
-Memphis Grizzlies,Minnesota Timberwolves,137,121,136,-159
-Dallas Mavericks,Orlando Magic,107,106,-303,245
-Utah Jazz,Philadelphia 76ers,106,104,-141,119
-Los Angeles Clippers,Milwaukee Bucks,124,129,210,-256
-Charlotte Hornets,Boston Celtics,87,108,246,-303
-San Antonio Spurs,Oklahoma City Thunder,121,112,-196,166
-Phoenix Suns,Miami Heat,108,124,-127,106
-Los Angeles Clippers,Portland Trail Blazers,107,101,-233,191
-Washington Wizards,Cleveland Cavaliers,100,113,-200,168
-Orlando Magic,Memphis Grizzlies,118,86,-323,259
-Indiana Pacers,Detroit Pistons,112,106,-250,206
-Atlanta Hawks,Sacramento Kings,109,121,127,-149
-New Orleans Pelicans,Toronto Raptors,104,122,110,-132
-Minnesota Timberwolves,Golden State Warriors,125,119,-769,519
-Dallas Mavericks,New York Knicks,102,106,-667,463
-Utah Jazz,Milwaukee Bucks,103,100,112,-133
-Denver Nuggets,Philadelphia 76ers,100,97,-213,177
-Portland Trail Blazers,Brooklyn Nets,115,119,-156,134
-Los Angeles Lakers,Miami Heat,95,80,-370,295
-San Antonio Spurs,Boston Celtics,115,135,-132,110
-Charlotte Hornets,New Orleans Pelicans,110,115,108,-130
-Memphis Grizzlies,Dallas Mavericks,122,138,189,-227
-Oklahoma City Thunder,Golden State Warriors,114,108,-833,550
-Chicago Bulls,Houston Rockets,94,117,231,-286
-Minnesota Timberwolves,Denver Nuggets,98,100,149,-172
-Philadelphia 76ers,Charlotte Hornets,114,106,-1250,791
-Orlando Magic,Indiana Pacers,102,109,-204,172
-Oklahoma City Thunder,Milwaukee Bucks,119,121,326,-417
-New York Knicks,Cleveland Cavaliers,87,108,-132,112
-Phoenix Suns,Brooklyn Nets,138,112,-145,122
-Portland Trail Blazers,Atlanta Hawks,124,113,-435,338
-Los Angeles Lakers,Toronto Raptors,104,113,-556,428
-Detroit Pistons,Minnesota Timberwolves,114,120,-172,148
-San Antonio Spurs,Memphis Grizzlies,109,113,-625,458
-Boston Celtics,Dallas Mavericks,116,106,-149,127
-New Orleans Pelicans,Houston Rockets,116,122,258,-323
-Los Angeles Clippers,Toronto Raptors,98,88,-476,363
-Golden State Warriors,Utah Jazz,108,122,282,-357
-Philadelphia 76ers,Cleveland Cavaliers,98,97,-667,472
-Indiana Pacers,Oklahoma City Thunder,111,85,-118,-101
-Miami Heat,Detroit Pistons,117,108,-400,320
-Chicago Bulls,New York Knicks,120,102,-270,223
-Utah Jazz,Brooklyn Nets,119,114,-278,229
-Phoenix Suns,Los Angeles Lakers,115,123,144,-169
-Denver Nuggets,Atlanta Hawks,121,125,-625,451
-Sacramento Kings,Portland Trail Blazers,107,99,102,-122
-Orlando Magic,Philadelphia 76ers,112,97,-137,116
-Charlotte Hornets,Memphis Grizzlies,117,119,-137,117
-Houston Rockets,Los Angeles Clippers,102,93,-139,117
-Boston Celtics,Washington Wizards,140,133,-303,249
-Minnesota Timberwolves,San Antonio Spurs,129,114,-122,102
-Portland Trail Blazers,Toronto Raptors,106,114,-149,127
-Los Angeles Lakers,Golden State Warriors,120,94,-400,313
-Cleveland Cavaliers,Miami Heat,97,108,165,-196
-New York Knicks,Dallas Mavericks,106,103,264,-333
-New Orleans Pelicans,Los Angeles Clippers,132,127,148,-172
-Milwaukee Bucks,Chicago Bulls,124,115,-833,552
-Phoenix Suns,Atlanta Hawks,128,112,-357,279
-Denver Nuggets,Brooklyn Nets,101,93,-345,278
-Orlando Magic,San Antonio Spurs,111,109,-143,121
-Charlotte Hornets,Detroit Pistons,109,106,140,-164
-Oklahoma City Thunder,Philadelphia 76ers,127,119,138,-161
-Minnesota Timberwolves,Washington Wizards,116,137,-227,188
-Memphis Grizzlies,Utah Jazz,107,106,266,-333
-Houston Rockets,Indiana Pacers,111,102,-250,206
-Los Angeles Lakers,Sacramento Kings,99,97,-588,438
-Golden State Warriors,Boston Celtics,100,105,233,-286
-Chicago Bulls,Brooklyn Nets,111,117,-175,149
-Indiana Pacers,Milwaukee Bucks,83,102,278,-345
-New York Knicks,Charlotte Hornets,102,103,-172,147
-Minnesota Timberwolves,Houston Rockets,105,125,-139,117
-Miami Heat,New Orleans Pelicans,109,94,-345,274
-San Antonio Spurs,Portland Trail Blazers,116,121,-122,104
-Dallas Mavericks,Toronto Raptors,110,102,-185,156
-Los Angeles Clippers,Atlanta Hawks,150,101,-476,365
-Cleveland Cavaliers,Philadelphia 76ers,95,114,231,-286
-Sacramento Kings,Boston Celtics,100,99,125,-147
-Orlando Magic,Washington Wizards,125,121,-238,199
-Memphis Grizzlies,Denver Nuggets,114,131,212,-256
-New Orleans Pelicans,Golden State Warriors,108,100,-169,141
-Los Angeles Lakers,Atlanta Hawks,122,101,-1429,825
-New York Knicks,Cleveland Cavaliers,123,105,-227,186
-Toronto Raptors,Charlotte Hornets,132,96,-385,301
-Brooklyn Nets,Indiana Pacers,86,115,-137,116
-Houston Rockets,Portland Trail Blazers,132,108,-333,266
-Chicago Bulls,Milwaukee Bucks,101,115,290,-370
-Dallas Mavericks,San Antonio Spurs,117,110,-196,165
-Utah Jazz,Minnesota Timberwolves,102,112,-455,351
-Phoenix Suns,Boston Celtics,85,99,-139,117
-Los Angeles Clippers,Oklahoma City Thunder,90,88,-345,277
-New Orleans Pelicans,Portland Trail Blazers,115,104,-161,137
-Memphis Grizzlies,Golden State Warriors,95,114,-256,210
-Sacramento Kings,Phoenix Suns,120,116,-145,122
-Los Angeles Lakers,Oklahoma City Thunder,112,107,-667,478
-Washington Wizards,San Antonio Spurs,138,132,110,-130
-Philadelphia 76ers,New York Knicks,109,104,-909,616
-Toronto Raptors,Orlando Magic,113,97,-152,129
-Miami Heat,Cleveland Cavaliers,124,100,-500,376
-Dallas Mavericks,Golden State Warriors,142,94,-1250,774
-Brooklyn Nets,Charlotte Hornets,101,91,-185,158
-Atlanta Hawks,Milwaukee Bucks,127,135,497,-714
-Minnesota Timberwolves,Utah Jazz,95,103,129,-152
-Chicago Bulls,Detroit Pistons,109,89,-108,-110
-Denver Nuggets,Houston Rockets,105,95,-119,100
-Los Angeles Clippers,Boston Celtics,107,104,-312,250
-Milwaukee Bucks,Portland Trail Blazers,137,129,-1111,681
-Phoenix Suns,New Orleans Pelicans,121,124,-152,129
-Washington Wizards,Charlotte Hornets,125,118,-233,190
-Detroit Pistons,Atlanta Hawks,128,103,-263,216
-Brooklyn Nets,Sacramento Kings,116,97,-132,112
-Philadelphia 76ers,San Antonio Spurs,115,104,-294,240
-Oklahoma City Thunder,Los Angeles Lakers,127,130,169,-200
-Chicago Bulls,Miami Heat,108,116,156,-185
-Dallas Mavericks,Cleveland Cavaliers,143,101,-556,415
-Utah Jazz,Golden State Warriors,113,109,-2000,1061
-Denver Nuggets,Boston Celtics,96,92,-213,177
-Los Angeles Clippers,Houston Rockets,122,119,-217,179
-Minnesota Timberwolves,Phoenix Suns,98,100,-182,156
-Indiana Pacers,Orlando Magic,111,106,-270,220
-Charlotte Hornets,Chicago Bulls,115,116,106,-127
-New York Knicks,San Antonio Spurs,104,111,124,-145
-Atlanta Hawks,Toronto Raptors,116,119,244,-303
-Philadelphia 76ers,Miami Heat,113,86,-233,192
-Memphis Grizzlies,Los Angeles Lakers,108,109,283,-357
-Cleveland Cavaliers,Portland Trail Blazers,110,104,216,-263
-Milwaukee Bucks,Detroit Pistons,104,90,-1250,738
-Utah Jazz,New Orleans Pelicans,128,120,-227,188
-Houston Rockets,Dallas Mavericks,123,137,-222,186
-Washington Wizards,Sacramento Kings,106,113,-132,112
-New York Knicks,Brooklyn Nets,101,103,114,-135
-Denver Nuggets,Phoenix Suns,116,104,-667,486
-Los Angeles Clippers,New Orleans Pelicans,134,109,-1000,672
-Indiana Pacers,Memphis Grizzlies,126,114,-500,380
-Detroit Pistons,Orlando Magic,103,88,-189,161
-Cleveland Cavaliers,Brooklyn Nets,106,108,-114,-105
-Toronto Raptors,Philadelphia 76ers,101,96,108,-130
-Miami Heat,Charlotte Hornets,117,100,-625,453
-Boston Celtics,Sacramento Kings,103,102,-244,204
-Atlanta Hawks,Minnesota Timberwolves,113,125,163,-192
-Milwaukee Bucks,Utah Jazz,122,118,-435,341
-Chicago Bulls,Portland Trail Blazers,94,117,-103,-115
-San Antonio Spurs,Los Angeles Lakers,104,114,161,-189
-Golden State Warriors,Oklahoma City Thunder,97,100,245,-303
-Dallas Mavericks,Los Angeles Clippers,99,114,104,-123
-Denver Nuggets,Washington Wizards,117,104,-556,412
-Philadelphia 76ers,Sacramento Kings,97,91,-476,369
-Indiana Pacers,Utah Jazz,121,102,-115,-103
-Cleveland Cavaliers,Orlando Magic,104,116,-114,-105
-Charlotte Hornets,Detroit Pistons,102,101,150,-175
-Boston Celtics,Brooklyn Nets,121,110,-400,309
-Toronto Raptors,New York Knicks,126,98,-526,392
-Milwaukee Bucks,Atlanta Hawks,111,102,-1667,867
-Memphis Grizzlies,Los Angeles Clippers,119,121,220,-263
-Houston Rockets,Miami Heat,117,108,-323,260
-San Antonio Spurs,Minnesota Timberwolves,101,113,-152,129
-Phoenix Suns,Washington Wizards,132,140,-286,235
-New Orleans Pelicans,Los Angeles Lakers,110,114,239,-294
-Portland Trail Blazers,Oklahoma City Thunder,136,119,-143,121
-Golden State Warriors,Chicago Bulls,104,90,114,-133
-Brooklyn Nets,Boston Celtics,112,107,158,-185
-Orlando Magic,Toronto Raptors,83,90,131,-154
-Detroit Pistons,Charlotte Hornets,107,110,-370,297
-New York Knicks,Philadelphia 76ers,95,101,208,-250
-Cleveland Cavaliers,Milwaukee Bucks,110,119,556,-833
-Oklahoma City Thunder,New Orleans Pelicans,109,104,-200,168
-Miami Heat,Golden State Warriors,122,105,-769,538
-Memphis Grizzlies,Utah Jazz,94,103,256,-312
-Indiana Pacers,Atlanta Hawks,105,104,-667,486
-San Antonio Spurs,Los Angeles Clippers,107,97,186,-222
-Phoenix Suns,Dallas Mavericks,113,120,112,-133
-Portland Trail Blazers,Chicago Bulls,107,103,-294,239
-Los Angeles Lakers,Washington Wizards,125,103,-833,551
-Sacramento Kings,Denver Nuggets,100,97,147,-172
-Philadelphia 76ers,Indiana Pacers,119,116,-263,217
-Milwaukee Bucks,Charlotte Hornets,137,96,-1250,771
-Houston Rockets,Atlanta Hawks,158,111,-1429,811
-Brooklyn Nets,Miami Heat,106,109,156,-185
-New York Knicks,Boston Celtics,104,113,263,-323
-Minnesota Timberwolves,Memphis Grizzlies,107,115,-833,578
-Los Angeles Lakers,Dallas Mavericks,100,114,-270,222
-New Orleans Pelicans,Oklahoma City Thunder,104,107,-143,121
-Detroit Pistons,San Antonio Spurs,132,98,-143,121
-Toronto Raptors,Utah Jazz,130,110,-132,110
-Orlando Magic,Golden State Warriors,100,96,-357,283
-Los Angeles Clippers,Washington Wizards,150,125,-909,613
-Philadelphia 76ers,Utah Jazz,103,94,-213,177
-Charlotte Hornets,Phoenix Suns,104,109,140,-164
-Atlanta Hawks,Golden State Warriors,104,79,-263,218
-Milwaukee Bucks,New York Knicks,132,88,-2500,1205
-Memphis Grizzlies,Indiana Pacers,104,117,392,-526
-Sacramento Kings,Chicago Bulls,106,113,-189,162
-Washington Wizards,Orlando Magic,120,127,-110,-109
-Cleveland Cavaliers,Detroit Pistons,94,127,135,-156
-Toronto Raptors,Miami Heat,110,121,-222,184
-New Orleans Pelicans,Dallas Mavericks,97,118,165,-196
-San Antonio Spurs,Houston Rockets,135,133,244,-303
-Denver Nuggets,Los Angeles Lakers,96,105,-137,116
-Los Angeles Clippers,Portland Trail Blazers,117,97,-455,357
-Orlando Magic,Phoenix Suns,128,114,104,-125
-Detroit Pistons,Milwaukee Bucks,103,127,350,-455
-Charlotte Hornets,Golden State Warriors,106,91,-139,117
-Boston Celtics,Miami Heat,112,93,-222,185
-Atlanta Hawks,Brooklyn Nets,118,130,127,-149
-Oklahoma City Thunder,Indiana Pacers,100,107,-101,-118
-Chicago Bulls,Memphis Grizzlies,106,99,-294,236
-Dallas Mavericks,Minnesota Timberwolves,121,114,-217,181
-Utah Jazz,Los Angeles Lakers,96,121,-130,110
-Portland Trail Blazers,Sacramento Kings,127,116,-213,179
-Washington Wizards,Philadelphia 76ers,119,113,281,-357
-Toronto Raptors,Houston Rockets,109,119,-130,108
-New York Knicks,Denver Nuggets,92,129,309,-385
-New Orleans Pelicans,Phoenix Suns,132,139,-182,154
-Detroit Pistons,Indiana Pacers,108,101,100,-118
-Cleveland Cavaliers,Orlando Magic,87,93,170,-204
-Charlotte Hornets,Brooklyn Nets,104,111,131,-152
-Oklahoma City Thunder,Minnesota Timberwolves,139,127,-164,141
-Miami Heat,Washington Wizards,112,103,-526,390
-Chicago Bulls,Golden State Warriors,98,100,-200,168
-Boston Celtics,Denver Nuggets,108,95,-167,142
-San Antonio Spurs,Sacramento Kings,105,104,-175,150
-Milwaukee Bucks,Los Angeles Clippers,119,91,-189,160
-Portland Trail Blazers,Los Angeles Lakers,113,136,161,-189
-Dallas Mavericks,New Orleans Pelicans,130,84,-455,359
-Philadelphia 76ers,Cleveland Cavaliers,141,94,-714,496
-New York Knicks,Indiana Pacers,103,104,187,-222
-Houston Rockets,Phoenix Suns,115,109,-769,533
-Utah Jazz,Memphis Grizzlies,126,112,-769,539
-Brooklyn Nets,Denver Nuggets,105,102,158,-185
-Charlotte Hornets,Atlanta Hawks,107,122,-125,106
-Washington Wizards,Los Angeles Clippers,119,135,355,-455
-Philadelphia 76ers,Toronto Raptors,110,104,-147,125
-Miami Heat,Chicago Bulls,110,105,-294,238
-Dallas Mavericks,Sacramento Kings,106,110,-417,326
-Portland Trail Blazers,Oklahoma City Thunder,96,108,-167,143
-Los Angeles Lakers,Minnesota Timberwolves,142,125,-588,442
-Indiana Pacers,Los Angeles Clippers,99,110,-147,127
-Boston Celtics,Cleveland Cavaliers,110,88,-1250,768
-New Orleans Pelicans,Detroit Pistons,103,105,-109,-110
-Milwaukee Bucks,Orlando Magic,110,101,-1000,659
-Houston Rockets,Sacramento Kings,118,119,-833,585
-Chicago Bulls,Toronto Raptors,92,93,208,-250
-Utah Jazz,Oklahoma City Thunder,90,104,-400,309
-Phoenix Suns,Minnesota Timberwolves,125,109,-159,136
-Golden State Warriors,Memphis Grizzlies,102,110,-152,129
-Charlotte Hornets,Washington Wizards,114,107,104,-125
-Philadelphia 76ers,Denver Nuggets,97,92,-222,184
-Miami Heat,Atlanta Hawks,135,121,-385,304
-Portland Trail Blazers,New York Knicks,115,87,-476,359
-Toronto Raptors,Los Angeles Clippers,92,112,127,-149
-Orlando Magic,Los Angeles Lakers,87,96,338,-435
-Indiana Pacers,Boston Celtics,122,117,-123,104
-Cleveland Cavaliers,Houston Rockets,110,116,537,-769
-Brooklyn Nets,Charlotte Hornets,108,113,-556,421
-Minnesota Timberwolves,Utah Jazz,116,127,-112,-106
-Chicago Bulls,Atlanta Hawks,136,102,-270,221
-Phoenix Suns,Memphis Grizzlies,108,115,-303,243
-Milwaukee Bucks,New Orleans Pelicans,127,112,-500,383
-Sacramento Kings,Oklahoma City Thunder,94,93,-130,110
-Golden State Warriors,New York Knicks,122,124,-204,173
-Boston Celtics,Philadelphia 76ers,109,115,-114,-105
-San Antonio Spurs,Cleveland Cavaliers,109,117,-833,550
-Detroit Pistons,Dallas Mavericks,111,122,229,-278
-Denver Nuggets,Portland Trail Blazers,114,99,-333,264
-Philadelphia 76ers,New Orleans Pelicans,116,109,-312,250
-Orlando Magic,Houston Rockets,107,130,227,-278
-Miami Heat,Los Angeles Lakers,110,113,195,-238
-Atlanta Hawks,Indiana Pacers,100,110,200,-244
-Memphis Grizzlies,Milwaukee Bucks,114,127,604,-909
-Chicago Bulls,Charlotte Hornets,73,83,-303,249
-Utah Jazz,Golden State Warriors,114,106,-1250,776
-Minnesota Timberwolves,Los Angeles Clippers,117,124,167,-196
-Sacramento Kings,New York Knicks,101,103,-417,324
-Phoenix Suns,San Antonio Spurs,119,121,108,-128
-Toronto Raptors,Brooklyn Nets,110,102,-312,252
-Memphis Grizzlies,Washington Wizards,128,111,-120,102
-Chicago Bulls,Los Angeles Clippers,109,106,135,-159
-Milwaukee Bucks,Cleveland Cavaliers,125,108,-1429,825
-Dallas Mavericks,Miami Heat,118,122,-435,343
-Houston Rockets,Detroit Pistons,107,115,-345,275
-Denver Nuggets,Oklahoma City Thunder,110,102,-244,202
-New Orleans Pelicans,Orlando Magic,119,130,-110,-109
-Indiana Pacers,Charlotte Hornets,107,85,-833,545
-Brooklyn Nets,Philadelphia 76ers,109,89,145,-169
-Atlanta Hawks,Los Angeles Lakers,96,101,581,-833
-Denver Nuggets,New York Knicks,111,105,-588,434
-Golden State Warriors,Sacramento Kings,79,100,164,-192
-Detroit Pistons,Washington Wizards,119,133,-139,117
-Toronto Raptors,Cleveland Cavaliers,133,113,-909,623
-Oklahoma City Thunder,Chicago Bulls,109,106,-222,181
-Milwaukee Bucks,Dallas Mavericks,116,120,-667,488
-Memphis Grizzlies,Miami Heat,118,111,129,-152
-Houston Rockets,San Antonio Spurs,109,107,-588,445
-Phoenix Suns,Portland Trail Blazers,110,111,117,-137
-Indiana Pacers,Los Angeles Lakers,105,102,100,-118
-Charlotte Hornets,Sacramento Kings,110,102,177,-213
-New York Knicks,Atlanta Hawks,143,120,-132,112
-New Orleans Pelicans,Brooklyn Nets,101,108,108,-128
-Utah Jazz,Orlando Magic,109,102,-270,221
-Los Angeles Clippers,Phoenix Suns,120,99,-1429,818
-Washington Wizards,Chicago Bulls,109,110,-112,-105
-Philadelphia 76ers,Miami Heat,104,108,-370,293
-Detroit Pistons,Toronto Raptors,99,112,112,-133
-Cleveland Cavaliers,Charlotte Hornets,100,98,-147,125
-Oklahoma City Thunder,Memphis Grizzlies,126,122,-270,219
-Minnesota Timberwolves,New Orleans Pelicans,99,107,-156,131
-Denver Nuggets,Orlando Magic,113,104,-455,348
-Dallas Mavericks,Boston Celtics,103,109,102,-122
-Portland Trail Blazers,Golden State Warriors,122,112,-476,361
-Atlanta Hawks,Utah Jazz,106,111,225,-278
-Milwaukee Bucks,Los Angeles Lakers,111,104,-161,138
-San Antonio Spurs,Brooklyn Nets,118,105,-182,156
-Los Angeles Clippers,Houston Rockets,117,122,-213,177
-Indiana Pacers,Sacramento Kings,119,105,-213,177
-Cleveland Cavaliers,Memphis Grizzlies,114,107,121,-143
-Toronto Raptors,Washington Wizards,122,118,-278,225
-Boston Celtics,Detroit Pistons,114,93,-455,353
-Philadelphia 76ers,Dallas Mavericks,98,117,-417,323
-Oklahoma City Thunder,Phoenix Suns,126,108,-152,127
-Miami Heat,New York Knicks,129,114,-435,345
-Denver Nuggets,Minnesota Timberwolves,109,100,-667,474
-Portland Trail Blazers,Orlando Magic,118,103,-159,136
-Golden State Warriors,New Orleans Pelicans,106,102,110,-130
-Charlotte Hornets,Utah Jazz,107,114,231,-286
-Brooklyn Nets,Atlanta Hawks,122,112,-323,258
-Philadelphia 76ers,Washington Wizards,125,108,-1000,666
-Detroit Pistons,Chicago Bulls,107,119,106,-125
-New York Knicks,Milwaukee Bucks,102,123,632,-1000
-Memphis Grizzlies,Sacramento Kings,119,115,110,-132
-San Antonio Spurs,Los Angeles Clippers,109,134,247,-303
-Phoenix Suns,Houston Rockets,125,139,345,-435
-Portland Trail Blazers,Minnesota Timberwolves,113,106,-286,233
-Toronto Raptors,Dallas Mavericks,110,107,-120,100
-Boston Celtics,Charlotte Hornets,119,93,-909,623
-Oklahoma City Thunder,Los Angeles Clippers,118,112,-111,-106
-Milwaukee Bucks,Indiana Pacers,117,89,-370,292
-Los Angeles Lakers,Denver Nuggets,104,128,-135,114
-Orlando Magic,Chicago Bulls,103,95,-204,172
-New York Knicks,Washington Wizards,115,121,-161,137
-Indiana Pacers,Toronto Raptors,120,115,-222,187
-Detroit Pistons,Philadelphia 76ers,109,125,227,-278
-Cleveland Cavaliers,Atlanta Hawks,121,118,104,-123
-Miami Heat,Utah Jazz,107,104,-179,154
-Memphis Grizzlies,San Antonio Spurs,115,145,-102,-115
-Phoenix Suns,Denver Nuggets,111,113,118,-139
-Sacramento Kings,Houston Rockets,104,113,204,-244
-Portland Trail Blazers,New Orleans Pelicans,94,102,-238,199
-Golden State Warriors,Minnesota Timberwolves,113,104,-112,-106
-Toronto Raptors,Boston Celtics,102,118,152,-179
-Philadelphia 76ers,Milwaukee Bucks,121,109,129,-152
-Golden State Warriors,Houston Rockets,116,104,535,-769
-Los Angeles Lakers,Los Angeles Clippers,106,111,-132,112
-Denver Nuggets,New Orleans Pelicans,100,112,-455,351
-Detroit Pistons,Washington Wizards,132,102,-270,221
-Brooklyn Nets,New York Knicks,82,94,-323,257
-Oklahoma City Thunder,Memphis Grizzlies,97,110,-244,202
-Dallas Mavericks,San Antonio Spurs,102,98,-385,303
-Sacramento Kings,Minnesota Timberwolves,104,105,-303,247
-Utah Jazz,Portland Trail Blazers,121,115,-222,184
-Boston Celtics,Cleveland Cavaliers,129,117,-1667,923
-Orlando Magic,Philadelphia 76ers,98,97,146,-172
-Charlotte Hornets,Oklahoma City Thunder,102,104,-112,-105
-Atlanta Hawks,Milwaukee Bucks,86,112,236,-294
-Miami Heat,Indiana Pacers,113,112,-213,177
-Golden State Warriors,Phoenix Suns,105,96,141,-167
-Denver Nuggets,Memphis Grizzlies,119,110,-455,349
-New Orleans Pelicans,Indiana Pacers,120,98,-125,104
-Boston Celtics,Toronto Raptors,97,113,-303,246
-Washington Wizards,New York Knicks,100,107,137,-161
-Minnesota Timberwolves,Cleveland Cavaliers,88,94,-263,217
-Miami Heat,Philadelphia 76ers,117,116,-116,-102
-Houston Rockets,Brooklyn Nets,108,98,-476,361
-Chicago Bulls,Atlanta Hawks,116,81,-526,392
-San Antonio Spurs,Detroit Pistons,136,109,-204,171
-Milwaukee Bucks,Orlando Magic,111,100,-263,218
-Golden State Warriors,Dallas Mavericks,121,141,442,-588
-Sacramento Kings,Phoenix Suns,110,112,-143,121
-Portland Trail Blazers,Los Angeles Lakers,120,128,190,-227
-Los Angeles Clippers,Utah Jazz,107,120,-333,267
-Toronto Raptors,Oklahoma City Thunder,97,98,-200,167
-New Orleans Pelicans,Houston Rockets,127,112,-213,175
-Memphis Grizzlies,Charlotte Hornets,117,104,-147,124
-Denver Nuggets,Sacramento Kings,120,115,-345,273
-Los Angeles Lakers,Dallas Mavericks,108,95,-208,174
-Washington Wizards,Miami Heat,123,105,508,-714
-Orlando Magic,Atlanta Hawks,93,101,-667,476
-Minnesota Timberwolves,Brooklyn Nets,122,115,158,-185
-Chicago Bulls,Milwaukee Bucks,102,123,348,-455
-Utah Jazz,Detroit Pistons,104,81,-500,384
-Portland Trail Blazers,Phoenix Suns,116,122,-169,145
-Indiana Pacers,Philadelphia 76ers,115,97,-156,134
-Charlotte Hornets,Boston Celtics,92,109,274,-345
-Sacramento Kings,Los Angeles Clippers,87,105,231,-286
-Toronto Raptors,Cleveland Cavaliers,117,97,-385,305
-San Antonio Spurs,Golden State Warriors,117,113,-714,501
-Houston Rockets,Denver Nuggets,130,104,-256,211
-Oklahoma City Thunder,Dallas Mavericks,106,101,141,-167
-Washington Wizards,Orlando Magic,101,122,129,-152
-New York Knicks,Portland Trail Blazers,117,93,152,-179
-Milwaukee Bucks,Minnesota Timberwolves,106,104,-5000,1562
-Los Angeles Lakers,Phoenix Suns,117,107,-714,503
-Indiana Pacers,Denver Nuggets,116,124,-104,-114
-Cleveland Cavaliers,Charlotte Hornets,106,109,-130,110
-Miami Heat,Toronto Raptors,84,76,-213,175
-Minnesota Timberwolves,Golden State Warriors,99,84,-147,124
-Chicago Bulls,Utah Jazz,98,102,133,-154
-San Antonio Spurs,Oklahoma City Thunder,103,109,-143,120
-Dallas Mavericks,Brooklyn Nets,123,111,-385,299
-Sacramento Kings,Memphis Grizzlies,128,123,-196,165
-Los Angeles Clippers,Detroit Pistons,126,112,-1000,648
-Washington Wizards,Portland Trail Blazers,103,122,254,-312
-Orlando Magic,Miami Heat,105,85,-114,-104
-Boston Celtics,Atlanta Hawks,109,106,-667,473
-Houston Rockets,Philadelphia 76ers,118,108,-189,161
-Phoenix Suns,New York Knicks,120,112,-286,235
-Los Angeles Lakers,New Orleans Pelicans,123,113,-588,430
-Los Angeles Clippers,Memphis Grizzlies,114,140,-588,432
-Brooklyn Nets,Toronto Raptors,102,121,-127,108
-Orlando Magic,Utah Jazz,96,109,140,-164
-Cleveland Cavaliers,Oklahoma City Thunder,106,121,214,-263
-Atlanta Hawks,Indiana Pacers,116,111,248,-303
-Washington Wizards,Denver Nuggets,128,114,662,-1000
-Chicago Bulls,Boston Celtics,104,111,-111,-106
-Milwaukee Bucks,San Antonio Spurs,127,118,-833,570
-Golden State Warriors,Detroit Pistons,104,111,122,-143
-Dallas Mavericks,Charlotte Hornets,120,123,-769,539
-Sacramento Kings,New Orleans Pelicans,115,117,-133,112
-Los Angeles Clippers,New York Knicks,135,132,-526,400
-Miami Heat,Portland Trail Blazers,122,111,-213,175
-Cleveland Cavaliers,Minnesota Timberwolves,103,118,206,-250
-Phoenix Suns,Memphis Grizzlies,114,121,-270,222
-Los Angeles Lakers,Detroit Pistons,106,99,-1667,927
-Washington Wizards,Boston Celtics,99,94,326,-417
-Philadelphia 76ers,Oklahoma City Thunder,120,113,-333,265
-Orlando Magic,Brooklyn Nets,101,89,-196,166
-Charlotte Hornets,Indiana Pacers,104,115,200,-244
-Atlanta Hawks,Denver Nuggets,115,123,248,-312
-New Orleans Pelicans,Utah Jazz,126,128,145,-169
-San Antonio Spurs,Milwaukee Bucks,126,104,289,-357
-Dallas Mavericks,Chicago Bulls,118,110,-385,300
-Sacramento Kings,Golden State Warriors,111,98,-588,437
-Toronto Raptors,Portland Trail Blazers,99,101,-135,114
-Cleveland Cavaliers,Detroit Pistons,113,115,140,-164
-Brooklyn Nets,Oklahoma City Thunder,103,111,-108,-110
-Memphis Grizzlies,Minnesota Timberwolves,119,112,-182,154
-Phoenix Suns,Sacramento Kings,103,114,-263,217
-Los Angeles Lakers,New York Knicks,117,87,-1429,807
-Orlando Magic,Washington Wizards,123,89,-526,394
-Indiana Pacers,Miami Heat,108,122,-114,-104
-Charlotte Hornets,Toronto Raptors,110,112,118,-139
-Boston Celtics,San Antonio Spurs,114,129,-294,241
-Dallas Mavericks,Denver Nuggets,106,107,-182,156
-Atlanta Hawks,Houston Rockets,115,122,271,-333
-New Orleans Pelicans,Chicago Bulls,123,108,-161,139
-Utah Jazz,New York Knicks,128,104,-1429,794
-Golden State Warriors,Milwaukee Bucks,98,107,758,-1250
-Philadelphia 76ers,Boston Celtics,109,98,-110,-109
-Detroit Pistons,Cleveland Cavaliers,112,115,-303,246
-Minnesota Timberwolves,Portland Trail Blazers,116,102,-105,-112
-Oklahoma City Thunder,Houston Rockets,113,92,145,-169
-Washington Wizards,Atlanta Hawks,111,101,100,-119
-New York Knicks,New Orleans Pelicans,111,123,162,-192
-Brooklyn Nets,Miami Heat,117,113,152,-179
-Memphis Grizzlies,San Antonio Spurs,134,121,-109,-110
-Chicago Bulls,Indiana Pacers,105,116,-114,-104
-Utah Jazz,Charlotte Hornets,109,92,-909,603
-Phoenix Suns,Orlando Magic,98,94,-182,154
-Dallas Mavericks,Los Angeles Lakers,114,129,-132,112
-Sacramento Kings,Milwaukee Bucks,106,127,374,-500
-Los Angeles Clippers,Golden State Warriors,109,100,-1429,855
-Houston Rockets,Minnesota Timberwolves,139,109,-526,401
-Detroit Pistons,Chicago Bulls,99,108,-164,141
-Boston Celtics,New Orleans Pelicans,140,105,-769,538
-Oklahoma City Thunder,Los Angeles Lakers,110,125,-435,334
-Dallas Mavericks,Philadelphia 76ers,109,91,-141,120
-Denver Nuggets,Cleveland Cavaliers,103,111,-1000,642
-Portland Trail Blazers,Milwaukee Bucks,101,122,268,-333
-Washington Wizards,Utah Jazz,116,127,200,-244
-New York Knicks,Miami Heat,124,121,267,-333
-Toronto Raptors,San Antonio Spurs,104,105,-200,167
-Memphis Grizzlies,Golden State Warriors,122,102,-263,219
-Brooklyn Nets,Atlanta Hawks,108,86,-435,342
-Phoenix Suns,Charlotte Hornets,100,92,-385,305
-Denver Nuggets,Los Angeles Clippers,114,104,-109,-110
-Indiana Pacers,Philadelphia 76ers,101,95,-161,137
-Detroit Pistons,New Orleans Pelicans,110,117,-196,165
-Boston Celtics,Chicago Bulls,113,101,-526,388
-Minnesota Timberwolves,Oklahoma City Thunder,104,117,108,-128
-Sacramento Kings,Orlando Magic,112,114,-111,-106
-Portland Trail Blazers,Charlotte Hornets,115,112,-455,348
-Los Angeles Lakers,Cleveland Cavaliers,128,99,-1250,768
-Brooklyn Nets,Utah Jazz,107,118,125,-149
-Atlanta Hawks,Phoenix Suns,123,110,108,-132
-Milwaukee Bucks,New York Knicks,128,102,-2000,1081
-Memphis Grizzlies,Houston Rockets,121,110,154,-182
-Los Angeles Clippers,Cleveland Cavaliers,128,103,-2000,1062
-Golden State Warriors,Dallas Mavericks,97,124,287,-357
-Philadelphia 76ers,Brooklyn Nets,117,106,-263,216
-Boston Celtics,Detroit Pistons,103,116,-500,380
-Miami Heat,San Antonio Spurs,106,100,-217,181
-Oklahoma City Thunder,Toronto Raptors,121,130,-114,-105
-Minnesota Timberwolves,Indiana Pacers,99,104,149,-175
-Chicago Bulls,Washington Wizards,115,106,-185,160
-Denver Nuggets,Charlotte Hornets,100,86,-769,522
-Houston Rockets,Portland Trail Blazers,107,117,-400,312
-Sacramento Kings,Dallas Mavericks,123,127,147,-169
-Los Angeles Lakers,Orlando Magic,118,119,-588,430
-New York Knicks,Phoenix Suns,98,121,110,-132
-New Orleans Pelicans,Utah Jazz,138,132,189,-227
-Milwaukee Bucks,Boston Celtics,128,123,-714,496
-Los Angeles Clippers,Orlando Magic,122,95,-556,415
-Golden State Warriors,Denver Nuggets,131,134,136,-159
-Toronto Raptors,Washington Wizards,140,111,-588,442
-Philadelphia 76ers,Chicago Bulls,100,89,-345,271
-Indiana Pacers,Minnesota Timberwolves,116,114,-278,231
-Oklahoma City Thunder,Miami Heat,108,115,-104,-114
-Memphis Grizzlies,Cleveland Cavaliers,113,109,-455,359
-San Antonio Spurs,Atlanta Hawks,120,121,-385,305
-Dallas Mavericks,Portland Trail Blazers,120,112,-345,275
-New Orleans Pelicans,Los Angeles Clippers,130,133,195,-238
-Brooklyn Nets,Milwaukee Bucks,97,117,438,-588
-Boston Celtics,Phoenix Suns,119,123,-182,154
-Atlanta Hawks,Detroit Pistons,103,136,100,-120
-New York Knicks,Philadelphia 76ers,87,90,152,-179
-Minnesota Timberwolves,Toronto Raptors,112,122,154,-182
-Chicago Bulls,Cleveland Cavaliers,118,116,-312,250
-Houston Rockets,Los Angeles Lakers,115,124,-154,131
-Golden State Warriors,Orlando Magic,109,95,199,-244
-Utah Jazz,Sacramento Kings,123,101,-455,350
-Oklahoma City Thunder,Portland Trail Blazers,119,106,-278,225
-San Antonio Spurs,Miami Heat,107,102,102,-122
-Denver Nuggets,Indiana Pacers,107,115,-104,-114
-Washington Wizards,Detroit Pistons,106,100,-109,-109
-Atlanta Hawks,Toronto Raptors,117,122,343,-435
-Brooklyn Nets,Philadelphia 76ers,111,117,122,-143
-Milwaukee Bucks,Chicago Bulls,111,98,-2000,1030
-Miami Heat,Sacramento Kings,118,113,-164,139
-Memphis Grizzlies,New Orleans Pelicans,116,126,-154,131
-Houston Rockets,Oklahoma City Thunder,107,112,-333,265
-Cleveland Cavaliers,New York Knicks,86,106,102,-120
-Charlotte Hornets,Orlando Magic,83,106,140,-164
-Boston Celtics,Los Angeles Lakers,139,107,125,-147
-Minnesota Timberwolves,Denver Nuggets,100,107,-164,141
-Utah Jazz,Indiana Pacers,118,88,-333,263
-Phoenix Suns,San Antonio Spurs,118,120,-192,162
-Portland Trail Blazers,Golden State Warriors,129,124,-323,261
-Dallas Mavericks,Los Angeles Clippers,107,110,-141,120
-Toronto Raptors,Philadelphia 76ers,107,95,-263,213
-Orlando Magic,Oklahoma City Thunder,114,120,-141,119
-Detroit Pistons,Sacramento Kings,127,106,106,-127
-New York Knicks,Los Angeles Lakers,92,100,529,-769
-Miami Heat,Washington Wizards,134,129,-588,436
-Boston Celtics,Memphis Grizzlies,119,95,-303,243
-Atlanta Hawks,Los Angeles Clippers,102,95,164,-192
-Houston Rockets,Denver Nuggets,121,105,-556,426
-Chicago Bulls,Minnesota Timberwolves,117,110,-115,-103
-Phoenix Suns,Indiana Pacers,87,112,-101,-118
-New Orleans Pelicans,San Antonio Spurs,117,121,-156,133
-Golden State Warriors,Utah Jazz,96,129,349,-455
-Cleveland Cavaliers,Washington Wizards,112,124,-139,116
-Brooklyn Nets,Los Angeles Lakers,113,128,185,-222
-Portland Trail Blazers,Dallas Mavericks,125,133,191,-233
-Charlotte Hornets,Milwaukee Bucks,103,116,742,-1250
-Orlando Magic,Boston Celtics,98,109,-139,117
-Detroit Pistons,Memphis Grizzlies,112,125,104,-125
-New York Knicks,Toronto Raptors,112,118,334,-435
-Oklahoma City Thunder,Atlanta Hawks,140,111,-385,300
-New Orleans Pelicans,Denver Nuggets,106,113,-169,145
-Minnesota Timberwolves,Houston Rockets,124,131,200,-244
-Miami Heat,Los Angeles Clippers,117,122,114,-133
-Chicago Bulls,Sacramento Kings,81,98,-125,106
-San Antonio Spurs,Phoenix Suns,99,103,-204,170
-Golden State Warriors,Indiana Pacers,118,129,221,-270
-Utah Jazz,Dallas Mavericks,112,107,-204,172
-Detroit Pistons,Brooklyn Nets,111,121,120,-141
-Minnesota Timberwolves,Oklahoma City Thunder,104,113,-132,110
-Cleveland Cavaliers,Chicago Bulls,106,118,-110,-108
-Philadelphia 76ers,Los Angeles Lakers,108,91,170,-200
-Denver Nuggets,Houston Rockets,117,110,-137,116
-San Antonio Spurs,Toronto Raptors,106,110,135,-159
-Orlando Magic,Los Angeles Clippers,97,112,135,-159
-New York Knicks,Brooklyn Nets,110,97,-130,110
-New Orleans Pelicans,Boston Celtics,123,108,-118,100
-Memphis Grizzlies,Phoenix Suns,114,109,-133,112
-Atlanta Hawks,Washington Wizards,152,133,-115,-103
-Portland Trail Blazers,Indiana Pacers,139,129,-149,127
-Detroit Pistons,Cleveland Cavaliers,100,115,-286,231
-Miami Heat,Orlando Magic,113,92,-286,231
-Oklahoma City Thunder,Dallas Mavericks,97,107,181,-217
-Minnesota Timberwolves,Sacramento Kings,129,133,-149,127
-Chicago Bulls,San Antonio Spurs,110,109,-119,100
-Utah Jazz,Houston Rockets,117,126,-1250,801
-Philadelphia 76ers,Golden State Warriors,115,104,-1111,705
-Charlotte Hornets,New York Knicks,97,92,-111,-106
-Toronto Raptors,Atlanta Hawks,130,114,-1111,679
-Cleveland Cavaliers,New Orleans Pelicans,111,125,311,-400
-Milwaukee Bucks,Washington Wizards,151,131,-833,559
-Miami Heat,Boston Celtics,101,109,-127,108
-Memphis Grizzlies,Denver Nuggets,104,96,-112,-106
-Dallas Mavericks,Phoenix Suns,104,133,-294,240
-Indiana Pacers,Chicago Bulls,115,106,-435,338
-New York Knicks,Memphis Grizzlies,106,127,114,-135
-Brooklyn Nets,Detroit Pistons,125,115,-238,199
-San Antonio Spurs,Utah Jazz,127,120,195,-233
-Sacramento Kings,Oklahoma City Thunder,100,120,112,-132
-Portland Trail Blazers,Houston Rockets,125,112,187,-227
-Washington Wizards,Charlotte Hornets,121,107,-164,140
-Cleveland Cavaliers,Toronto Raptors,109,115,413,-556
-Atlanta Hawks,Philadelphia 76ers,127,117,217,-263
-Boston Celtics,Golden State Warriors,119,104,-1111,677
-Los Angeles Clippers,Sacramento Kings,103,124,-1429,811
-Denver Nuggets,Utah Jazz,106,100,124,-145
-Detroit Pistons,Toronto Raptors,92,105,150,-175
-Houston Rockets,Dallas Mavericks,128,121,-345,274
-Brooklyn Nets,Chicago Bulls,133,118,-227,187
-New Orleans Pelicans,Memphis Grizzlies,139,111,-333,263
-Phoenix Suns,Oklahoma City Thunder,107,111,-106,-112
-Milwaukee Bucks,Denver Nuggets,115,127,-1000,631
-Los Angeles Lakers,Portland Trail Blazers,119,127,-1000,643
-Los Angeles Clippers,Minnesota Timberwolves,118,106,-588,438
-Orlando Magic,Miami Heat,89,102,116,-137
-Indiana Pacers,New York Knicks,85,92,-667,480
-Cleveland Cavaliers,Golden State Warriors,112,131,-123,104
-Washington Wizards,Brooklyn Nets,113,107,110,-128
-Dallas Mavericks,Atlanta Hawks,123,100,-192,163
-Boston Celtics,Philadelphia 76ers,116,95,-105,-114
-San Antonio Spurs,Charlotte Hornets,114,90,-370,299
-Sacramento Kings,Los Angeles Lakers,113,129,240,-294
-Portland Trail Blazers,Utah Jazz,124,107,210,-256
-Detroit Pistons,Denver Nuggets,128,123,118,-141
-Milwaukee Bucks,Phoenix Suns,129,108,-909,614
-Houston Rockets,New Orleans Pelicans,117,109,-204,172
-Toronto Raptors,Chicago Bulls,129,102,-526,400
-Washington Wizards,Golden State Warriors,117,125,-263,218
-Indiana Pacers,Dallas Mavericks,103,112,-208,175
-Cleveland Cavaliers,New York Knicks,134,139,112,-133
-Charlotte Hornets,Orlando Magic,100,112,170,-204
-Miami Heat,Philadelphia 76ers,137,106,-141,120
-Brooklyn Nets,Phoenix Suns,119,97,-135,114
-Atlanta Hawks,Boston Celtics,115,123,204,-244
-Memphis Grizzlies,Detroit Pistons,96,82,-455,355
-Sacramento Kings,Minnesota Timberwolves,113,109,-112,-106
-Los Angeles Clippers,San Antonio Spurs,108,105,-435,345
-New Orleans Pelicans,Milwaukee Bucks,108,120,216,-263
-Houston Rockets,Charlotte Hornets,125,110,-1000,673
-Denver Nuggets,Portland Trail Blazers,127,99,-182,154
-Los Angeles Lakers,San Antonio Spurs,129,102,-667,470
-Detroit Pistons,Phoenix Suns,116,108,123,-145
-Toronto Raptors,Indiana Pacers,119,118,-238,196
-Brooklyn Nets,Golden State Warriors,129,88,-278,225
-Boston Celtics,Orlando Magic,116,100,-233,192
-Oklahoma City Thunder,Cleveland Cavaliers,109,103,-1111,698
-Minnesota Timberwolves,Atlanta Hawks,120,127,-179,154
-Dallas Mavericks,Memphis Grizzlies,107,121,-179,154
-Utah Jazz,Denver Nuggets,95,98,-526,393
-Los Angeles Clippers,Miami Heat,128,111,-270,222
-New York Knicks,Orlando Magic,105,103,140,-164
-Milwaukee Bucks,Philadelphia 76ers,112,101,-455,359
-Chicago Bulls,New Orleans Pelicans,119,125,199,-238
-Portland Trail Blazers,San Antonio Spurs,125,117,-159,134
-Los Angeles Lakers,Houston Rockets,111,121,-250,208
-Washington Wizards,Dallas Mavericks,119,118,129,-152
-Philadelphia 76ers,Memphis Grizzlies,119,107,-256,211
-Boston Celtics,Atlanta Hawks,112,107,-909,599
-Oklahoma City Thunder,Detroit Pistons,108,101,-1000,642
-Indiana Pacers,Toronto Raptors,106,115,-114,-104
-Phoenix Suns,Houston Rockets,127,91,114,-137
-Sacramento Kings,Miami Heat,105,97,-104,-114
-Utah Jazz,Portland Trail Blazers,117,114,-625,455
-Orlando Magic,Milwaukee Bucks,95,111,316,-400
-Detroit Pistons,New York Knicks,92,95,104,-125
-Charlotte Hornets,Dallas Mavericks,100,116,129,-152
-Toronto Raptors,Brooklyn Nets,119,118,-263,214
-Indiana Pacers,New Orleans Pelicans,117,124,-204,172
-Minnesota Timberwolves,Los Angeles Clippers,142,115,418,-556
-Golden State Warriors,Los Angeles Lakers,120,125,757,-1250
-Phoenix Suns,Denver Nuggets,108,117,139,-161
-Sacramento Kings,San Antonio Spurs,122,102,114,-135
-Oklahoma City Thunder,Boston Celtics,111,112,106,-125
-Washington Wizards,Memphis Grizzlies,99,106,124,-145
-Philadelphia 76ers,Chicago Bulls,118,111,-625,451
-Atlanta Hawks,New York Knicks,140,135,-204,171
-Houston Rockets,Utah Jazz,113,114,-143,121
-Cleveland Cavaliers,Los Angeles Clippers,92,133,196,-238
-Portland Trail Blazers,Miami Heat,115,109,-204,171
-Orlando Magic,Atlanta Hawks,135,126,-400,316
-Indiana Pacers,Brooklyn Nets,105,106,-270,220
-Detroit Pistons,Charlotte Hornets,76,87,-161,137
-Toronto Raptors,Minnesota Timberwolves,137,126,-400,309
-Milwaukee Bucks,Sacramento Kings,123,111,-556,420
-Dallas Mavericks,Utah Jazz,119,123,-112,-105
-Denver Nuggets,San Antonio Spurs,127,120,-278,227
-Los Angeles Lakers,Phoenix Suns,125,100,-1000,665
-Golden State Warriors,Miami Heat,101,113,221,-270
-Washington Wizards,Chicago Bulls,126,114,-161,138
-Philadelphia 76ers,Los Angeles Clippers,110,103,-108,-110
-Oklahoma City Thunder,San Antonio Spurs,106,114,-357,279
-New Orleans Pelicans,Portland Trail Blazers,138,117,-152,129
-Houston Rockets,Boston Celtics,116,105,-137,117
-Orlando Magic,Detroit Pistons,116,112,-270,221
-Cleveland Cavaliers,Atlanta Hawks,127,105,127,-149
-New York Knicks,Washington Wizards,96,114,-149,127
-Indiana Pacers,Milwaukee Bucks,118,111,-125,104
-Brooklyn Nets,Toronto Raptors,101,91,146,-172
-Minnesota Timberwolves,Charlotte Hornets,108,115,-250,204
-Memphis Grizzlies,Portland Trail Blazers,111,104,-164,141
-Dallas Mavericks,Sacramento Kings,130,111,-370,297
-Utah Jazz,Miami Heat,116,101,-200,170
-Phoenix Suns,Golden State Warriors,112,106,-278,227
-Denver Nuggets,Los Angeles Lakers,116,120,129,-152
-New Orleans Pelicans,Oklahoma City Thunder,118,123,-161,139
-Boston Celtics,Los Angeles Clippers,141,133,-118,-101
-Team USA,Team World,151,131,-233,185
-Team Giannis,Team LeBron,155,157,192,-238
-Detroit Pistons,Milwaukee Bucks,106,126,687,-1111
-Atlanta Hawks,Miami Heat,129,124,208,-250
-Philadelphia 76ers,Brooklyn Nets,112,104,-286,233
-Chicago Bulls,Charlotte Hornets,93,103,-175,150
-Sacramento Kings,Memphis Grizzlies,129,125,-105,-112
-Golden State Warriors,Houston Rockets,105,135,386,-500
-Washington Wizards,Cleveland Cavaliers,108,113,-238,198
-Orlando Magic,Dallas Mavericks,106,122,154,-179
-Toronto Raptors,Phoenix Suns,118,101,-357,288
-New York Knicks,Indiana Pacers,98,106,231,-286
-Oklahoma City Thunder,Denver Nuggets,113,101,-122,102
-Minnesota Timberwolves,Boston Celtics,117,127,305,-400
-Utah Jazz,San Antonio Spurs,104,113,-303,242
-Portland Trail Blazers,New Orleans Pelicans,115,128,185,-222
-Los Angeles Lakers,Memphis Grizzlies,117,105,-588,443
-Los Angeles Clippers,Sacramento Kings,103,112,-435,333
-Charlotte Hornets,Brooklyn Nets,86,115,154,-182
-Atlanta Hawks,Dallas Mavericks,111,107,-128,108
-Miami Heat,Cleveland Cavaliers,124,105,-1111,688
-Chicago Bulls,Phoenix Suns,104,112,131,-154
-Milwaukee Bucks,Philadelphia 76ers,119,98,-476,361
-Utah Jazz,Houston Rockets,110,120,-123,104
-Los Angeles Lakers,Boston Celtics,114,112,-323,258
-Toronto Raptors,Indiana Pacers,127,81,-204,172
-Denver Nuggets,Minnesota Timberwolves,128,116,-1429,844
-Oklahoma City Thunder,San Antonio Spurs,131,103,-200,168
-Chicago Bulls,Washington Wizards,126,117,139,-161
-Golden State Warriors,New Orleans Pelicans,101,115,421,-556
-Portland Trail Blazers,Detroit Pistons,107,104,-222,185
-Washington Wizards,Milwaukee Bucks,134,137,670,-1111
-Philadelphia 76ers,Atlanta Hawks,129,112,-400,315
-Cleveland Cavaliers,Miami Heat,125,119,217,-263
-Brooklyn Nets,Orlando Magic,113,115,-164,140
-Houston Rockets,New York Knicks,123,112,-909,632
-Dallas Mavericks,Minnesota Timberwolves,139,123,-1111,725
-Utah Jazz,Phoenix Suns,111,131,-385,301
-Los Angeles Clippers,Memphis Grizzlies,124,97,-667,478
-Indiana Pacers,Charlotte Hornets,119,80,-769,521
-Toronto Raptors,Milwaukee Bucks,97,108,-115,-104
-Chicago Bulls,Oklahoma City Thunder,122,124,252,-312
-Denver Nuggets,Detroit Pistons,115,98,-1111,708
-Portland Trail Blazers,Boston Celtics,106,118,236,-294
-Los Angeles Lakers,New Orleans Pelicans,118,109,-323,260
-Golden State Warriors,Sacramento Kings,94,112,244,-303
-Washington Wizards,Brooklyn Nets,110,106,104,-125
-Cleveland Cavaliers,Philadelphia 76ers,108,94,263,-333
-Charlotte Hornets,New York Knicks,107,101,104,-123
-Miami Heat,Minnesota Timberwolves,126,129,-833,546
-Atlanta Hawks,Orlando Magic,120,130,117,-139
-Houston Rockets,Memphis Grizzlies,140,112,-909,592
-San Antonio Spurs,Dallas Mavericks,103,109,150,-179
-Phoenix Suns,Los Angeles Clippers,92,102,269,-333
-Utah Jazz,Boston Celtics,103,114,-208,175
-Philadelphia 76ers,New York Knicks,115,106,-333,266
-Oklahoma City Thunder,Sacramento Kings,112,108,-323,257
-Indiana Pacers,Portland Trail Blazers,106,100,-556,409
-Golden State Warriors,Los Angeles Lakers,86,116,458,-625
-Orlando Magic,Minnesota Timberwolves,136,125,-345,274
-Toronto Raptors,Charlotte Hornets,96,99,-1250,775
-Atlanta Hawks,Brooklyn Nets,141,118,117,-139
-New Orleans Pelicans,Cleveland Cavaliers,116,104,-1000,652
-Milwaukee Bucks,Oklahoma City Thunder,133,86,-588,441
-Miami Heat,Dallas Mavericks,126,118,-137,117
-Memphis Grizzlies,Sacramento Kings,101,104,-132,112
-Utah Jazz,Washington Wizards,129,119,-556,421
-Phoenix Suns,Detroit Pistons,111,113,-400,321
-Los Angeles Clippers,Denver Nuggets,132,103,-278,229
-New York Knicks,Chicago Bulls,125,115,-141,118
-Miami Heat,Brooklyn Nets,116,113,-312,252
-Atlanta Hawks,Portland Trail Blazers,129,117,-141,119
-Memphis Grizzlies,Los Angeles Lakers,105,88,484,-667
-Cleveland Cavaliers,Indiana Pacers,104,113,343,-435
-San Antonio Spurs,Orlando Magic,114,113,-169,144
-Boston Celtics,Houston Rockets,110,111,100,-119
-Phoenix Suns,Golden State Warriors,99,115,-526,398
-Charlotte Hornets,Milwaukee Bucks,85,93,641,-1000
-Minnesota Timberwolves,Dallas Mavericks,91,111,189,-227
-Los Angeles Clippers,Philadelphia 76ers,136,130,-1250,774
-Sacramento Kings,Detroit Pistons,106,100,-476,365
-Denver Nuggets,Toronto Raptors,133,118,-143,122
-New Orleans Pelicans,Los Angeles Lakers,114,122,-125,104
-Golden State Warriors,Washington Wizards,110,124,248,-312
-Orlando Magic,Portland Trail Blazers,107,130,-263,217
-New York Knicks,Houston Rockets,125,123,425,-556
-Cleveland Cavaliers,Utah Jazz,113,126,440,-588
-Miami Heat,Milwaukee Bucks,105,89,170,-204
-Atlanta Hawks,Memphis Grizzlies,88,127,-132,112
-Chicago Bulls,Dallas Mavericks,109,107,235,-286
-San Antonio Spurs,Indiana Pacers,111,116,112,-132
-Charlotte Hornets,San Antonio Spurs,103,104,144,-167
-Boston Celtics,Brooklyn Nets,120,129,-270,221
-Oklahoma City Thunder,Los Angeles Clippers,94,109,165,-196
-New Orleans Pelicans,Minnesota Timberwolves,134,139,-667,473
-Phoenix Suns,Toronto Raptors,114,123,139,-164
-Denver Nuggets,Golden State Warriors,100,116,-2000,1073
-Sacramento Kings,Washington Wizards,133,126,-244,202
-Los Angeles Lakers,Philadelphia 76ers,120,107,-909,624
-Milwaukee Bucks,Indiana Pacers,119,100,-714,503
-Detroit Pistons,Oklahoma City Thunder,107,114,305,-385
-Cleveland Cavaliers,Boston Celtics,106,112,148,-172
-New York Knicks,Utah Jazz,104,112,309,-400
-Miami Heat,Orlando Magic,116,113,-270,222
-Brooklyn Nets,Memphis Grizzlies,79,118,-120,102
-Minnesota Timberwolves,Chicago Bulls,115,108,-123,104
-Dallas Mavericks,New Orleans Pelicans,127,123,-250,204
-Portland Trail Blazers,Washington Wizards,125,104,-345,272
-Charlotte Hornets,Denver Nuggets,112,114,365,-476
-Houston Rockets,Los Angeles Clippers,105,120,-104,-114
-Sacramento Kings,Philadelphia 76ers,108,125,-217,181
-Golden State Warriors,Toronto Raptors,113,121,338,-435
-Washington Wizards,Atlanta Hawks,118,112,-217,179
-New York Knicks,Oklahoma City Thunder,103,126,193,-233
-Brooklyn Nets,San Antonio Spurs,139,120,-147,124
-New Orleans Pelicans,Miami Heat,110,104,-119,100
-Minnesota Timberwolves,Orlando Magic,118,132,120,-143
-Chicago Bulls,Indiana Pacers,102,108,118,-139
-Boston Celtics,Utah Jazz,94,99,-116,-101
-Dallas Mavericks,Memphis Grizzlies,121,96,-303,246
-Phoenix Suns,Portland Trail Blazers,127,117,141,-164
-Los Angeles Lakers,Milwaukee Bucks,113,103,-120,100
-Charlotte Hornets,Houston Rockets,108,99,278,-345
-Detroit Pistons,Utah Jazz,105,111,299,-385
-Cleveland Cavaliers,Denver Nuggets,104,102,376,-500
-Memphis Grizzlies,Atlanta Hawks,118,101,-250,206
-Golden State Warriors,Philadelphia 76ers,118,114,142,-167
-Portland Trail Blazers,Sacramento Kings,111,123,-133,112
-Brooklyn Nets,Chicago Bulls,110,107,-250,204
-Minnesota Timberwolves,New Orleans Pelicans,107,120,240,-294
-Los Angeles Clippers,Los Angeles Lakers,103,112,-139,117
-Phoenix Suns,Milwaukee Bucks,140,131,215,-263
-Boston Celtics,Oklahoma City Thunder,104,105,-250,208
-Washington Wizards,Miami Heat,89,100,181,-217
-Houston Rockets,Orlando Magic,106,126,-345,276
-Dallas Mavericks,Indiana Pacers,109,112,-256,210
-New York Knicks,Detroit Pistons,96,84,-233,192
-Cleveland Cavaliers,San Antonio Spurs,132,129,160,-189
-Sacramento Kings,Toronto Raptors,113,118,167,-196
-Atlanta Hawks,Charlotte Hornets,143,138,-200,169
-Utah Jazz,Toronto Raptors,92,101,-227,189
-Denver Nuggets,Milwaukee Bucks,109,95,-270,221
-Washington Wizards,New York Knicks,122,115,-208,173
-Indiana Pacers,Boston Celtics,111,114,127,-149
-San Antonio Spurs,Dallas Mavericks,119,109,146,-169
-Memphis Grizzlies,Orlando Magic,115,120,-133,112
-Houston Rockets,Minnesota Timberwolves,117,111,-1000,638
-Chicago Bulls,Cleveland Cavaliers,108,103,-179,150
-Portland Trail Blazers,Phoenix Suns,121,105,-244,204
-Los Angeles Lakers,Brooklyn Nets,102,104,-833,577
-Golden State Warriors,Los Angeles Clippers,107,131,642,-1000
-Philadelphia 76ers,Detroit Pistons,124,106,-833,576
-Miami Heat,Charlotte Hornets,98,109,-714,498
-Atlanta Hawks,New York Knicks,131,136,-208,174
-Dallas Mavericks,Denver Nuggets,113,97,121,-143
-Los Angeles Clippers,Orlando Magic,99,90,-154,127
-Denver Nuggets,Washington Wizards,89,82,-200,160
-Brooklyn Nets,New Orleans Pelicans,68,99,171,-217
-Miami Heat,Sacramento Kings,104,98,-222,175
-Milwaukee Bucks,San Antonio Spurs,113,92,-435,325
-Indiana Pacers,Portland Trail Blazers,91,88,172,-213
-Los Angeles Lakers,Dallas Mavericks,104,108,-156,127
-Utah Jazz,Phoenix Suns,88,101,-263,204
-Philadelphia 76ers,Memphis Grizzlies,90,83,-185,150
-Boston Celtics,Oklahoma City Thunder,84,98,-143,117
-Toronto Raptors,Houston Rockets,94,83,-137,112
-Orlando Magic,Los Angeles Lakers,112,119,198,-250
-Sacramento Kings,Milwaukee Bucks,123,131,350,-476
-Utah Jazz,Miami Heat,101,99,108,-133
-San Antonio Spurs,Brooklyn Nets,119,124,-263,206
-Washington Wizards,Los Angeles Clippers,100,105,275,-357
-New Orleans Pelicans,Denver Nuggets,119,104,106,-130
-Oklahoma City Thunder,Philadelphia 76ers,102,97,-119,-103
-Boston Celtics,Phoenix Suns,117,103,-238,191
-Dallas Mavericks,Indiana Pacers,111,118,-217,174
-Toronto Raptors,Portland Trail Blazers,110,104,-263,211
-Memphis Grizzlies,Houston Rockets,104,119,165,-200
-Los Angeles Lakers,Washington Wizards,123,116,-152,125
-Los Angeles Clippers,Sacramento Kings,102,106,-213,174
-Brooklyn Nets,Utah Jazz,107,112,234,-294
-Denver Nuggets,Orlando Magic,110,114,-185,154
-Milwaukee Bucks,New Orleans Pelicans,103,124,-278,217
-Miami Heat,Memphis Grizzlies,110,128,-172,143
-Phoenix Suns,Toronto Raptors,117,106,186,-233
-Indiana Pacers,San Antonio Spurs,111,118,-189,159
-Portland Trail Blazers,Oklahoma City Thunder,120,131,174,-213
-Houston Rockets,Boston Celtics,137,112,-213,172
-Philadelphia 76ers,Dallas Mavericks,115,118,108,-132
-New Orleans Pelicans,Utah Jazz,104,106,-141,119
-Los Angeles Lakers,Los Angeles Clippers,103,101,-175,150
-Brooklyn Nets,Orlando Magic,118,128,269,-333
-Washington Wizards,Phoenix Suns,112,125,250,-312
-Portland Trail Blazers,Memphis Grizzlies,140,135,-164,140
-Milwaukee Bucks,Boston Celtics,119,112,-169,145
-San Antonio Spurs,Sacramento Kings,129,120,139,-164
-Dallas Mavericks,Houston Rockets,149,153,102,-120
-Denver Nuggets,Miami Heat,105,125,148,-175
-Oklahoma City Thunder,Utah Jazz,110,94,-111,-108
-Los Angeles Clippers,New Orleans Pelicans,126,103,-217,179
-Indiana Pacers,Philadelphia 76ers,127,121,212,-256
-Toronto Raptors,Los Angeles Lakers,107,92,119,-141
-Brooklyn Nets,Washington Wizards,118,110,-172,146
-Boston Celtics,Portland Trail Blazers,128,124,-175,150
-Memphis Grizzlies,San Antonio Spurs,106,108,-145,125
-Orlando Magic,Sacramento Kings,132,116,-128,108
-Houston Rockets,Milwaukee Bucks,120,116,170,-200
-Phoenix Suns,Dallas Mavericks,117,115,204,-250
-Miami Heat,Toronto Raptors,103,107,124,-147
-Washington Wizards,Indiana Pacers,100,111,324,-417
-Oklahoma City Thunder,Denver Nuggets,113,121,-227,190
-New Orleans Pelicans,Memphis Grizzlies,109,99,-200,169
-Philadelphia 76ers,San Antonio Spurs,132,130,-323,260
-Utah Jazz,Los Angeles Lakers,108,116,206,-250
-Milwaukee Bucks,Brooklyn Nets,116,119,-5000,1505
-Sacramento Kings,Dallas Mavericks,110,114,191,-227
-Los Angeles Clippers,Phoenix Suns,115,117,-400,313
-Indiana Pacers,Orlando Magic,120,109,-101,-118
-Miami Heat,Boston Celtics,112,106,164,-192
-Portland Trail Blazers,Houston Rockets,110,102,135,-159
-Utah Jazz,Memphis Grizzlies,124,115,-208,175
-Washington Wizards,Philadelphia 76ers,98,107,434,-588
-San Antonio Spurs,Denver Nuggets,126,132,108,-130
-Los Angeles Lakers,Oklahoma City Thunder,86,105,-217,181
-Orlando Magic,Toronto Raptors,99,109,259,-323
-Boston Celtics,Brooklyn Nets,149,115,-417,332
-Sacramento Kings,New Orleans Pelicans,140,125,154,-182
-Phoenix Suns,Indiana Pacers,114,99,100,-119
-Milwaukee Bucks,Miami Heat,130,116,-435,337
-Dallas Mavericks,Los Angeles Clippers,111,126,150,-175
-Denver Nuggets,Portland Trail Blazers,115,125,163,-192
-Houston Rockets,Los Angeles Lakers,113,97,-154,131
-San Antonio Spurs,Utah Jazz,119,111,-400,322
-Memphis Grizzlies,Oklahoma City Thunder,121,92,134,-156
-Brooklyn Nets,Sacramento Kings,119,106,175,-213
-Philadelphia 76ers,Orlando Magic,108,101,-208,173
-New Orleans Pelicans,Washington Wizards,118,107,-357,286
-Toronto Raptors,Boston Celtics,100,122,-120,102
-Portland Trail Blazers,Los Angeles Clippers,117,122,-182,154
-Denver Nuggets,Utah Jazz,134,132,-120,102
-Indiana Pacers,Los Angeles Lakers,116,111,184,-217
-Miami Heat,Phoenix Suns,112,119,142,-167
-Dallas Mavericks,Milwaukee Bucks,136,132,194,-233
-Oklahoma City Thunder,Washington Wizards,121,103,-455,350
-Toronto Raptors,Memphis Grizzlies,108,99,-294,241
-New Orleans Pelicans,San Antonio Spurs,113,122,-169,144
-Boston Celtics,Orlando Magic,122,119,-400,309
-Portland Trail Blazers,Philadelphia 76ers,124,121,-139,119
-Sacramento Kings,Houston Rockets,112,129,163,-192
-Los Angeles Clippers,Brooklyn Nets,120,129,-417,329
-Phoenix Suns,Oklahoma City Thunder,128,101,-370,288
-Utah Jazz,Dallas Mavericks,114,122,-227,186
-Milwaukee Bucks,Toronto Raptors,106,114,-208,175
-Miami Heat,Indiana Pacers,114,92,-175,149
-Los Angeles Lakers,Denver Nuggets,124,121,-222,183
-Orlando Magic,Brooklyn Nets,96,108,-196,165
-San Antonio Spurs,Houston Rockets,123,105,-172,148
-Philadelphia 76ers,Phoenix Suns,117,130,383,-500
-Memphis Grizzlies,Boston Celtics,107,122,164,-192
-Dallas Mavericks,Portland Trail Blazers,131,134,114,-135
-Sacramento Kings,New Orleans Pelicans,112,106,-152,127
-Washington Wizards,Milwaukee Bucks,113,126,315,-400
-Houston Rockets,Indiana Pacers,104,108,-278,229
-Philadelphia 76ers,Toronto Raptors,121,125,197,-238
-Oklahoma City Thunder,Miami Heat,116,115,141,-167
-Denver Nuggets,Los Angeles Clippers,111,124,181,-217
-Boston Celtics,Washington Wizards,90,96,106,-127
-Los Angeles Lakers,Sacramento Kings,122,136,-164,141
-Phoenix Suns,Dallas Mavericks,128,102,-370,296
-Memphis Grizzlies,Milwaukee Bucks,119,106,-164,140
-Utah Jazz,San Antonio Spurs,118,112,234,-286
-Orlando Magic,New Orleans Pelicans,133,127,-169,144
-Brooklyn Nets,Portland Trail Blazers,133,134,434,-588
-Toronto Raptors,Denver Nuggets,117,109,117,-139
-Indiana Pacers,Miami Heat,109,92,-101,-116
-Los Angeles Clippers,Oklahoma City Thunder,107,103,-204,177
-Houston Rockets,Philadelphia 76ers,96,134,-139,118
+Date,Time,Home Team,Away Team,Home Score,Away Score,Home Odds,Away Odds
+22 Oct 2019,20:00,Toronto Raptors,New Orleans Pelicans,130,122,-278,+229
+22 Oct 2019,22:30,Los Angeles Clippers,Los Angeles Lakers,112,102,+140,-164
+23 Oct 2019,19:00,Orlando Magic,Cleveland Cavaliers,94,85,-526,+393
+23 Oct 2019,19:00,Indiana Pacers,Detroit Pistons,110,119,-303,+248
+23 Oct 2019,19:00,Charlotte Hornets,Chicago Bulls,126,125,+140,-164
+23 Oct 2019,19:30,Philadelphia 76ers,Boston Celtics,107,93,-244,+200
+23 Oct 2019,19:30,Miami Heat,Memphis Grizzlies,120,101,-286,+231
+23 Oct 2019,19:30,Brooklyn Nets,Minnesota Timberwolves,126,127,-159,+133
+23 Oct 2019,20:30,San Antonio Spurs,New York Knicks,120,111,-625,+459
+23 Oct 2019,20:30,Dallas Mavericks,Washington Wizards,108,100,-435,+340
+23 Oct 2019,21:00,Utah Jazz,Oklahoma City Thunder,100,95,-435,+334
+23 Oct 2019,22:00,Portland Trail Blazers,Denver Nuggets,100,108,+100,-118
+23 Oct 2019,22:00,Phoenix Suns,Sacramento Kings,124,95,-114,-104
+24 Oct 2019,19:00,Detroit Pistons,Atlanta Hawks,100,117,-120,+100
+24 Oct 2019,20:00,Houston Rockets,Milwaukee Bucks,111,117,-118,-102
+24 Oct 2019,22:30,Golden State Warriors,Los Angeles Clippers,122,141,-103,-114
+25 Oct 2019,19:00,Charlotte Hornets,Minnesota Timberwolves,99,121,+175,-213
+25 Oct 2019,19:00,Boston Celtics,Toronto Raptors,112,106,-141,+118
+25 Oct 2019,19:30,Brooklyn Nets,New York Knicks,113,109,-357,+282
+25 Oct 2019,20:00,Oklahoma City Thunder,Washington Wizards,85,97,-400,+313
+25 Oct 2019,20:00,New Orleans Pelicans,Dallas Mavericks,116,123,-132,+112
+25 Oct 2019,20:00,Memphis Grizzlies,Chicago Bulls,102,110,+112,-133
+25 Oct 2019,21:00,Denver Nuggets,Phoenix Suns,108,107,-909,+597
+25 Oct 2019,22:00,Sacramento Kings,Portland Trail Blazers,112,122,-103,-116
+25 Oct 2019,22:30,Los Angeles Lakers,Utah Jazz,95,86,-156,+133
+26 Oct 2019,17:00,Milwaukee Bucks,Miami Heat,126,131,-833,+559
+26 Oct 2019,19:00,Detroit Pistons,Philadelphia 76ers,111,117,+144,-172
+26 Oct 2019,19:30,New York Knicks,Boston Celtics,95,118,+173,-208
+26 Oct 2019,19:30,Atlanta Hawks,Orlando Magic,103,99,+114,-135
+26 Oct 2019,20:00,Utah Jazz,Sacramento Kings,113,81,-500,+376
+26 Oct 2019,20:00,Houston Rockets,New Orleans Pelicans,126,123,-1111,+597
+26 Oct 2019,20:00,Cleveland Cavaliers,Indiana Pacers,110,99,+150,-196
+26 Oct 2019,20:00,Chicago Bulls,Toronto Raptors,84,108,+114,-147
+26 Oct 2019,20:30,San Antonio Spurs,Washington Wizards,124,122,-909,+584
+26 Oct 2019,22:00,Phoenix Suns,Los Angeles Clippers,130,122,+407,-556
+27 Oct 2019,15:30,Oklahoma City Thunder,Golden State Warriors,120,92,-108,-111
+27 Oct 2019,18:00,Memphis Grizzlies,Brooklyn Nets,134,133,+154,-182
+27 Oct 2019,19:00,Minnesota Timberwolves,Miami Heat,116,109,-286,+234
+27 Oct 2019,19:00,Dallas Mavericks,Portland Trail Blazers,119,121,-145,+123
+27 Oct 2019,21:30,Los Angeles Lakers,Charlotte Hornets,120,101,-1250,+776
+28 Oct 2019,19:00,New York Knicks,Chicago Bulls,105,98,+108,-128
+28 Oct 2019,19:00,Detroit Pistons,Indiana Pacers,96,94,+104,-125
+28 Oct 2019,19:30,Toronto Raptors,Orlando Magic,104,95,-196,+163
+28 Oct 2019,19:30,Atlanta Hawks,Philadelphia 76ers,103,105,+227,-278
+28 Oct 2019,20:00,New Orleans Pelicans,Golden State Warriors,123,134,-135,+114
+28 Oct 2019,20:00,Milwaukee Bucks,Cleveland Cavaliers,129,112,-2500,+1166
+28 Oct 2019,20:00,Houston Rockets,Oklahoma City Thunder,116,112,-588,+425
+28 Oct 2019,20:30,San Antonio Spurs,Portland Trail Blazers,113,110,-244,+200
+28 Oct 2019,22:00,Sacramento Kings,Denver Nuggets,94,101,+172,-204
+28 Oct 2019,22:00,Phoenix Suns,Utah Jazz,95,96,+168,-200
+28 Oct 2019,22:30,Los Angeles Clippers,Charlotte Hornets,111,96,-2500,+1164
+29 Oct 2019,19:30,Miami Heat,Atlanta Hawks,112,97,-385,+304
+29 Oct 2019,21:00,Denver Nuggets,Dallas Mavericks,106,109,-222,+181
+29 Oct 2019,22:30,Los Angeles Lakers,Memphis Grizzlies,120,91,-833,+574
+30 Oct 2019,19:00,Philadelphia 76ers,Minnesota Timberwolves,117,95,-303,+243
+30 Oct 2019,19:00,Orlando Magic,New York Knicks,95,83,-526,+392
+30 Oct 2019,19:00,Cleveland Cavaliers,Chicago Bulls,117,111,+108,-128
+30 Oct 2019,19:30,Toronto Raptors,Detroit Pistons,125,113,-476,+373
+30 Oct 2019,19:30,Brooklyn Nets,Indiana Pacers,108,118,-152,+127
+30 Oct 2019,19:30,Boston Celtics,Milwaukee Bucks,116,105,+137,-161
+30 Oct 2019,20:00,Washington Wizards,Houston Rockets,158,159,+283,-357
+30 Oct 2019,20:00,Oklahoma City Thunder,Portland Trail Blazers,99,102,+104,-123
+30 Oct 2019,22:00,Utah Jazz,Los Angeles Clippers,110,96,-286,+229
+30 Oct 2019,22:00,Sacramento Kings,Charlotte Hornets,111,118,-323,+257
+30 Oct 2019,22:30,Golden State Warriors,Phoenix Suns,110,121,-217,+181
+31 Oct 2019,19:00,Atlanta Hawks,Miami Heat,97,106,+218,-263
+31 Oct 2019,21:30,New Orleans Pelicans,Denver Nuggets,122,107,+143,-169
+31 Oct 2019,22:30,Los Angeles Clippers,San Antonio Spurs,103,97,-196,+165
+01 Nov 2019,19:00,Orlando Magic,Milwaukee Bucks,91,123,+161,-189
+01 Nov 2019,19:00,Indiana Pacers,Cleveland Cavaliers,102,95,-294,+239
+01 Nov 2019,19:00,Brooklyn Nets,Houston Rockets,123,116,+161,-189
+01 Nov 2019,19:30,Boston Celtics,New York Knicks,104,102,-526,+388
+01 Nov 2019,20:00,Chicago Bulls,Detroit Pistons,112,106,-179,+152
+01 Nov 2019,21:30,Dallas Mavericks,Los Angeles Lakers,110,119,-111,-106
+01 Nov 2019,22:00,Sacramento Kings,Utah Jazz,102,101,+156,-182
+01 Nov 2019,22:30,Golden State Warriors,San Antonio Spurs,110,127,+239,-294
+02 Nov 2019,17:00,Oklahoma City Thunder,New Orleans Pelicans,115,104,-133,+114
+02 Nov 2019,19:00,Orlando Magic,Denver Nuggets,87,91,+144,-169
+02 Nov 2019,19:00,Detroit Pistons,Brooklyn Nets,113,109,+152,-179
+02 Nov 2019,20:00,Washington Wizards,Minnesota Timberwolves,109,131,-147,+125
+02 Nov 2019,20:00,Milwaukee Bucks,Toronto Raptors,115,105,-263,+215
+02 Nov 2019,20:00,Memphis Grizzlies,Phoenix Suns,105,114,+125,-149
+02 Nov 2019,20:30,Golden State Warriors,Charlotte Hornets,87,93,+206,-250
+02 Nov 2019,22:00,Portland Trail Blazers,Philadelphia 76ers,128,129,-108,-111
+03 Nov 2019,17:00,Indiana Pacers,Chicago Bulls,108,95,-130,+110
+03 Nov 2019,18:00,New York Knicks,Sacramento Kings,92,113,+102,-122
+03 Nov 2019,18:00,Miami Heat,Houston Rockets,129,100,+131,-154
+03 Nov 2019,19:00,San Antonio Spurs,Los Angeles Lakers,96,103,+104,-123
+03 Nov 2019,19:30,Cleveland Cavaliers,Dallas Mavericks,111,131,+184,-222
+03 Nov 2019,21:00,Los Angeles Clippers,Utah Jazz,105,94,-192,+163
+04 Nov 2019,19:00,Washington Wizards,Detroit Pistons,115,99,-167,+142
+04 Nov 2019,19:30,Brooklyn Nets,New Orleans Pelicans,135,125,-164,+141
+04 Nov 2019,20:00,Minnesota Timberwolves,Milwaukee Bucks,106,134,+272,-345
+04 Nov 2019,20:00,Memphis Grizzlies,Houston Rockets,100,107,+202,-244
+04 Nov 2019,21:00,Phoenix Suns,Philadelphia 76ers,114,109,-112,-105
+04 Nov 2019,22:30,Golden State Warriors,Portland Trail Blazers,127,118,+596,-909
+05 Nov 2019,19:00,Cleveland Cavaliers,Boston Celtics,113,119,+206,-250
+05 Nov 2019,19:00,Charlotte Hornets,Indiana Pacers,122,120,+116,-137
+05 Nov 2019,19:30,Atlanta Hawks,San Antonio Spurs,108,100,+197,-238
+05 Nov 2019,20:00,Oklahoma City Thunder,Orlando Magic,102,94,-147,+124
+05 Nov 2019,20:00,Chicago Bulls,Los Angeles Lakers,112,118,+246,-303
+05 Nov 2019,21:00,Denver Nuggets,Miami Heat,109,89,-208,+174
+06 Nov 2019,19:00,Indiana Pacers,Washington Wizards,121,106,-143,+122
+06 Nov 2019,19:00,Detroit Pistons,New York Knicks,122,102,-167,+143
+06 Nov 2019,19:30,Toronto Raptors,Sacramento Kings,124,120,-370,+294
+06 Nov 2019,19:30,Houston Rockets,Golden State Warriors,129,112,-2500,+1196
+06 Nov 2019,19:30,Atlanta Hawks,Chicago Bulls,93,113,-106,-112
+06 Nov 2019,20:00,Memphis Grizzlies,Minnesota Timberwolves,137,121,+136,-159
+06 Nov 2019,20:30,Dallas Mavericks,Orlando Magic,107,106,-303,+245
+06 Nov 2019,21:00,Utah Jazz,Philadelphia 76ers,106,104,-141,+119
+06 Nov 2019,22:00,Los Angeles Clippers,Milwaukee Bucks,124,129,+210,-256
+07 Nov 2019,20:00,Charlotte Hornets,Boston Celtics,87,108,+246,-303
+07 Nov 2019,20:30,San Antonio Spurs,Oklahoma City Thunder,121,112,-196,+166
+07 Nov 2019,21:00,Phoenix Suns,Miami Heat,108,124,-127,+106
+07 Nov 2019,22:30,Los Angeles Clippers,Portland Trail Blazers,107,101,-233,+191
+08 Nov 2019,19:00,Washington Wizards,Cleveland Cavaliers,100,113,-200,+168
+08 Nov 2019,19:00,Orlando Magic,Memphis Grizzlies,118,86,-323,+259
+08 Nov 2019,19:00,Indiana Pacers,Detroit Pistons,112,106,-250,+206
+08 Nov 2019,19:30,Atlanta Hawks,Sacramento Kings,109,121,+127,-149
+08 Nov 2019,20:00,New Orleans Pelicans,Toronto Raptors,104,122,+110,-132
+08 Nov 2019,20:00,Minnesota Timberwolves,Golden State Warriors,125,119,-769,+519
+08 Nov 2019,20:30,Dallas Mavericks,New York Knicks,102,106,-667,+463
+08 Nov 2019,21:00,Utah Jazz,Milwaukee Bucks,103,100,+112,-133
+08 Nov 2019,21:00,Denver Nuggets,Philadelphia 76ers,100,97,-213,+177
+08 Nov 2019,22:00,Portland Trail Blazers,Brooklyn Nets,115,119,-156,+134
+08 Nov 2019,22:30,Los Angeles Lakers,Miami Heat,95,80,-370,+295
+09 Nov 2019,17:00,San Antonio Spurs,Boston Celtics,115,135,-132,+110
+09 Nov 2019,19:00,Charlotte Hornets,New Orleans Pelicans,110,115,+108,-130
+09 Nov 2019,20:00,Memphis Grizzlies,Dallas Mavericks,122,138,+189,-227
+09 Nov 2019,20:00,Oklahoma City Thunder,Golden State Warriors,114,108,-833,+550
+09 Nov 2019,20:00,Chicago Bulls,Houston Rockets,94,117,+231,-286
+10 Nov 2019,15:30,Minnesota Timberwolves,Denver Nuggets,98,100,+149,-172
+10 Nov 2019,18:00,Philadelphia 76ers,Charlotte Hornets,114,106,-1250,+791
+10 Nov 2019,18:00,Orlando Magic,Indiana Pacers,102,109,-204,+172
+10 Nov 2019,19:00,Oklahoma City Thunder,Milwaukee Bucks,119,121,+326,-417
+10 Nov 2019,19:30,New York Knicks,Cleveland Cavaliers,87,108,-132,+112
+10 Nov 2019,20:00,Phoenix Suns,Brooklyn Nets,138,112,-145,+122
+10 Nov 2019,21:00,Portland Trail Blazers,Atlanta Hawks,124,113,-435,+338
+10 Nov 2019,21:30,Los Angeles Lakers,Toronto Raptors,104,113,-556,+428
+11 Nov 2019,19:00,Detroit Pistons,Minnesota Timberwolves,114,120,-172,+148
+11 Nov 2019,19:30,San Antonio Spurs,Memphis Grizzlies,109,113,-625,+458
+11 Nov 2019,19:30,Boston Celtics,Dallas Mavericks,116,106,-149,+127
+11 Nov 2019,20:00,New Orleans Pelicans,Houston Rockets,116,122,+258,-323
+11 Nov 2019,22:30,Los Angeles Clippers,Toronto Raptors,98,88,-476,+363
+11 Nov 2019,22:30,Golden State Warriors,Utah Jazz,108,122,+282,-357
+12 Nov 2019,19:00,Philadelphia 76ers,Cleveland Cavaliers,98,97,-667,+472
+12 Nov 2019,19:00,Indiana Pacers,Oklahoma City Thunder,111,85,-118,-101
+12 Nov 2019,19:30,Miami Heat,Detroit Pistons,117,108,-400,+320
+12 Nov 2019,20:00,Chicago Bulls,New York Knicks,120,102,-270,+223
+12 Nov 2019,21:00,Utah Jazz,Brooklyn Nets,119,114,-278,+229
+12 Nov 2019,21:00,Phoenix Suns,Los Angeles Lakers,115,123,+144,-169
+12 Nov 2019,21:00,Denver Nuggets,Atlanta Hawks,121,125,-625,+451
+12 Nov 2019,22:00,Sacramento Kings,Portland Trail Blazers,107,99,+102,-122
+13 Nov 2019,19:00,Orlando Magic,Philadelphia 76ers,112,97,-137,+116
+13 Nov 2019,19:00,Charlotte Hornets,Memphis Grizzlies,117,119,-137,+117
+13 Nov 2019,19:30,Houston Rockets,Los Angeles Clippers,102,93,-139,+117
+13 Nov 2019,19:30,Boston Celtics,Washington Wizards,140,133,-303,+249
+13 Nov 2019,20:00,Minnesota Timberwolves,San Antonio Spurs,129,114,-122,+102
+13 Nov 2019,22:00,Portland Trail Blazers,Toronto Raptors,106,114,-149,+127
+13 Nov 2019,22:00,Los Angeles Lakers,Golden State Warriors,120,94,-400,+313
+14 Nov 2019,18:00,Cleveland Cavaliers,Miami Heat,97,108,+165,-196
+14 Nov 2019,20:00,New York Knicks,Dallas Mavericks,106,103,+264,-333
+14 Nov 2019,20:00,New Orleans Pelicans,Los Angeles Clippers,132,127,+148,-172
+14 Nov 2019,20:00,Milwaukee Bucks,Chicago Bulls,124,115,-833,+552
+14 Nov 2019,21:00,Phoenix Suns,Atlanta Hawks,128,112,-357,+279
+14 Nov 2019,22:30,Denver Nuggets,Brooklyn Nets,101,93,-345,+278
+15 Nov 2019,19:00,Orlando Magic,San Antonio Spurs,111,109,-143,+121
+15 Nov 2019,19:00,Charlotte Hornets,Detroit Pistons,109,106,+140,-164
+15 Nov 2019,20:00,Oklahoma City Thunder,Philadelphia 76ers,127,119,+138,-161
+15 Nov 2019,20:00,Minnesota Timberwolves,Washington Wizards,116,137,-227,+188
+15 Nov 2019,20:00,Memphis Grizzlies,Utah Jazz,107,106,+266,-333
+15 Nov 2019,20:00,Houston Rockets,Indiana Pacers,111,102,-250,+206
+15 Nov 2019,22:30,Los Angeles Lakers,Sacramento Kings,99,97,-588,+438
+15 Nov 2019,22:30,Golden State Warriors,Boston Celtics,100,105,+233,-286
+16 Nov 2019,18:00,Chicago Bulls,Brooklyn Nets,111,117,-175,+149
+16 Nov 2019,19:00,Indiana Pacers,Milwaukee Bucks,83,102,+278,-345
+16 Nov 2019,19:30,New York Knicks,Charlotte Hornets,102,103,-172,+147
+16 Nov 2019,20:00,Minnesota Timberwolves,Houston Rockets,105,125,-139,+117
+16 Nov 2019,20:00,Miami Heat,New Orleans Pelicans,109,94,-345,+274
+16 Nov 2019,20:30,San Antonio Spurs,Portland Trail Blazers,116,121,-122,+104
+16 Nov 2019,20:30,Dallas Mavericks,Toronto Raptors,110,102,-185,+156
+16 Nov 2019,22:30,Los Angeles Clippers,Atlanta Hawks,150,101,-476,+365
+17 Nov 2019,15:00,Cleveland Cavaliers,Philadelphia 76ers,95,114,+231,-286
+17 Nov 2019,15:30,Sacramento Kings,Boston Celtics,100,99,+125,-147
+17 Nov 2019,18:00,Orlando Magic,Washington Wizards,125,121,-238,+199
+17 Nov 2019,18:00,Memphis Grizzlies,Denver Nuggets,114,131,+212,-256
+17 Nov 2019,19:00,New Orleans Pelicans,Golden State Warriors,108,100,-169,+141
+17 Nov 2019,21:30,Los Angeles Lakers,Atlanta Hawks,122,101,-1429,+825
+18 Nov 2019,19:00,New York Knicks,Cleveland Cavaliers,123,105,-227,+186
+18 Nov 2019,19:30,Toronto Raptors,Charlotte Hornets,132,96,-385,+301
+18 Nov 2019,19:30,Brooklyn Nets,Indiana Pacers,86,115,-137,+116
+18 Nov 2019,20:00,Houston Rockets,Portland Trail Blazers,132,108,-333,+266
+18 Nov 2019,20:00,Chicago Bulls,Milwaukee Bucks,101,115,+290,-370
+18 Nov 2019,20:30,Dallas Mavericks,San Antonio Spurs,117,110,-196,+165
+18 Nov 2019,21:00,Utah Jazz,Minnesota Timberwolves,102,112,-455,+351
+18 Nov 2019,21:00,Phoenix Suns,Boston Celtics,85,99,-139,+117
+18 Nov 2019,22:30,Los Angeles Clippers,Oklahoma City Thunder,90,88,-345,+277
+19 Nov 2019,20:00,New Orleans Pelicans,Portland Trail Blazers,115,104,-161,+137
+19 Nov 2019,20:00,Memphis Grizzlies,Golden State Warriors,95,114,-256,+210
+19 Nov 2019,22:00,Sacramento Kings,Phoenix Suns,120,116,-145,+122
+19 Nov 2019,22:30,Los Angeles Lakers,Oklahoma City Thunder,112,107,-667,+478
+20 Nov 2019,19:00,Washington Wizards,San Antonio Spurs,138,132,+110,-130
+20 Nov 2019,19:00,Philadelphia 76ers,New York Knicks,109,104,-909,+616
+20 Nov 2019,19:30,Toronto Raptors,Orlando Magic,113,97,-152,+129
+20 Nov 2019,19:30,Miami Heat,Cleveland Cavaliers,124,100,-500,+376
+20 Nov 2019,19:30,Dallas Mavericks,Golden State Warriors,142,94,-1250,+774
+20 Nov 2019,19:30,Brooklyn Nets,Charlotte Hornets,101,91,-185,+158
+20 Nov 2019,19:30,Atlanta Hawks,Milwaukee Bucks,127,135,+497,-714
+20 Nov 2019,20:00,Minnesota Timberwolves,Utah Jazz,95,103,+129,-152
+20 Nov 2019,20:00,Chicago Bulls,Detroit Pistons,109,89,-108,-110
+20 Nov 2019,21:00,Denver Nuggets,Houston Rockets,105,95,-119,+100
+20 Nov 2019,22:00,Los Angeles Clippers,Boston Celtics,107,104,-312,+250
+21 Nov 2019,20:00,Milwaukee Bucks,Portland Trail Blazers,137,129,-1111,+681
+21 Nov 2019,22:30,Phoenix Suns,New Orleans Pelicans,121,124,-152,+129
+22 Nov 2019,19:00,Washington Wizards,Charlotte Hornets,125,118,-233,+190
+22 Nov 2019,19:00,Detroit Pistons,Atlanta Hawks,128,103,-263,+216
+22 Nov 2019,19:30,Brooklyn Nets,Sacramento Kings,116,97,-132,+112
+22 Nov 2019,20:00,Philadelphia 76ers,San Antonio Spurs,115,104,-294,+240
+22 Nov 2019,20:00,Oklahoma City Thunder,Los Angeles Lakers,127,130,+169,-200
+22 Nov 2019,20:00,Chicago Bulls,Miami Heat,108,116,+156,-185
+22 Nov 2019,20:30,Dallas Mavericks,Cleveland Cavaliers,143,101,-556,+415
+22 Nov 2019,21:00,Utah Jazz,Golden State Warriors,113,109,-2000,+1061
+22 Nov 2019,21:00,Denver Nuggets,Boston Celtics,96,92,-213,+177
+22 Nov 2019,22:30,Los Angeles Clippers,Houston Rockets,122,119,-217,+179
+23 Nov 2019,17:00,Minnesota Timberwolves,Phoenix Suns,98,100,-182,+156
+23 Nov 2019,19:00,Indiana Pacers,Orlando Magic,111,106,-270,+220
+23 Nov 2019,19:00,Charlotte Hornets,Chicago Bulls,115,116,+106,-127
+23 Nov 2019,19:30,New York Knicks,San Antonio Spurs,104,111,+124,-145
+23 Nov 2019,19:30,Atlanta Hawks,Toronto Raptors,116,119,+244,-303
+29 Nov 2019,20:00,Indiana Pacers,Atlanta Hawks,105,104,-667,+486
+29 Nov 2019,20:30,San Antonio Spurs,Los Angeles Clippers,107,97,+186,-222
+29 Nov 2019,21:00,Phoenix Suns,Dallas Mavericks,113,120,+112,-133
+29 Nov 2019,22:00,Portland Trail Blazers,Chicago Bulls,107,103,-294,+239
+29 Nov 2019,22:30,Los Angeles Lakers,Washington Wizards,125,103,-833,+551
+30 Nov 2019,17:00,Sacramento Kings,Denver Nuggets,100,97,+147,-172
+30 Nov 2019,19:00,Philadelphia 76ers,Indiana Pacers,119,116,-263,+217
+30 Nov 2019,20:00,Milwaukee Bucks,Charlotte Hornets,137,96,-1250,+771
+30 Nov 2019,20:00,Houston Rockets,Atlanta Hawks,158,111,-1429,+811
+01 Dec 2019,15:00,Brooklyn Nets,Miami Heat,106,109,+156,-185
+01 Dec 2019,15:30,New York Knicks,Boston Celtics,104,113,+263,-323
+01 Dec 2019,15:30,Minnesota Timberwolves,Memphis Grizzlies,107,115,-833,+578
+01 Dec 2019,16:00,Los Angeles Lakers,Dallas Mavericks,100,114,-270,+222
+01 Dec 2019,17:00,New Orleans Pelicans,Oklahoma City Thunder,104,107,-143,+121
+01 Dec 2019,17:00,Detroit Pistons,San Antonio Spurs,132,98,-143,+121
+01 Dec 2019,18:00,Toronto Raptors,Utah Jazz,130,110,-132,+110
+01 Dec 2019,18:00,Orlando Magic,Golden State Warriors,100,96,-357,+283
+01 Dec 2019,22:30,Los Angeles Clippers,Washington Wizards,150,125,-909,+613
+02 Dec 2019,19:00,Philadelphia 76ers,Utah Jazz,103,94,-213,+177
+02 Dec 2019,19:00,Charlotte Hornets,Phoenix Suns,104,109,+140,-164
+02 Dec 2019,19:30,Atlanta Hawks,Golden State Warriors,104,79,-263,+218
+02 Dec 2019,20:00,Milwaukee Bucks,New York Knicks,132,88,-2500,+1205
+02 Dec 2019,20:00,Memphis Grizzlies,Indiana Pacers,104,117,+392,-526
+02 Dec 2019,22:00,Sacramento Kings,Chicago Bulls,106,113,-189,+162
+03 Dec 2019,19:00,Washington Wizards,Orlando Magic,120,127,-110,-109
+03 Dec 2019,19:00,Cleveland Cavaliers,Detroit Pistons,94,127,+135,-156
+03 Dec 2019,19:30,Toronto Raptors,Miami Heat,110,121,-222,+184
+03 Dec 2019,19:30,New Orleans Pelicans,Dallas Mavericks,97,118,+165,-196
+03 Dec 2019,20:30,San Antonio Spurs,Houston Rockets,135,133,+244,-303
+03 Dec 2019,21:00,Denver Nuggets,Los Angeles Lakers,96,105,-137,+116
+03 Dec 2019,22:00,Los Angeles Clippers,Portland Trail Blazers,117,97,-455,+357
+04 Dec 2019,19:00,Orlando Magic,Phoenix Suns,128,114,+104,-125
+04 Dec 2019,19:00,Detroit Pistons,Milwaukee Bucks,103,127,+350,-455
+04 Dec 2019,19:00,Charlotte Hornets,Golden State Warriors,106,91,-139,+117
+04 Dec 2019,19:30,Boston Celtics,Miami Heat,112,93,-222,+185
+04 Dec 2019,19:30,Atlanta Hawks,Brooklyn Nets,118,130,+127,-149
+04 Dec 2019,20:00,Oklahoma City Thunder,Indiana Pacers,100,107,-101,-118
+04 Dec 2019,20:00,Chicago Bulls,Memphis Grizzlies,106,99,-294,+236
+04 Dec 2019,20:30,Dallas Mavericks,Minnesota Timberwolves,121,114,-217,+181
+04 Dec 2019,21:00,Utah Jazz,Los Angeles Lakers,96,121,-130,+110
+04 Dec 2019,22:00,Portland Trail Blazers,Sacramento Kings,127,116,-213,+179
+05 Dec 2019,19:00,Washington Wizards,Philadelphia 76ers,119,113,+281,-357
+05 Dec 2019,19:30,Toronto Raptors,Houston Rockets,109,119,-130,+108
+05 Dec 2019,19:30,New York Knicks,Denver Nuggets,92,129,+309,-385
+05 Dec 2019,20:00,New Orleans Pelicans,Phoenix Suns,132,139,-182,+154
+06 Dec 2019,19:00,Detroit Pistons,Indiana Pacers,108,101,+100,-118
+06 Dec 2019,19:00,Cleveland Cavaliers,Orlando Magic,87,93,+170,-204
+06 Dec 2019,19:00,Charlotte Hornets,Brooklyn Nets,104,111,+131,-152
+06 Dec 2019,20:00,Oklahoma City Thunder,Minnesota Timberwolves,139,127,-164,+141
+06 Dec 2019,20:00,Miami Heat,Washington Wizards,112,103,-526,+390
+06 Dec 2019,20:00,Chicago Bulls,Golden State Warriors,98,100,-200,+168
+06 Dec 2019,20:00,Boston Celtics,Denver Nuggets,108,95,-167,+142
+06 Dec 2019,20:30,San Antonio Spurs,Sacramento Kings,105,104,-175,+150
+06 Dec 2019,20:30,Milwaukee Bucks,Los Angeles Clippers,119,91,-189,+160
+06 Dec 2019,22:30,Portland Trail Blazers,Los Angeles Lakers,113,136,+161,-189
+07 Dec 2019,14:00,Dallas Mavericks,New Orleans Pelicans,130,84,-455,+359
+07 Dec 2019,19:30,Philadelphia 76ers,Cleveland Cavaliers,141,94,-714,+496
+07 Dec 2019,19:30,New York Knicks,Indiana Pacers,103,104,+187,-222
+07 Dec 2019,20:00,Houston Rockets,Phoenix Suns,115,109,-769,+533
+07 Dec 2019,22:00,Utah Jazz,Memphis Grizzlies,126,112,-769,+539
+08 Dec 2019,15:00,Brooklyn Nets,Denver Nuggets,105,102,+158,-185
+08 Dec 2019,17:00,Charlotte Hornets,Atlanta Hawks,107,122,-125,+106
+08 Dec 2019,18:00,Washington Wizards,Los Angeles Clippers,119,135,+355,-455
+08 Dec 2019,18:00,Philadelphia 76ers,Toronto Raptors,110,104,-147,+125
+08 Dec 2019,18:00,Miami Heat,Chicago Bulls,110,105,-294,+238
+08 Dec 2019,19:00,Dallas Mavericks,Sacramento Kings,106,110,-417,+326
+08 Dec 2019,21:00,Portland Trail Blazers,Oklahoma City Thunder,96,108,-167,+143
+08 Dec 2019,21:30,Los Angeles Lakers,Minnesota Timberwolves,142,125,-588,+442
+09 Dec 2019,19:00,Indiana Pacers,Los Angeles Clippers,99,110,-147,+127
+09 Dec 2019,19:30,Boston Celtics,Cleveland Cavaliers,110,88,-1250,+768
+09 Dec 2019,20:00,New Orleans Pelicans,Detroit Pistons,103,105,-109,-110
+09 Dec 2019,20:00,Milwaukee Bucks,Orlando Magic,110,101,-1000,+659
+09 Dec 2019,20:00,Houston Rockets,Sacramento Kings,118,119,-833,+585
+09 Dec 2019,20:00,Chicago Bulls,Toronto Raptors,92,93,+208,-250
+09 Dec 2019,21:00,Utah Jazz,Oklahoma City Thunder,90,104,-400,+309
+09 Dec 2019,21:00,Phoenix Suns,Minnesota Timberwolves,125,109,-159,+136
+09 Dec 2019,22:30,Golden State Warriors,Memphis Grizzlies,102,110,-152,+129
+10 Dec 2019,19:00,Charlotte Hornets,Washington Wizards,114,107,+104,-125
+10 Dec 2019,20:00,Philadelphia 76ers,Denver Nuggets,97,92,-222,+184
+10 Dec 2019,20:00,Miami Heat,Atlanta Hawks,135,121,-385,+304
+10 Dec 2019,22:00,Portland Trail Blazers,New York Knicks,115,87,-476,+359
+11 Dec 2019,19:00,Toronto Raptors,Los Angeles Clippers,92,112,+127,-149
+11 Dec 2019,19:00,Orlando Magic,Los Angeles Lakers,87,96,+338,-435
+11 Dec 2019,19:00,Indiana Pacers,Boston Celtics,122,117,-123,+104
+11 Dec 2019,19:00,Cleveland Cavaliers,Houston Rockets,110,116,+537,-769
+11 Dec 2019,19:30,Brooklyn Nets,Charlotte Hornets,108,113,-556,+421
+11 Dec 2019,20:00,Minnesota Timberwolves,Utah Jazz,116,127,-112,-106
+11 Dec 2019,20:00,Chicago Bulls,Atlanta Hawks,136,102,-270,+221
+11 Dec 2019,21:00,Phoenix Suns,Memphis Grizzlies,108,115,-303,+243
+11 Dec 2019,21:30,Milwaukee Bucks,New Orleans Pelicans,127,112,-500,+383
+11 Dec 2019,22:00,Sacramento Kings,Oklahoma City Thunder,94,93,-130,+110
+11 Dec 2019,22:30,Golden State Warriors,New York Knicks,122,124,-204,+173
+12 Dec 2019,20:00,Boston Celtics,Philadelphia 76ers,109,115,-114,-105
+12 Dec 2019,20:30,San Antonio Spurs,Cleveland Cavaliers,109,117,-833,+550
+12 Dec 2019,21:00,Detroit Pistons,Dallas Mavericks,111,122,+229,-278
+12 Dec 2019,22:30,Denver Nuggets,Portland Trail Blazers,114,99,-333,+264
+13 Dec 2019,19:00,Philadelphia 76ers,New Orleans Pelicans,116,109,-312,+250
+13 Dec 2019,19:00,Orlando Magic,Houston Rockets,107,130,+227,-278
+13 Dec 2019,19:00,Miami Heat,Los Angeles Lakers,110,113,+195,-238
+13 Dec 2019,19:30,Atlanta Hawks,Indiana Pacers,100,110,+200,-244
+13 Dec 2019,20:00,Memphis Grizzlies,Milwaukee Bucks,114,127,+604,-909
+13 Dec 2019,20:00,Chicago Bulls,Charlotte Hornets,73,83,-303,+249
+13 Dec 2019,21:00,Utah Jazz,Golden State Warriors,114,106,-1250,+776
+13 Dec 2019,21:30,Minnesota Timberwolves,Los Angeles Clippers,117,124,+167,-196
+13 Dec 2019,22:00,Sacramento Kings,New York Knicks,101,103,-417,+324
+14 Dec 2019,17:00,Phoenix Suns,San Antonio Spurs,119,121,+108,-128
+14 Dec 2019,19:30,Toronto Raptors,Brooklyn Nets,110,102,-312,+252
+14 Dec 2019,20:00,Memphis Grizzlies,Washington Wizards,128,111,-120,+102
+14 Dec 2019,20:00,Chicago Bulls,Los Angeles Clippers,109,106,+135,-159
+14 Dec 2019,20:30,Milwaukee Bucks,Cleveland Cavaliers,125,108,-1429,+825
+14 Dec 2019,20:30,Dallas Mavericks,Miami Heat,118,122,-435,+343
+14 Dec 2019,21:00,Houston Rockets,Detroit Pistons,107,115,-345,+275
+14 Dec 2019,21:00,Denver Nuggets,Oklahoma City Thunder,110,102,-244,+202
+15 Dec 2019,15:30,New Orleans Pelicans,Orlando Magic,119,130,-110,-109
+15 Dec 2019,17:00,Indiana Pacers,Charlotte Hornets,107,85,-833,+545
+15 Dec 2019,18:00,Brooklyn Nets,Philadelphia 76ers,109,89,+145,-169
+15 Dec 2019,18:00,Atlanta Hawks,Los Angeles Lakers,96,101,+581,-833
+15 Dec 2019,20:00,Denver Nuggets,New York Knicks,111,105,-588,+434
+15 Dec 2019,20:30,Golden State Warriors,Sacramento Kings,79,100,+164,-192
+16 Dec 2019,19:00,Detroit Pistons,Washington Wizards,119,133,-139,+117
+16 Dec 2019,19:30,Toronto Raptors,Cleveland Cavaliers,133,113,-909,+623
+16 Dec 2019,20:00,Oklahoma City Thunder,Chicago Bulls,109,106,-222,+181
+16 Dec 2019,20:00,Milwaukee Bucks,Dallas Mavericks,116,120,-667,+488
+16 Dec 2019,20:00,Memphis Grizzlies,Miami Heat,118,111,+129,-152
+16 Dec 2019,20:00,Houston Rockets,San Antonio Spurs,109,107,-588,+445
+16 Dec 2019,21:00,Phoenix Suns,Portland Trail Blazers,110,111,+117,-137
+17 Dec 2019,19:00,Indiana Pacers,Los Angeles Lakers,105,102,+100,-118
+17 Dec 2019,19:00,Charlotte Hornets,Sacramento Kings,110,102,+177,-213
+17 Dec 2019,19:30,New York Knicks,Atlanta Hawks,143,120,-132,+112
+17 Dec 2019,20:00,New Orleans Pelicans,Brooklyn Nets,101,108,+108,-128
+17 Dec 2019,21:00,Utah Jazz,Orlando Magic,109,102,-270,+221
+17 Dec 2019,22:30,Los Angeles Clippers,Phoenix Suns,120,99,-1429,+818
+18 Dec 2019,19:00,Washington Wizards,Chicago Bulls,109,110,-112,-105
+18 Dec 2019,19:00,Philadelphia 76ers,Miami Heat,104,108,-370,+293
+18 Dec 2019,19:00,Detroit Pistons,Toronto Raptors,99,112,+112,-133
+18 Dec 2019,19:00,Cleveland Cavaliers,Charlotte Hornets,100,98,-147,+125
+18 Dec 2019,20:00,Oklahoma City Thunder,Memphis Grizzlies,126,122,-270,+219
+18 Dec 2019,20:00,Minnesota Timberwolves,New Orleans Pelicans,99,107,-156,+131
+18 Dec 2019,21:00,Denver Nuggets,Orlando Magic,113,104,-455,+348
+18 Dec 2019,21:30,Dallas Mavericks,Boston Celtics,103,109,+102,-122
+18 Dec 2019,22:00,Portland Trail Blazers,Golden State Warriors,122,112,-476,+361
+19 Dec 2019,19:30,Atlanta Hawks,Utah Jazz,106,111,+225,-278
+19 Dec 2019,20:00,Milwaukee Bucks,Los Angeles Lakers,111,104,-161,+138
+19 Dec 2019,20:30,San Antonio Spurs,Brooklyn Nets,118,105,-182,+156
+19 Dec 2019,22:30,Los Angeles Clippers,Houston Rockets,117,122,-213,+177
+20 Dec 2019,19:00,Indiana Pacers,Sacramento Kings,119,105,-213,+177
+20 Dec 2019,19:00,Cleveland Cavaliers,Memphis Grizzlies,114,107,+121,-143
+20 Dec 2019,19:30,Toronto Raptors,Washington Wizards,122,118,-278,+225
+20 Dec 2019,19:30,Boston Celtics,Detroit Pistons,114,93,-455,+353
+20 Dec 2019,20:00,Philadelphia 76ers,Dallas Mavericks,98,117,-417,+323
+20 Dec 2019,20:00,Oklahoma City Thunder,Phoenix Suns,126,108,-152,+127
+20 Dec 2019,20:00,Miami Heat,New York Knicks,129,114,-435,+345
+20 Dec 2019,21:00,Denver Nuggets,Minnesota Timberwolves,109,100,-667,+474
+20 Dec 2019,22:00,Portland Trail Blazers,Orlando Magic,118,103,-159,+136
+20 Dec 2019,22:30,Golden State Warriors,New Orleans Pelicans,106,102,+110,-130
+21 Dec 2019,17:00,Charlotte Hornets,Utah Jazz,107,114,+231,-286
+21 Dec 2019,18:00,Brooklyn Nets,Atlanta Hawks,122,112,-323,+258
+21 Dec 2019,19:00,Philadelphia 76ers,Washington Wizards,125,108,-1000,+666
+21 Dec 2019,19:00,Detroit Pistons,Chicago Bulls,107,119,+106,-125
+21 Dec 2019,19:30,New York Knicks,Milwaukee Bucks,102,123,+632,-1000
+21 Dec 2019,20:00,Memphis Grizzlies,Sacramento Kings,119,115,+110,-132
+21 Dec 2019,20:30,San Antonio Spurs,Los Angeles Clippers,109,134,+247,-303
+21 Dec 2019,21:00,Phoenix Suns,Houston Rockets,125,139,+345,-435
+21 Dec 2019,22:00,Portland Trail Blazers,Minnesota Timberwolves,113,106,-286,+233
+22 Dec 2019,15:30,Toronto Raptors,Dallas Mavericks,110,107,-120,+100
+22 Dec 2019,18:00,Boston Celtics,Charlotte Hornets,119,93,-909,+623
+22 Dec 2019,19:00,Oklahoma City Thunder,Los Angeles Clippers,118,112,-111,-106
+22 Dec 2019,19:00,Milwaukee Bucks,Indiana Pacers,117,89,-370,+292
+22 Dec 2019,21:30,Los Angeles Lakers,Denver Nuggets,104,128,-135,+114
+23 Dec 2019,19:00,Orlando Magic,Chicago Bulls,103,95,-204,+172
+23 Dec 2019,19:00,New York Knicks,Washington Wizards,115,121,-161,+137
+23 Dec 2019,19:00,Indiana Pacers,Toronto Raptors,120,115,-222,+187
+23 Dec 2019,19:00,Detroit Pistons,Philadelphia 76ers,109,125,+227,-278
+23 Dec 2019,19:00,Cleveland Cavaliers,Atlanta Hawks,121,118,+104,-123
+23 Dec 2019,19:30,Miami Heat,Utah Jazz,107,104,-179,+154
+23 Dec 2019,20:00,Memphis Grizzlies,San Antonio Spurs,115,145,-102,-115
+23 Dec 2019,21:00,Phoenix Suns,Denver Nuggets,111,113,+118,-139
+23 Dec 2019,22:00,Sacramento Kings,Houston Rockets,104,113,+204,-244
+23 Dec 2019,22:00,Portland Trail Blazers,New Orleans Pelicans,94,102,-238,+199
+23 Dec 2019,22:30,Golden State Warriors,Minnesota Timberwolves,113,104,-112,-106
+25 Dec 2019,12:00,Toronto Raptors,Boston Celtics,102,118,+152,-179
+25 Dec 2019,14:30,Philadelphia 76ers,Milwaukee Bucks,121,109,+129,-152
+25 Dec 2019,17:00,Golden State Warriors,Houston Rockets,116,104,+535,-769
+25 Dec 2019,20:00,Los Angeles Lakers,Los Angeles Clippers,106,111,-132,+112
+25 Dec 2019,22:30,Denver Nuggets,New Orleans Pelicans,100,112,-455,+351
+26 Dec 2019,19:00,Detroit Pistons,Washington Wizards,132,102,-270,+221
+26 Dec 2019,19:30,Brooklyn Nets,New York Knicks,82,94,-323,+257
+26 Dec 2019,20:00,Oklahoma City Thunder,Memphis Grizzlies,97,110,-244,+202
+26 Dec 2019,20:00,Dallas Mavericks,San Antonio Spurs,102,98,-385,+303
+26 Dec 2019,22:00,Sacramento Kings,Minnesota Timberwolves,104,105,-303,+247
+26 Dec 2019,22:30,Utah Jazz,Portland Trail Blazers,121,115,-222,+184
+27 Dec 2019,16:00,Boston Celtics,Cleveland Cavaliers,129,117,-1667,+923
+27 Dec 2019,19:00,Orlando Magic,Philadelphia 76ers,98,97,+146,-172
+27 Dec 2019,19:00,Charlotte Hornets,Oklahoma City Thunder,102,104,-112,-105
+27 Dec 2019,19:30,Atlanta Hawks,Milwaukee Bucks,86,112,+236,-294
+27 Dec 2019,20:00,Miami Heat,Indiana Pacers,113,112,-213,+177
+27 Dec 2019,22:30,Golden State Warriors,Phoenix Suns,105,96,+141,-167
+28 Dec 2019,17:00,Denver Nuggets,Memphis Grizzlies,119,110,-455,+349
+28 Dec 2019,19:00,New Orleans Pelicans,Indiana Pacers,120,98,-125,+104
+28 Dec 2019,19:00,Boston Celtics,Toronto Raptors,97,113,-303,+246
+28 Dec 2019,20:00,Washington Wizards,New York Knicks,100,107,+137,-161
+28 Dec 2019,20:00,Minnesota Timberwolves,Cleveland Cavaliers,88,94,-263,+217
+28 Dec 2019,20:00,Miami Heat,Philadelphia 76ers,117,116,-116,-102
+28 Dec 2019,20:00,Houston Rockets,Brooklyn Nets,108,98,-476,+361
+28 Dec 2019,20:00,Chicago Bulls,Atlanta Hawks,116,81,-526,+392
+28 Dec 2019,20:30,San Antonio Spurs,Detroit Pistons,136,109,-204,+171
+28 Dec 2019,20:30,Milwaukee Bucks,Orlando Magic,111,100,-263,+218
+28 Dec 2019,20:30,Golden State Warriors,Dallas Mavericks,121,141,+442,-588
+28 Dec 2019,21:00,Sacramento Kings,Phoenix Suns,110,112,-143,+121
+28 Dec 2019,22:00,Portland Trail Blazers,Los Angeles Lakers,120,128,+190,-227
+28 Dec 2019,22:30,Los Angeles Clippers,Utah Jazz,107,120,-333,+267
+29 Dec 2019,18:00,Toronto Raptors,Oklahoma City Thunder,97,98,-200,+167
+29 Dec 2019,20:00,New Orleans Pelicans,Houston Rockets,127,112,-213,+175
+29 Dec 2019,20:00,Memphis Grizzlies,Charlotte Hornets,117,104,-147,+124
+29 Dec 2019,20:00,Denver Nuggets,Sacramento Kings,120,115,-345,+273
+29 Dec 2019,21:30,Los Angeles Lakers,Dallas Mavericks,108,95,-208,+174
+30 Dec 2019,19:00,Washington Wizards,Miami Heat,123,105,+508,-714
+30 Dec 2019,19:00,Orlando Magic,Atlanta Hawks,93,101,-667,+476
+30 Dec 2019,20:00,Minnesota Timberwolves,Brooklyn Nets,122,115,+158,-185
+30 Dec 2019,20:00,Chicago Bulls,Milwaukee Bucks,102,123,+348,-455
+30 Dec 2019,21:00,Utah Jazz,Detroit Pistons,104,81,-500,+384
+30 Dec 2019,22:00,Portland Trail Blazers,Phoenix Suns,116,122,-169,+145
+31 Dec 2019,15:00,Indiana Pacers,Philadelphia 76ers,115,97,-156,+134
+31 Dec 2019,15:00,Charlotte Hornets,Boston Celtics,92,109,+274,-345
+31 Dec 2019,17:00,Sacramento Kings,Los Angeles Clippers,87,105,+231,-286
+31 Dec 2019,19:00,Toronto Raptors,Cleveland Cavaliers,117,97,-385,+305
+31 Dec 2019,19:00,San Antonio Spurs,Golden State Warriors,117,113,-714,+501
+31 Dec 2019,19:00,Houston Rockets,Denver Nuggets,130,104,-256,+211
+31 Dec 2019,20:00,Oklahoma City Thunder,Dallas Mavericks,106,101,+141,-167
+01 Jan 2020,18:00,Washington Wizards,Orlando Magic,101,122,+129,-152
+01 Jan 2020,19:30,New York Knicks,Portland Trail Blazers,117,93,+152,-179
+01 Jan 2020,20:00,Milwaukee Bucks,Minnesota Timberwolves,106,104,-5000,+1562
+01 Jan 2020,22:30,Los Angeles Lakers,Phoenix Suns,117,107,-714,+503
+02 Jan 2020,19:00,Indiana Pacers,Denver Nuggets,116,124,-104,-114
+02 Jan 2020,19:00,Cleveland Cavaliers,Charlotte Hornets,106,109,-130,+110
+02 Jan 2020,19:30,Miami Heat,Toronto Raptors,84,76,-213,+175
+02 Jan 2020,20:00,Minnesota Timberwolves,Golden State Warriors,99,84,-147,+124
+02 Jan 2020,20:00,Chicago Bulls,Utah Jazz,98,102,+133,-154
+02 Jan 2020,20:30,San Antonio Spurs,Oklahoma City Thunder,103,109,-143,+120
+02 Jan 2020,20:30,Dallas Mavericks,Brooklyn Nets,123,111,-385,+299
+02 Jan 2020,22:00,Sacramento Kings,Memphis Grizzlies,128,123,-196,+165
+02 Jan 2020,22:30,Los Angeles Clippers,Detroit Pistons,126,112,-1000,+648
+03 Jan 2020,19:00,Washington Wizards,Portland Trail Blazers,103,122,+254,-312
+03 Jan 2020,19:00,Orlando Magic,Miami Heat,105,85,-114,-104
+03 Jan 2020,19:00,Boston Celtics,Atlanta Hawks,109,106,-667,+473
+03 Jan 2020,20:00,Houston Rockets,Philadelphia 76ers,118,108,-189,+161
+03 Jan 2020,21:00,Phoenix Suns,New York Knicks,120,112,-286,+235
+03 Jan 2020,22:30,Los Angeles Lakers,New Orleans Pelicans,123,113,-588,+430
+04 Jan 2020,15:30,Los Angeles Clippers,Memphis Grizzlies,114,140,-588,+432
+04 Jan 2020,18:00,Brooklyn Nets,Toronto Raptors,102,121,-127,+108
+04 Jan 2020,19:00,Orlando Magic,Utah Jazz,96,109,+140,-164
+04 Jan 2020,19:30,Cleveland Cavaliers,Oklahoma City Thunder,106,121,+214,-263
+04 Jan 2020,19:30,Atlanta Hawks,Indiana Pacers,116,111,+248,-303
+04 Jan 2020,20:00,Washington Wizards,Denver Nuggets,128,114,+662,-1000
+04 Jan 2020,20:00,Chicago Bulls,Boston Celtics,104,111,-111,-106
+07 Jan 2020,19:30,Brooklyn Nets,Oklahoma City Thunder,103,111,-108,-110
+07 Jan 2020,20:00,Memphis Grizzlies,Minnesota Timberwolves,119,112,-182,+154
+07 Jan 2020,21:00,Phoenix Suns,Sacramento Kings,103,114,-263,+217
+07 Jan 2020,22:30,Los Angeles Lakers,New York Knicks,117,87,-1429,+807
+08 Jan 2020,19:00,Orlando Magic,Washington Wizards,123,89,-526,+394
+08 Jan 2020,19:00,Indiana Pacers,Miami Heat,108,122,-114,-104
+08 Jan 2020,19:00,Charlotte Hornets,Toronto Raptors,110,112,+118,-139
+08 Jan 2020,19:00,Boston Celtics,San Antonio Spurs,114,129,-294,+241
+08 Jan 2020,19:30,Dallas Mavericks,Denver Nuggets,106,107,-182,+156
+08 Jan 2020,19:30,Atlanta Hawks,Houston Rockets,115,122,+271,-333
+08 Jan 2020,20:00,New Orleans Pelicans,Chicago Bulls,123,108,-161,+139
+08 Jan 2020,21:00,Utah Jazz,New York Knicks,128,104,-1429,+794
+08 Jan 2020,22:00,Golden State Warriors,Milwaukee Bucks,98,107,+758,-1250
+09 Jan 2020,19:00,Philadelphia 76ers,Boston Celtics,109,98,-110,-109
+09 Jan 2020,19:00,Detroit Pistons,Cleveland Cavaliers,112,115,-303,+246
+09 Jan 2020,20:00,Minnesota Timberwolves,Portland Trail Blazers,116,102,-105,-112
+09 Jan 2020,21:30,Oklahoma City Thunder,Houston Rockets,113,92,+145,-169
+10 Jan 2020,19:00,Washington Wizards,Atlanta Hawks,111,101,+100,-119
+10 Jan 2020,19:15,New York Knicks,New Orleans Pelicans,111,123,+162,-192
+10 Jan 2020,19:30,Brooklyn Nets,Miami Heat,117,113,+152,-179
+10 Jan 2020,20:00,Memphis Grizzlies,San Antonio Spurs,134,121,-109,-110
+10 Jan 2020,20:00,Chicago Bulls,Indiana Pacers,105,116,-114,-104
+10 Jan 2020,21:00,Utah Jazz,Charlotte Hornets,109,92,-909,+603
+10 Jan 2020,21:00,Phoenix Suns,Orlando Magic,98,94,-182,+154
+10 Jan 2020,21:45,Dallas Mavericks,Los Angeles Lakers,114,129,-132,+112
+10 Jan 2020,22:00,Sacramento Kings,Milwaukee Bucks,106,127,+374,-500
+10 Jan 2020,22:30,Los Angeles Clippers,Golden State Warriors,109,100,-1429,+855
+11 Jan 2020,17:00,Houston Rockets,Minnesota Timberwolves,139,109,-526,+401
+11 Jan 2020,19:00,Detroit Pistons,Chicago Bulls,99,108,-164,+141
+11 Jan 2020,19:00,Boston Celtics,New Orleans Pelicans,140,105,-769,+538
+11 Jan 2020,20:00,Oklahoma City Thunder,Los Angeles Lakers,110,125,-435,+334
+11 Jan 2020,20:30,Dallas Mavericks,Philadelphia 76ers,109,91,-141,+120
+11 Jan 2020,21:00,Denver Nuggets,Cleveland Cavaliers,103,111,-1000,+642
+11 Jan 2020,22:00,Portland Trail Blazers,Milwaukee Bucks,101,122,+268,-333
+12 Jan 2020,15:30,Washington Wizards,Utah Jazz,116,127,+200,-244
+12 Jan 2020,15:30,New York Knicks,Miami Heat,124,121,+267,-333
+12 Jan 2020,18:00,Toronto Raptors,San Antonio Spurs,104,105,-200,+167
+12 Jan 2020,18:00,Memphis Grizzlies,Golden State Warriors,122,102,-263,+219
+12 Jan 2020,18:00,Brooklyn Nets,Atlanta Hawks,108,86,-435,+342
+12 Jan 2020,20:00,Phoenix Suns,Charlotte Hornets,100,92,-385,+305
+12 Jan 2020,20:00,Denver Nuggets,Los Angeles Clippers,114,104,-109,-110
+13 Jan 2020,19:00,Indiana Pacers,Philadelphia 76ers,101,95,-161,+137
+13 Jan 2020,19:00,Detroit Pistons,New Orleans Pelicans,110,117,-196,+165
+13 Jan 2020,19:30,Boston Celtics,Chicago Bulls,113,101,-526,+388
+13 Jan 2020,20:00,Minnesota Timberwolves,Oklahoma City Thunder,104,117,+108,-128
+13 Jan 2020,22:00,Sacramento Kings,Orlando Magic,112,114,-111,-106
+13 Jan 2020,22:00,Portland Trail Blazers,Charlotte Hornets,115,112,-455,+348
+13 Jan 2020,22:30,Los Angeles Lakers,Cleveland Cavaliers,128,99,-1250,+768
+14 Jan 2020,19:30,Brooklyn Nets,Utah Jazz,107,118,+125,-149
+14 Jan 2020,19:30,Atlanta Hawks,Phoenix Suns,123,110,+108,-132
+14 Jan 2020,20:00,Milwaukee Bucks,New York Knicks,128,102,-2000,+1081
+14 Jan 2020,20:00,Memphis Grizzlies,Houston Rockets,121,110,+154,-182
+14 Jan 2020,22:30,Los Angeles Clippers,Cleveland Cavaliers,128,103,-2000,+1062
+14 Jan 2020,22:30,Golden State Warriors,Dallas Mavericks,97,124,+287,-357
+15 Jan 2020,19:00,Philadelphia 76ers,Brooklyn Nets,117,106,-263,+216
+15 Jan 2020,19:00,Boston Celtics,Detroit Pistons,103,116,-500,+380
+15 Jan 2020,19:30,Miami Heat,San Antonio Spurs,106,100,-217,+181
+15 Jan 2020,20:00,Oklahoma City Thunder,Toronto Raptors,121,130,-114,-105
+15 Jan 2020,20:00,Minnesota Timberwolves,Indiana Pacers,99,104,+149,-175
+15 Jan 2020,20:00,Chicago Bulls,Washington Wizards,115,106,-185,+160
+15 Jan 2020,21:00,Denver Nuggets,Charlotte Hornets,100,86,-769,+522
+15 Jan 2020,21:30,Houston Rockets,Portland Trail Blazers,107,117,-400,+312
+15 Jan 2020,22:00,Sacramento Kings,Dallas Mavericks,123,127,+147,-169
+15 Jan 2020,22:30,Los Angeles Lakers,Orlando Magic,118,119,-588,+430
+16 Jan 2020,19:30,New York Knicks,Phoenix Suns,98,121,+110,-132
+16 Jan 2020,20:00,New Orleans Pelicans,Utah Jazz,138,132,+189,-227
+16 Jan 2020,20:00,Milwaukee Bucks,Boston Celtics,128,123,-714,+496
+16 Jan 2020,22:30,Los Angeles Clippers,Orlando Magic,122,95,-556,+415
+16 Jan 2020,22:30,Golden State Warriors,Denver Nuggets,131,134,+136,-159
+17 Jan 2020,19:00,Toronto Raptors,Washington Wizards,140,111,-588,+442
+17 Jan 2020,19:00,Philadelphia 76ers,Chicago Bulls,100,89,-345,+271
+17 Jan 2020,19:00,Indiana Pacers,Minnesota Timberwolves,116,114,-278,+231
+17 Jan 2020,20:00,Oklahoma City Thunder,Miami Heat,108,115,-104,-114
+17 Jan 2020,20:00,Memphis Grizzlies,Cleveland Cavaliers,113,109,-455,+359
+17 Jan 2020,20:30,San Antonio Spurs,Atlanta Hawks,120,121,-385,+305
+17 Jan 2020,21:30,Dallas Mavericks,Portland Trail Blazers,120,112,-345,+275
+18 Jan 2020,15:30,New Orleans Pelicans,Los Angeles Clippers,130,133,+195,-238
+18 Jan 2020,18:00,Brooklyn Nets,Milwaukee Bucks,97,117,+438,-588
+18 Jan 2020,19:00,Boston Celtics,Phoenix Suns,119,123,-182,+154
+18 Jan 2020,19:30,Atlanta Hawks,Detroit Pistons,103,136,+100,-120
+18 Jan 2020,19:30,New York Knicks,Philadelphia 76ers,87,90,+152,-179
+18 Jan 2020,20:00,Minnesota Timberwolves,Toronto Raptors,112,122,+154,-182
+18 Jan 2020,20:00,Chicago Bulls,Cleveland Cavaliers,118,116,-312,+250
+18 Jan 2020,20:30,Houston Rockets,Los Angeles Lakers,115,124,-154,+131
+18 Jan 2020,20:30,Golden State Warriors,Orlando Magic,109,95,+199,-244
+18 Jan 2020,21:00,Utah Jazz,Sacramento Kings,123,101,-455,+350
+18 Jan 2020,21:00,Oklahoma City Thunder,Portland Trail Blazers,119,106,-278,+225
+19 Jan 2020,15:00,San Antonio Spurs,Miami Heat,107,102,+102,-122
+19 Jan 2020,20:00,Denver Nuggets,Indiana Pacers,107,115,-104,-114
+20 Jan 2020,14:00,Washington Wizards,Detroit Pistons,106,100,-109,-109
+20 Jan 2020,14:30,Atlanta Hawks,Toronto Raptors,117,122,+343,-435
+20 Jan 2020,15:00,Brooklyn Nets,Philadelphia 76ers,111,117,+122,-143
+20 Jan 2020,17:00,Milwaukee Bucks,Chicago Bulls,111,98,-2000,+1030
+20 Jan 2020,17:00,Miami Heat,Sacramento Kings,118,113,-164,+139
+20 Jan 2020,17:00,Memphis Grizzlies,New Orleans Pelicans,116,126,-154,+131
+20 Jan 2020,17:00,Houston Rockets,Oklahoma City Thunder,107,112,-333,+265
+20 Jan 2020,17:00,Cleveland Cavaliers,New York Knicks,86,106,+102,-120
+20 Jan 2020,17:00,Charlotte Hornets,Orlando Magic,83,106,+140,-164
+20 Jan 2020,19:30,Boston Celtics,Los Angeles Lakers,139,107,+125,-147
+20 Jan 2020,20:00,Minnesota Timberwolves,Denver Nuggets,100,107,-164,+141
+20 Jan 2020,21:00,Utah Jazz,Indiana Pacers,118,88,-333,+263
+20 Jan 2020,21:00,Phoenix Suns,San Antonio Spurs,118,120,-192,+162
+20 Jan 2020,22:00,Portland Trail Blazers,Golden State Warriors,129,124,-323,+261
+21 Jan 2020,20:30,Dallas Mavericks,Los Angeles Clippers,107,110,-141,+120
+22 Jan 2020,19:00,Toronto Raptors,Philadelphia 76ers,107,95,-263,+213
+22 Jan 2020,19:00,Orlando Magic,Oklahoma City Thunder,114,120,-141,+119
+22 Jan 2020,19:00,Detroit Pistons,Sacramento Kings,127,106,+106,-127
+22 Jan 2020,19:30,New York Knicks,Los Angeles Lakers,92,100,+529,-769
+22 Jan 2020,19:30,Miami Heat,Washington Wizards,134,129,-588,+436
+22 Jan 2020,19:30,Boston Celtics,Memphis Grizzlies,119,95,-303,+243
+22 Jan 2020,19:30,Atlanta Hawks,Los Angeles Clippers,102,95,+164,-192
+22 Jan 2020,20:00,Houston Rockets,Denver Nuggets,121,105,-556,+426
+22 Jan 2020,20:00,Chicago Bulls,Minnesota Timberwolves,117,110,-115,-103
+22 Jan 2020,21:00,Phoenix Suns,Indiana Pacers,87,112,-101,-118
+22 Jan 2020,21:30,New Orleans Pelicans,San Antonio Spurs,117,121,-156,+133
+22 Jan 2020,22:00,Golden State Warriors,Utah Jazz,96,129,+349,-455
+23 Jan 2020,19:00,Cleveland Cavaliers,Washington Wizards,112,124,-139,+116
+23 Jan 2020,20:00,Brooklyn Nets,Los Angeles Lakers,113,128,+185,-222
+23 Jan 2020,22:30,Portland Trail Blazers,Dallas Mavericks,125,133,+191,-233
+24 Jan 2020,15:00,Charlotte Hornets,Milwaukee Bucks,103,116,+742,-1250
+24 Jan 2020,19:00,Orlando Magic,Boston Celtics,98,109,-139,+117
+24 Jan 2020,19:00,Detroit Pistons,Memphis Grizzlies,112,125,+104,-125
+24 Jan 2020,19:30,New York Knicks,Toronto Raptors,112,118,+334,-435
+24 Jan 2020,20:00,Oklahoma City Thunder,Atlanta Hawks,140,111,-385,+300
+24 Jan 2020,20:00,New Orleans Pelicans,Denver Nuggets,106,113,-169,+145
+24 Jan 2020,20:00,Minnesota Timberwolves,Houston Rockets,124,131,+200,-244
+24 Jan 2020,20:00,Miami Heat,Los Angeles Clippers,117,122,+114,-133
+24 Jan 2020,20:00,Chicago Bulls,Sacramento Kings,81,98,-125,+106
+24 Jan 2020,20:30,San Antonio Spurs,Phoenix Suns,99,103,-204,+170
+24 Jan 2020,22:30,Golden State Warriors,Indiana Pacers,118,129,+221,-270
+25 Jan 2020,17:00,Utah Jazz,Dallas Mavericks,112,107,-204,+172
+25 Jan 2020,19:00,Detroit Pistons,Brooklyn Nets,111,121,+120,-141
+25 Jan 2020,20:00,Minnesota Timberwolves,Oklahoma City Thunder,104,113,-132,+110
+25 Jan 2020,20:00,Cleveland Cavaliers,Chicago Bulls,106,118,-110,-108
+25 Jan 2020,20:30,Philadelphia 76ers,Los Angeles Lakers,108,91,+170,-200
+26 Jan 2020,15:30,Denver Nuggets,Houston Rockets,117,110,-137,+116
+26 Jan 2020,16:00,San Antonio Spurs,Toronto Raptors,106,110,+135,-159
+26 Jan 2020,18:00,Orlando Magic,Los Angeles Clippers,97,112,+135,-159
+26 Jan 2020,18:00,New York Knicks,Brooklyn Nets,110,97,-130,+110
+26 Jan 2020,18:00,New Orleans Pelicans,Boston Celtics,123,108,-118,+100
+26 Jan 2020,18:00,Memphis Grizzlies,Phoenix Suns,114,109,-133,+112
+26 Jan 2020,18:00,Atlanta Hawks,Washington Wizards,152,133,-115,-103
+26 Jan 2020,21:00,Portland Trail Blazers,Indiana Pacers,139,129,-149,+127
+27 Jan 2020,19:00,Detroit Pistons,Cleveland Cavaliers,100,115,-286,+231
+27 Jan 2020,19:30,Miami Heat,Orlando Magic,113,92,-286,+231
+27 Jan 2020,20:00,Oklahoma City Thunder,Dallas Mavericks,97,107,+181,-217
+27 Jan 2020,20:00,Minnesota Timberwolves,Sacramento Kings,129,133,-149,+127
+27 Jan 2020,20:00,Chicago Bulls,San Antonio Spurs,110,109,-119,+100
+27 Jan 2020,21:00,Utah Jazz,Houston Rockets,117,126,-1250,+801
+28 Jan 2020,19:00,Philadelphia 76ers,Golden State Warriors,115,104,-1111,+705
+28 Jan 2020,19:00,Charlotte Hornets,New York Knicks,97,92,-111,-106
+28 Jan 2020,19:30,Toronto Raptors,Atlanta Hawks,130,114,-1111,+679
+28 Jan 2020,19:30,Cleveland Cavaliers,New Orleans Pelicans,111,125,+311,-400
+28 Jan 2020,20:00,Milwaukee Bucks,Washington Wizards,151,131,-833,+559
+28 Jan 2020,20:00,Miami Heat,Boston Celtics,101,109,-127,+108
+28 Jan 2020,20:00,Memphis Grizzlies,Denver Nuggets,104,96,-112,-106
+28 Jan 2020,20:30,Dallas Mavericks,Phoenix Suns,104,133,-294,+240
+29 Jan 2020,19:00,Indiana Pacers,Chicago Bulls,115,106,-435,+338
+29 Jan 2020,19:30,New York Knicks,Memphis Grizzlies,106,127,+114,-135
+29 Jan 2020,19:30,Brooklyn Nets,Detroit Pistons,125,115,-238,+199
+29 Jan 2020,20:30,San Antonio Spurs,Utah Jazz,127,120,+195,-233
+29 Jan 2020,22:00,Sacramento Kings,Oklahoma City Thunder,100,120,+112,-132
+29 Jan 2020,22:00,Portland Trail Blazers,Houston Rockets,125,112,+187,-227
+30 Jan 2020,19:00,Washington Wizards,Charlotte Hornets,121,107,-164,+140
+30 Jan 2020,19:00,Cleveland Cavaliers,Toronto Raptors,109,115,+413,-556
+30 Jan 2020,19:30,Atlanta Hawks,Philadelphia 76ers,127,117,+217,-263
+30 Jan 2020,20:00,Boston Celtics,Golden State Warriors,119,104,-1111,+677
+30 Jan 2020,22:30,Los Angeles Clippers,Sacramento Kings,103,124,-1429,+811
+30 Jan 2020,22:30,Denver Nuggets,Utah Jazz,106,100,+124,-145
+31 Jan 2020,19:00,Detroit Pistons,Toronto Raptors,92,105,+150,-175
+31 Jan 2020,19:30,Houston Rockets,Dallas Mavericks,128,121,-345,+274
+31 Jan 2020,19:30,Brooklyn Nets,Chicago Bulls,133,118,-227,+187
+31 Jan 2020,20:00,New Orleans Pelicans,Memphis Grizzlies,139,111,-333,+263
+31 Jan 2020,21:00,Phoenix Suns,Oklahoma City Thunder,107,111,-106,-112
+31 Jan 2020,21:00,Milwaukee Bucks,Denver Nuggets,115,127,-1000,+631
+31 Jan 2020,22:30,Los Angeles Lakers,Portland Trail Blazers,119,127,-1000,+643
+01 Feb 2020,15:30,Los Angeles Clippers,Minnesota Timberwolves,118,106,-588,+438
+01 Feb 2020,19:00,Orlando Magic,Miami Heat,89,102,+116,-137
+01 Feb 2020,19:00,Indiana Pacers,New York Knicks,85,92,-667,+480
+01 Feb 2020,20:00,Cleveland Cavaliers,Golden State Warriors,112,131,-123,+104
+01 Feb 2020,20:00,Washington Wizards,Brooklyn Nets,113,107,+110,-128
+01 Feb 2020,20:30,Dallas Mavericks,Atlanta Hawks,123,100,-192,+163
+01 Feb 2020,20:30,Boston Celtics,Philadelphia 76ers,116,95,-105,-114
+01 Feb 2020,21:00,San Antonio Spurs,Charlotte Hornets,114,90,-370,+299
+01 Feb 2020,22:00,Sacramento Kings,Los Angeles Lakers,113,129,+240,-294
+01 Feb 2020,22:30,Portland Trail Blazers,Utah Jazz,124,107,+210,-256
+02 Feb 2020,12:30,Detroit Pistons,Denver Nuggets,128,123,+118,-141
+02 Feb 2020,14:00,Milwaukee Bucks,Phoenix Suns,129,108,-909,+614
+02 Feb 2020,14:00,Houston Rockets,New Orleans Pelicans,117,109,-204,+172
+02 Feb 2020,15:00,Toronto Raptors,Chicago Bulls,129,102,-526,+400
+03 Feb 2020,19:00,Washington Wizards,Golden State Warriors,117,125,-263,+218
+03 Feb 2020,19:00,Indiana Pacers,Dallas Mavericks,103,112,-208,+175
+03 Feb 2020,19:00,Cleveland Cavaliers,New York Knicks,134,139,+112,-133
+03 Feb 2020,19:00,Charlotte Hornets,Orlando Magic,100,112,+170,-204
+03 Feb 2020,19:30,Miami Heat,Philadelphia 76ers,137,106,-141,+120
+03 Feb 2020,19:30,Brooklyn Nets,Phoenix Suns,119,97,-135,+114
+03 Feb 2020,19:30,Atlanta Hawks,Boston Celtics,115,123,+204,-244
+03 Feb 2020,20:00,Memphis Grizzlies,Detroit Pistons,96,82,-455,+355
+03 Feb 2020,22:00,Sacramento Kings,Minnesota Timberwolves,113,109,-112,-106
+03 Feb 2020,22:30,Los Angeles Clippers,San Antonio Spurs,108,105,-435,+345
+04 Feb 2020,19:30,New Orleans Pelicans,Milwaukee Bucks,108,120,+216,-263
+04 Feb 2020,20:00,Houston Rockets,Charlotte Hornets,125,110,-1000,+673
+04 Feb 2020,21:00,Denver Nuggets,Portland Trail Blazers,127,99,-182,+154
+04 Feb 2020,22:00,Los Angeles Lakers,San Antonio Spurs,129,102,-667,+470
+05 Feb 2020,19:00,Detroit Pistons,Phoenix Suns,116,108,+123,-145
+05 Feb 2020,19:30,Toronto Raptors,Indiana Pacers,119,118,-238,+196
+05 Feb 2020,19:30,Brooklyn Nets,Golden State Warriors,129,88,-278,+225
+05 Feb 2020,19:30,Boston Celtics,Orlando Magic,116,100,-233,+192
+05 Feb 2020,20:00,Oklahoma City Thunder,Cleveland Cavaliers,109,103,-1111,+698
+05 Feb 2020,20:00,Minnesota Timberwolves,Atlanta Hawks,120,127,-179,+154
+05 Feb 2020,20:30,Dallas Mavericks,Memphis Grizzlies,107,121,-179,+154
+05 Feb 2020,21:00,Utah Jazz,Denver Nuggets,95,98,-526,+393
+05 Feb 2020,22:00,Los Angeles Clippers,Miami Heat,128,111,-270,+222
+06 Feb 2020,19:30,New York Knicks,Orlando Magic,105,103,+140,-164
+06 Feb 2020,20:00,Milwaukee Bucks,Philadelphia 76ers,112,101,-455,+359
+06 Feb 2020,20:00,Chicago Bulls,New Orleans Pelicans,119,125,+199,-238
+06 Feb 2020,22:00,Portland Trail Blazers,San Antonio Spurs,125,117,-159,+134
+06 Feb 2020,22:30,Los Angeles Lakers,Houston Rockets,111,121,-250,+208
+07 Feb 2020,19:00,Washington Wizards,Dallas Mavericks,119,118,+129,-152
+07 Feb 2020,19:00,Philadelphia 76ers,Memphis Grizzlies,119,107,-256,+211
+07 Feb 2020,19:30,Boston Celtics,Atlanta Hawks,112,107,-909,+599
+07 Feb 2020,20:00,Oklahoma City Thunder,Detroit Pistons,108,101,-1000,+642
+07 Feb 2020,20:00,Indiana Pacers,Toronto Raptors,106,115,-114,-104
+07 Feb 2020,21:00,Phoenix Suns,Houston Rockets,127,91,+114,-137
+07 Feb 2020,22:00,Sacramento Kings,Miami Heat,105,97,-104,-114
+07 Feb 2020,22:30,Utah Jazz,Portland Trail Blazers,117,114,-625,+455
+08 Feb 2020,17:00,Orlando Magic,Milwaukee Bucks,95,111,+316,-400
+08 Feb 2020,19:00,Detroit Pistons,New York Knicks,92,95,+104,-125
+08 Feb 2020,19:00,Charlotte Hornets,Dallas Mavericks,100,116,+129,-152
+08 Feb 2020,19:30,Toronto Raptors,Brooklyn Nets,119,118,-263,+214
+08 Feb 2020,19:30,Indiana Pacers,New Orleans Pelicans,117,124,-204,+172
+08 Feb 2020,20:00,Minnesota Timberwolves,Los Angeles Clippers,142,115,+418,-556
+08 Feb 2020,20:30,Golden State Warriors,Los Angeles Lakers,120,125,+757,-1250
+08 Feb 2020,21:00,Phoenix Suns,Denver Nuggets,108,117,+139,-161
+08 Feb 2020,22:00,Sacramento Kings,San Antonio Spurs,122,102,+114,-135
+09 Feb 2020,15:30,Oklahoma City Thunder,Boston Celtics,111,112,+106,-125
+09 Feb 2020,18:00,Washington Wizards,Memphis Grizzlies,99,106,+124,-145
+09 Feb 2020,18:00,Philadelphia 76ers,Chicago Bulls,118,111,-625,+451
+09 Feb 2020,18:00,Atlanta Hawks,New York Knicks,140,135,-204,+171
+09 Feb 2020,19:00,Houston Rockets,Utah Jazz,113,114,-143,+121
+09 Feb 2020,19:30,Cleveland Cavaliers,Los Angeles Clippers,92,133,+196,-238
+09 Feb 2020,21:00,Portland Trail Blazers,Miami Heat,115,109,-204,+171
+10 Feb 2020,19:00,Orlando Magic,Atlanta Hawks,135,126,-400,+316
+10 Feb 2020,19:00,Indiana Pacers,Brooklyn Nets,105,106,-270,+220
+10 Feb 2020,19:00,Detroit Pistons,Charlotte Hornets,76,87,-161,+137
+10 Feb 2020,19:30,Toronto Raptors,Minnesota Timberwolves,137,126,-400,+309
+10 Feb 2020,20:00,Milwaukee Bucks,Sacramento Kings,123,111,-556,+420
+10 Feb 2020,20:30,Dallas Mavericks,Utah Jazz,119,123,-112,-105
+10 Feb 2020,21:00,Denver Nuggets,San Antonio Spurs,127,120,-278,+227
+10 Feb 2020,22:30,Los Angeles Lakers,Phoenix Suns,125,100,-1000,+665
+10 Feb 2020,22:30,Golden State Warriors,Miami Heat,101,113,+221,-270
+11 Feb 2020,19:00,Washington Wizards,Chicago Bulls,126,114,-161,+138
+11 Feb 2020,19:00,Philadelphia 76ers,Los Angeles Clippers,110,103,-108,-110
+11 Feb 2020,20:00,Oklahoma City Thunder,San Antonio Spurs,106,114,-357,+279
+11 Feb 2020,20:00,New Orleans Pelicans,Portland Trail Blazers,138,117,-152,+129
+11 Feb 2020,21:30,Houston Rockets,Boston Celtics,116,105,-137,+117
+12 Feb 2020,19:00,Orlando Magic,Detroit Pistons,116,112,-270,+221
+12 Feb 2020,19:00,Cleveland Cavaliers,Atlanta Hawks,127,105,+127,-149
+12 Feb 2020,19:30,New York Knicks,Washington Wizards,96,114,-149,+127
+12 Feb 2020,19:30,Indiana Pacers,Milwaukee Bucks,118,111,-125,+104
+12 Feb 2020,19:30,Brooklyn Nets,Toronto Raptors,101,91,+146,-172
+12 Feb 2020,20:00,Minnesota Timberwolves,Charlotte Hornets,108,115,-250,+204
+12 Feb 2020,20:00,Memphis Grizzlies,Portland Trail Blazers,111,104,-164,+141
+12 Feb 2020,20:30,Dallas Mavericks,Sacramento Kings,130,111,-370,+297
+12 Feb 2020,21:00,Utah Jazz,Miami Heat,116,101,-200,+170
+12 Feb 2020,21:00,Phoenix Suns,Golden State Warriors,112,106,-278,+227
+12 Feb 2020,22:00,Denver Nuggets,Los Angeles Lakers,116,120,+129,-152
+13 Feb 2020,20:00,New Orleans Pelicans,Oklahoma City Thunder,118,123,-161,+139
+13 Feb 2020,20:00,Boston Celtics,Los Angeles Clippers,141,133,-118,-101
+20 Feb 2020,19:00,Detroit Pistons,Milwaukee Bucks,106,126,+687,-1111
+20 Feb 2020,19:30,Atlanta Hawks,Miami Heat,129,124,+208,-250
+20 Feb 2020,20:00,Philadelphia 76ers,Brooklyn Nets,112,104,-286,+233
+20 Feb 2020,20:00,Chicago Bulls,Charlotte Hornets,93,103,-175,+150
+20 Feb 2020,22:00,Sacramento Kings,Memphis Grizzlies,129,125,-105,-112
+20 Feb 2020,22:30,Golden State Warriors,Houston Rockets,105,135,+386,-500
+21 Feb 2020,19:00,Washington Wizards,Cleveland Cavaliers,108,113,-238,+198
+21 Feb 2020,19:00,Orlando Magic,Dallas Mavericks,106,122,+154,-179
+21 Feb 2020,19:30,Toronto Raptors,Phoenix Suns,118,101,-357,+288
+21 Feb 2020,19:30,New York Knicks,Indiana Pacers,98,106,+231,-286
+21 Feb 2020,20:00,Oklahoma City Thunder,Denver Nuggets,113,101,-122,+102
+21 Feb 2020,20:00,Minnesota Timberwolves,Boston Celtics,117,127,+305,-400
+21 Feb 2020,21:00,Utah Jazz,San Antonio Spurs,104,113,-303,+242
+21 Feb 2020,22:30,Portland Trail Blazers,New Orleans Pelicans,115,128,+185,-222
+21 Feb 2020,22:30,Los Angeles Lakers,Memphis Grizzlies,117,105,-588,+443
+22 Feb 2020,15:30,Los Angeles Clippers,Sacramento Kings,103,112,-435,+333
+22 Feb 2020,19:00,Charlotte Hornets,Brooklyn Nets,86,115,+154,-182
+22 Feb 2020,19:30,Atlanta Hawks,Dallas Mavericks,111,107,-128,+108
+22 Feb 2020,20:00,Miami Heat,Cleveland Cavaliers,124,105,-1111,+688
+22 Feb 2020,20:00,Chicago Bulls,Phoenix Suns,104,112,+131,-154
+22 Feb 2020,20:30,Milwaukee Bucks,Philadelphia 76ers,119,98,-476,+361
+22 Feb 2020,21:00,Utah Jazz,Houston Rockets,110,120,-123,+104
+23 Feb 2020,15:30,Los Angeles Lakers,Boston Celtics,114,112,-323,+258
+23 Feb 2020,18:00,Toronto Raptors,Indiana Pacers,127,81,-204,+172
+23 Feb 2020,18:00,Denver Nuggets,Minnesota Timberwolves,128,116,-1429,+844
+23 Feb 2020,19:00,Oklahoma City Thunder,San Antonio Spurs,131,103,-200,+168
+23 Feb 2020,19:00,Chicago Bulls,Washington Wizards,126,117,+139,-161
+23 Feb 2020,20:30,Golden State Warriors,New Orleans Pelicans,101,115,+421,-556
+23 Feb 2020,21:00,Portland Trail Blazers,Detroit Pistons,107,104,-222,+185
+24 Feb 2020,19:00,Washington Wizards,Milwaukee Bucks,134,137,+670,-1111
+24 Feb 2020,19:00,Philadelphia 76ers,Atlanta Hawks,129,112,-400,+315
+24 Feb 2020,19:00,Cleveland Cavaliers,Miami Heat,125,119,+217,-263
+24 Feb 2020,19:30,Brooklyn Nets,Orlando Magic,113,115,-164,+140
+24 Feb 2020,20:00,Houston Rockets,New York Knicks,123,112,-909,+632
+24 Feb 2020,20:30,Dallas Mavericks,Minnesota Timberwolves,139,123,-1111,+725
+24 Feb 2020,21:00,Utah Jazz,Phoenix Suns,111,131,-385,+301
+24 Feb 2020,22:30,Los Angeles Clippers,Memphis Grizzlies,124,97,-667,+478
+25 Feb 2020,19:00,Indiana Pacers,Charlotte Hornets,119,80,-769,+521
+25 Feb 2020,19:30,Toronto Raptors,Milwaukee Bucks,97,108,-115,-104
+25 Feb 2020,20:00,Chicago Bulls,Oklahoma City Thunder,122,124,+252,-312
+25 Feb 2020,21:00,Denver Nuggets,Detroit Pistons,115,98,-1111,+708
+25 Feb 2020,22:00,Portland Trail Blazers,Boston Celtics,106,118,+236,-294
+25 Feb 2020,22:00,Los Angeles Lakers,New Orleans Pelicans,118,109,-323,+260
+25 Feb 2020,22:30,Golden State Warriors,Sacramento Kings,94,112,+244,-303
+26 Feb 2020,19:00,Washington Wizards,Brooklyn Nets,110,106,+104,-125
+26 Feb 2020,19:00,Cleveland Cavaliers,Philadelphia 76ers,108,94,+263,-333
+26 Feb 2020,19:00,Charlotte Hornets,New York Knicks,107,101,+104,-123
+26 Feb 2020,19:30,Miami Heat,Minnesota Timberwolves,126,129,-833,+546
+26 Feb 2020,19:30,Atlanta Hawks,Orlando Magic,120,130,+117,-139
+26 Feb 2020,20:00,Houston Rockets,Memphis Grizzlies,140,112,-909,+592
+26 Feb 2020,20:30,San Antonio Spurs,Dallas Mavericks,103,109,+150,-179
+26 Feb 2020,21:00,Phoenix Suns,Los Angeles Clippers,92,102,+269,-333
+26 Feb 2020,22:30,Utah Jazz,Boston Celtics,103,114,-208,+175
+27 Feb 2020,19:00,Philadelphia 76ers,New York Knicks,115,106,-333,+266
+27 Feb 2020,20:00,Oklahoma City Thunder,Sacramento Kings,112,108,-323,+257
+27 Feb 2020,20:00,Indiana Pacers,Portland Trail Blazers,106,100,-556,+409
+27 Feb 2020,22:30,Golden State Warriors,Los Angeles Lakers,86,116,+458,-625
+28 Feb 2020,19:00,Orlando Magic,Minnesota Timberwolves,136,125,-345,+274
+28 Feb 2020,19:30,Toronto Raptors,Charlotte Hornets,96,99,-1250,+775
+28 Feb 2020,19:30,Atlanta Hawks,Brooklyn Nets,141,118,+117,-139
+28 Feb 2020,20:00,New Orleans Pelicans,Cleveland Cavaliers,116,104,-1000,+652
+28 Feb 2020,20:00,Milwaukee Bucks,Oklahoma City Thunder,133,86,-588,+441
+28 Feb 2020,20:00,Miami Heat,Dallas Mavericks,126,118,-137,+117
+28 Feb 2020,20:00,Memphis Grizzlies,Sacramento Kings,101,104,-132,+112
+28 Feb 2020,21:00,Utah Jazz,Washington Wizards,129,119,-556,+421
+28 Feb 2020,21:00,Phoenix Suns,Detroit Pistons,111,113,-400,+321
+28 Feb 2020,22:30,Los Angeles Clippers,Denver Nuggets,132,103,-278,+229
+29 Feb 2020,17:00,New York Knicks,Chicago Bulls,125,115,-141,+118
+29 Feb 2020,19:30,Miami Heat,Brooklyn Nets,116,113,-312,+252
+29 Feb 2020,19:30,Atlanta Hawks,Portland Trail Blazers,129,117,-141,+119
+29 Feb 2020,20:00,Memphis Grizzlies,Los Angeles Lakers,105,88,+484,-667
+29 Feb 2020,20:00,Cleveland Cavaliers,Indiana Pacers,104,113,+343,-435
+29 Feb 2020,20:30,San Antonio Spurs,Orlando Magic,114,113,-169,+144
+29 Feb 2020,20:30,Boston Celtics,Houston Rockets,110,111,+100,-119
+29 Feb 2020,21:00,Phoenix Suns,Golden State Warriors,99,115,-526,+398
+01 Mar 2020,13:00,Charlotte Hornets,Milwaukee Bucks,85,93,+641,-1000
+01 Mar 2020,15:30,Minnesota Timberwolves,Dallas Mavericks,91,111,+189,-227
+01 Mar 2020,15:30,Los Angeles Clippers,Philadelphia 76ers,136,130,-1250,+774
+01 Mar 2020,18:00,Sacramento Kings,Detroit Pistons,106,100,-476,+365
+01 Mar 2020,18:00,Denver Nuggets,Toronto Raptors,133,118,-143,+122
+01 Mar 2020,20:00,New Orleans Pelicans,Los Angeles Lakers,114,122,-125,+104
+01 Mar 2020,20:30,Golden State Warriors,Washington Wizards,110,124,+248,-312
+02 Mar 2020,19:00,Orlando Magic,Portland Trail Blazers,107,130,-263,+217
+02 Mar 2020,19:00,New York Knicks,Houston Rockets,125,123,+425,-556
+02 Mar 2020,19:00,Cleveland Cavaliers,Utah Jazz,113,126,+440,-588
+02 Mar 2020,19:30,Miami Heat,Milwaukee Bucks,105,89,+170,-204
+02 Mar 2020,19:30,Atlanta Hawks,Memphis Grizzlies,88,127,-132,+112
+02 Mar 2020,20:00,Chicago Bulls,Dallas Mavericks,109,107,+235,-286
+02 Mar 2020,20:30,San Antonio Spurs,Indiana Pacers,111,116,+112,-132
+03 Mar 2020,19:00,Charlotte Hornets,San Antonio Spurs,103,104,+144,-167
+03 Mar 2020,19:30,Boston Celtics,Brooklyn Nets,120,129,-270,+221
+03 Mar 2020,20:00,Oklahoma City Thunder,Los Angeles Clippers,94,109,+165,-196
+03 Mar 2020,20:00,New Orleans Pelicans,Minnesota Timberwolves,134,139,-667,+473
+03 Mar 2020,21:00,Phoenix Suns,Toronto Raptors,114,123,+139,-164
+03 Mar 2020,21:00,Denver Nuggets,Golden State Warriors,100,116,-2000,+1073
+03 Mar 2020,22:00,Sacramento Kings,Washington Wizards,133,126,-244,+202
+03 Mar 2020,22:00,Los Angeles Lakers,Philadelphia 76ers,120,107,-909,+624
+04 Mar 2020,19:00,Milwaukee Bucks,Indiana Pacers,119,100,-714,+503
+04 Mar 2020,19:00,Detroit Pistons,Oklahoma City Thunder,107,114,+305,-385
+04 Mar 2020,19:00,Cleveland Cavaliers,Boston Celtics,106,112,+148,-172
+04 Mar 2020,19:30,New York Knicks,Utah Jazz,104,112,+309,-400
+04 Mar 2020,19:30,Miami Heat,Orlando Magic,116,113,-270,+222
+04 Mar 2020,19:30,Brooklyn Nets,Memphis Grizzlies,79,118,-120,+102
+04 Mar 2020,20:00,Minnesota Timberwolves,Chicago Bulls,115,108,-123,+104
+04 Mar 2020,21:30,Dallas Mavericks,New Orleans Pelicans,127,123,-250,+204
+04 Mar 2020,22:00,Portland Trail Blazers,Washington Wizards,125,104,-345,+272
+05 Mar 2020,19:00,Charlotte Hornets,Denver Nuggets,112,114,+365,-476
+05 Mar 2020,20:00,Houston Rockets,Los Angeles Clippers,105,120,-104,-114
+05 Mar 2020,22:00,Sacramento Kings,Philadelphia 76ers,108,125,-217,+181
+05 Mar 2020,22:30,Golden State Warriors,Toronto Raptors,113,121,+338,-435
+06 Mar 2020,19:00,Washington Wizards,Atlanta Hawks,118,112,-217,+179
+06 Mar 2020,19:30,New York Knicks,Oklahoma City Thunder,103,126,+193,-233
+06 Mar 2020,19:30,Brooklyn Nets,San Antonio Spurs,139,120,-147,+124
+06 Mar 2020,20:00,New Orleans Pelicans,Miami Heat,110,104,-119,+100
+06 Mar 2020,20:00,Minnesota Timberwolves,Orlando Magic,118,132,+120,-143
+06 Mar 2020,20:00,Chicago Bulls,Indiana Pacers,102,108,+118,-139
+06 Mar 2020,20:00,Boston Celtics,Utah Jazz,94,99,-116,-101
+06 Mar 2020,20:30,Dallas Mavericks,Memphis Grizzlies,121,96,-303,+246
+06 Mar 2020,21:00,Phoenix Suns,Portland Trail Blazers,127,117,+141,-164
+06 Mar 2020,22:30,Los Angeles Lakers,Milwaukee Bucks,113,103,-120,+100
+07 Mar 2020,17:00,Charlotte Hornets,Houston Rockets,108,99,+278,-345
+07 Mar 2020,19:00,Detroit Pistons,Utah Jazz,105,111,+299,-385
+07 Mar 2020,19:30,Cleveland Cavaliers,Denver Nuggets,104,102,+376,-500
+07 Mar 2020,20:00,Memphis Grizzlies,Atlanta Hawks,118,101,-250,+206
+07 Mar 2020,20:30,Golden State Warriors,Philadelphia 76ers,118,114,+142,-167
+07 Mar 2020,22:00,Portland Trail Blazers,Sacramento Kings,111,123,-133,+112
+08 Mar 2020,15:00,Brooklyn Nets,Chicago Bulls,110,107,-250,+204
+08 Mar 2020,15:30,Minnesota Timberwolves,New Orleans Pelicans,107,120,+240,-294
+08 Mar 2020,15:30,Los Angeles Clippers,Los Angeles Lakers,103,112,-139,+117
+08 Mar 2020,18:00,Phoenix Suns,Milwaukee Bucks,140,131,+215,-263
+08 Mar 2020,18:00,Boston Celtics,Oklahoma City Thunder,104,105,-250,+208
+08 Mar 2020,19:00,Washington Wizards,Miami Heat,89,100,+181,-217
+08 Mar 2020,19:00,Houston Rockets,Orlando Magic,106,126,-345,+276
+08 Mar 2020,19:00,Dallas Mavericks,Indiana Pacers,109,112,-256,+210
+08 Mar 2020,19:30,New York Knicks,Detroit Pistons,96,84,-233,+192
+08 Mar 2020,19:30,Cleveland Cavaliers,San Antonio Spurs,132,129,+160,-189
+08 Mar 2020,21:00,Sacramento Kings,Toronto Raptors,113,118,+167,-196
+09 Mar 2020,19:30,Atlanta Hawks,Charlotte Hornets,143,138,-200,+169
+09 Mar 2020,21:00,Utah Jazz,Toronto Raptors,92,101,-227,+189
+09 Mar 2020,21:00,Denver Nuggets,Milwaukee Bucks,109,95,-270,+221
+10 Mar 2020,19:00,Washington Wizards,New York Knicks,122,115,-208,+173
+10 Mar 2020,19:00,Indiana Pacers,Boston Celtics,111,114,+127,-149
+10 Mar 2020,20:00,San Antonio Spurs,Dallas Mavericks,119,109,+146,-169
+10 Mar 2020,20:00,Memphis Grizzlies,Orlando Magic,115,120,-133,+112
+10 Mar 2020,20:00,Houston Rockets,Minnesota Timberwolves,117,111,-1000,+638
+10 Mar 2020,20:00,Chicago Bulls,Cleveland Cavaliers,108,103,-179,+150
+10 Mar 2020,22:00,Portland Trail Blazers,Phoenix Suns,121,105,-244,+204
+10 Mar 2020,22:30,Los Angeles Lakers,Brooklyn Nets,102,104,-833,+577
+10 Mar 2020,22:30,Golden State Warriors,Los Angeles Clippers,107,131,+642,-1000
+11 Mar 2020,19:00,Philadelphia 76ers,Detroit Pistons,124,106,-833,+576
+11 Mar 2020,19:30,Miami Heat,Charlotte Hornets,98,109,-714,+498
+11 Mar 2020,19:30,Atlanta Hawks,New York Knicks,131,136,-208,+174
+11 Mar 2020,20:00,Dallas Mavericks,Denver Nuggets,113,97,+121,-143
+30 Jul 2020,18:30,New Orleans Pelicans,Utah Jazz,104,106,-141,+119
+30 Jul 2020,21:00,Los Angeles Lakers,Los Angeles Clippers,103,101,-175,+150
+31 Jul 2020,14:30,Brooklyn Nets,Orlando Magic,118,128,+269,-333
+31 Jul 2020,16:00,Washington Wizards,Phoenix Suns,112,125,+250,-312
+31 Jul 2020,16:00,Portland Trail Blazers,Memphis Grizzlies,140,135,-164,+140
+31 Jul 2020,18:30,Milwaukee Bucks,Boston Celtics,119,112,-169,+145
+31 Jul 2020,20:00,San Antonio Spurs,Sacramento Kings,129,120,+139,-164
+31 Jul 2020,21:00,Dallas Mavericks,Houston Rockets,149,153,+102,-120
+01 Aug 2020,13:00,Denver Nuggets,Miami Heat,105,125,+148,-175
+01 Aug 2020,15:30,Oklahoma City Thunder,Utah Jazz,110,94,-111,-108
+01 Aug 2020,18:00,Los Angeles Clippers,New Orleans Pelicans,126,103,-217,+179
+01 Aug 2020,19:00,Indiana Pacers,Philadelphia 76ers,127,121,+212,-256
+01 Aug 2020,20:30,Toronto Raptors,Los Angeles Lakers,107,92,+119,-141
+02 Aug 2020,14:00,Brooklyn Nets,Washington Wizards,118,110,-172,+146
+02 Aug 2020,15:30,Boston Celtics,Portland Trail Blazers,128,124,-175,+150
+02 Aug 2020,16:00,Memphis Grizzlies,San Antonio Spurs,106,108,-145,+125
+02 Aug 2020,18:00,Orlando Magic,Sacramento Kings,132,116,-128,+108
+02 Aug 2020,20:30,Houston Rockets,Milwaukee Bucks,120,116,+170,-200
+02 Aug 2020,21:00,Phoenix Suns,Dallas Mavericks,117,115,+204,-250
+03 Aug 2020,13:30,Miami Heat,Toronto Raptors,103,107,+124,-147
+03 Aug 2020,16:00,Washington Wizards,Indiana Pacers,100,111,+324,-417
+03 Aug 2020,16:00,Oklahoma City Thunder,Denver Nuggets,113,121,-227,+190
+03 Aug 2020,18:30,New Orleans Pelicans,Memphis Grizzlies,109,99,-200,+169
+03 Aug 2020,20:00,Philadelphia 76ers,San Antonio Spurs,132,130,-323,+260
+03 Aug 2020,21:00,Utah Jazz,Los Angeles Lakers,108,116,+206,-250
+04 Aug 2020,13:30,Milwaukee Bucks,Brooklyn Nets,116,119,-5000,+1505
+04 Aug 2020,14:30,Sacramento Kings,Dallas Mavericks,110,114,+191,-227
+04 Aug 2020,16:00,Los Angeles Clippers,Phoenix Suns,115,117,-400,+313
+04 Aug 2020,18:00,Indiana Pacers,Orlando Magic,120,109,-101,-118
+04 Aug 2020,18:30,Miami Heat,Boston Celtics,112,106,+164,-192
+04 Aug 2020,21:00,Portland Trail Blazers,Houston Rockets,110,102,+135,-159
+05 Aug 2020,14:30,Utah Jazz,Memphis Grizzlies,124,115,-208,+175
+05 Aug 2020,16:00,Washington Wizards,Philadelphia 76ers,98,107,+434,-588
+05 Aug 2020,16:00,San Antonio Spurs,Denver Nuggets,126,132,+108,-130
+05 Aug 2020,18:30,Los Angeles Lakers,Oklahoma City Thunder,86,105,-217,+181
+05 Aug 2020,20:00,Orlando Magic,Toronto Raptors,99,109,+259,-323
+05 Aug 2020,21:00,Boston Celtics,Brooklyn Nets,149,115,-417,+332
+06 Aug 2020,13:30,Sacramento Kings,New Orleans Pelicans,140,125,+154,-182
+06 Aug 2020,16:00,Phoenix Suns,Indiana Pacers,114,99,+100,-119
+06 Aug 2020,16:00,Milwaukee Bucks,Miami Heat,130,116,-435,+337
+06 Aug 2020,18:30,Dallas Mavericks,Los Angeles Clippers,111,126,+150,-175
+06 Aug 2020,20:00,Denver Nuggets,Portland Trail Blazers,115,125,+163,-192
+06 Aug 2020,21:00,Houston Rockets,Los Angeles Lakers,113,97,-154,+131
+07 Aug 2020,13:00,San Antonio Spurs,Utah Jazz,119,111,-400,+322
+07 Aug 2020,16:00,Memphis Grizzlies,Oklahoma City Thunder,121,92,+134,-156
+07 Aug 2020,17:00,Brooklyn Nets,Sacramento Kings,119,106,+175,-213
+07 Aug 2020,18:30,Philadelphia 76ers,Orlando Magic,108,101,-208,+173
+07 Aug 2020,20:00,New Orleans Pelicans,Washington Wizards,118,107,-357,+286
+07 Aug 2020,21:00,Toronto Raptors,Boston Celtics,100,122,-120,+102
+08 Aug 2020,13:00,Portland Trail Blazers,Los Angeles Clippers,117,122,-182,+154
+08 Aug 2020,15:30,Denver Nuggets,Utah Jazz,134,132,-120,+102
+08 Aug 2020,18:00,Indiana Pacers,Los Angeles Lakers,116,111,+184,-217
+08 Aug 2020,19:30,Miami Heat,Phoenix Suns,112,119,+142,-167
+08 Aug 2020,20:30,Dallas Mavericks,Milwaukee Bucks,136,132,+194,-233
+09 Aug 2020,12:30,Oklahoma City Thunder,Washington Wizards,121,103,-455,+350
+09 Aug 2020,14:00,Toronto Raptors,Memphis Grizzlies,108,99,-294,+241
+09 Aug 2020,15:00,New Orleans Pelicans,San Antonio Spurs,113,122,-169,+144
+09 Aug 2020,17:00,Boston Celtics,Orlando Magic,122,119,-400,+309
+09 Aug 2020,18:30,Portland Trail Blazers,Philadelphia 76ers,124,121,-139,+119
+09 Aug 2020,20:00,Sacramento Kings,Houston Rockets,112,129,+163,-192
+09 Aug 2020,21:00,Los Angeles Clippers,Brooklyn Nets,120,129,-417,+329
+10 Aug 2020,14:30,Phoenix Suns,Oklahoma City Thunder,128,101,-370,+288
+10 Aug 2020,15:00,Utah Jazz,Dallas Mavericks,114,122,-227,+186
+10 Aug 2020,18:30,Milwaukee Bucks,Toronto Raptors,106,114,-208,+175
+10 Aug 2020,20:00,Miami Heat,Indiana Pacers,114,92,-175,+149
+10 Aug 2020,21:00,Los Angeles Lakers,Denver Nuggets,124,121,-222,+183
+11 Aug 2020,13:00,Orlando Magic,Brooklyn Nets,96,108,-196,+165
+11 Aug 2020,14:00,San Antonio Spurs,Houston Rockets,123,105,-172,+148
+11 Aug 2020,16:30,Philadelphia 76ers,Phoenix Suns,117,130,+383,-500
+11 Aug 2020,17:00,Memphis Grizzlies,Boston Celtics,107,122,+164,-192
+11 Aug 2020,18:30,Dallas Mavericks,Portland Trail Blazers,131,134,+114,-135
+11 Aug 2020,21:00,Sacramento Kings,New Orleans Pelicans,112,106,-152,+127
+11 Aug 2020,21:00,Washington Wizards,Milwaukee Bucks,113,126,+315,-400
+12 Aug 2020,16:00,Houston Rockets,Indiana Pacers,104,108,-278,+229
+12 Aug 2020,18:30,Philadelphia 76ers,Toronto Raptors,121,125,+197,-238
+12 Aug 2020,20:00,Oklahoma City Thunder,Miami Heat,116,115,+141,-167
+12 Aug 2020,21:00,Denver Nuggets,Los Angeles Clippers,111,124,+181,-217
+13 Aug 2020,12:00,Boston Celtics,Washington Wizards,90,96,+106,-127
+13 Aug 2020,13:30,Los Angeles Lakers,Sacramento Kings,122,136,-164,+141
+13 Aug 2020,16:00,Phoenix Suns,Dallas Mavericks,128,102,-370,+296
+13 Aug 2020,16:00,Memphis Grizzlies,Milwaukee Bucks,119,106,-164,+140
+13 Aug 2020,18:40,Utah Jazz,San Antonio Spurs,118,112,+234,-286
+13 Aug 2020,21:00,Orlando Magic,New Orleans Pelicans,133,127,-169,+144
+13 Aug 2020,21:00,Brooklyn Nets,Portland Trail Blazers,133,134,+434,-588
+14 Aug 2020,13:30,Toronto Raptors,Denver Nuggets,117,109,+117,-139
+14 Aug 2020,16:00,Indiana Pacers,Miami Heat,109,92,-101,-116
+14 Aug 2020,18:30,Los Angeles Clippers,Oklahoma City Thunder,107,103,-204,+177
+14 Aug 2020,21:00,Houston Rockets,Philadelphia 76ers,96,134,-139,+118
