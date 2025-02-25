@@ -114,30 +114,67 @@ def test_profit(
     wealth = float(starting_wealth)
     total_stake = 0.0
     
+    # Convert date and time columns to datetime
+    df_odds['datetime'] = pd.to_datetime(df_odds['Date'] + ' ' + df_odds['Time'])
+    
+    # Group games by date to process concurrent games together
+    current_games = []
+    current_time = None
+    current_bets = []
+    
     for i in range(len(y_test)):
         index = int(i + start_of_test)
+        game_time = df_odds.loc[index, 'datetime']
+        
+        # If this is a new time or more than 3 hours from current time
+        if current_time is None or (game_time - current_time).total_seconds() > 10800:
+            # Process any pending bets from previous time slot
+            for bet in current_bets:
+                if bet['result'] == 'win':
+                    if bet['odds'] > 0:
+                        wealth += float((bet['odds'] / 100) * bet['amount'])
+                    else:
+                        wealth += float((100 / abs(bet['odds'])) * bet['amount'])
+                    bets_won += 1
+                else:
+                    wealth -= bet['amount']
+                    bets_lost += 1
+            
+            # Reset for new time slot
+            current_time = game_time
+            current_bets = []
+            
         is_home_team = bool(y_pred[i] == 1)
         team, win_odds, loss_odds = get_team_info(df_odds, index, is_home_team)
         
+        # Calculate bet using current wealth instead of starting_wealth
         frac_wealth = calculate_frac_wealth(win_odds, loss_odds, y_proba, i)
         bet_amount = float(frac_wealth * wealth)
         total_stake += bet_amount
         
-        if y_pred[i] == y_test[i] and frac_wealth > 0:
-            if win_odds > 0:
-                wealth += float((win_odds / 100) * bet_amount)
-            else:
-                wealth += float((100 / abs(win_odds)) * bet_amount)
-            bets_won += 1
-        elif frac_wealth > 0:
-            wealth -= bet_amount
-            bets_lost += 1
-        
-        if frac_wealth == 0:
+        if frac_wealth > 0:
+            current_bets.append({
+                'amount': bet_amount,
+                'odds': win_odds,
+                'result': 'win' if y_pred[i] == y_test[i] else 'loss'
+            })
+        else:
             if y_pred[i] == y_test[i]:
                 no_bet_win += 1
             else:
                 no_bet_loss += 1
+    
+    # Process any remaining bets
+    for bet in current_bets:
+        if bet['result'] == 'win':
+            if bet['odds'] > 0:
+                wealth += float((bet['odds'] / 100) * bet['amount'])
+            else:
+                wealth += float((100 / abs(bet['odds'])) * bet['amount'])
+            bets_won += 1
+        else:
+            wealth -= bet['amount']
+            bets_lost += 1
     
     print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nWouldve Won: {no_bet_win}\nWouldve Lost: {no_bet_loss}\nTotal Bets: {bets_won + bets_lost}\n')
     print(f'Good Call Ratio: {(bets_won+no_bet_loss)/(bets_won+bets_lost+no_bet_loss+no_bet_win)}')
@@ -163,7 +200,33 @@ def calculate_profit(
         Final wealth after all bets
     """
     wealth = float(starting_wealth)
+    
+    # Convert date and time columns to datetime if they're not already
+    if 'datetime' not in df_odds.columns:
+        df_odds['datetime'] = pd.to_datetime(df_odds['Date'] + ' ' + df_odds['Time'])
+    
+    current_time = None
+    current_bets = []
+    
     for i in range(len(y_true)):
+        game_time = df_odds.loc[i, 'datetime']
+        
+        # If this is a new time or more than 3 hours from current time
+        if current_time is None or (game_time - current_time).total_seconds() > 10800:
+            # Process any pending bets from previous time slot
+            for bet in current_bets:
+                if bet['result'] == 'win':
+                    if bet['odds'] > 0:
+                        wealth += float((bet['odds'] / 100.0) * bet['amount'])
+                    else:
+                        wealth += float((100.0 / abs(bet['odds'])) * bet['amount'])
+                else:
+                    wealth -= bet['amount']
+            
+            # Reset for new time slot
+            current_time = game_time
+            current_bets = []
+        
         odds_val = df_odds.loc[i, 'Home Odds'] if y_true[i] == 1 else df_odds.loc[i, 'Away Odds']
         odds = float(odds_val)
         
@@ -173,15 +236,24 @@ def calculate_profit(
             abs_odds = abs(float(odds))
             frac_wealth = float(0.5 - (0.5 / (100.0/abs_odds)))
         
+        # Use current wealth instead of starting_wealth
         bet_amount = float(wealth * frac_wealth)
         
-        if y_pred[i] == y_true[i]:
-            if odds > 0:
-                wealth += float((odds / 100.0) * bet_amount)
+        current_bets.append({
+            'amount': bet_amount,
+            'odds': odds,
+            'result': 'win' if y_pred[i] == y_true[i] else 'loss'
+        })
+    
+    # Process any remaining bets
+    for bet in current_bets:
+        if bet['result'] == 'win':
+            if bet['odds'] > 0:
+                wealth += float((bet['odds'] / 100.0) * bet['amount'])
             else:
-                wealth += float((100.0 / abs(float(odds))) * bet_amount)
+                wealth += float((100.0 / abs(bet['odds'])) * bet['amount'])
         else:
-            wealth -= bet_amount
+            wealth -= bet['amount']
     
     return float(wealth)
 

@@ -66,8 +66,13 @@ def prepare_x_y(team_indices: Dict[str, int], df: pd.DataFrame, W: np.ndarray, H
     for _, row in df.iterrows():
         home_idx = team_indices[row['Home Team']]
         away_idx = team_indices[row['Away Team']]
+        # Handle missing or invalid odds values
         home_odds = row['Home Odds']
         away_odds = row['Away Odds']
+        
+        # Convert '-' to a default value (0 in this case)
+        home_odds = 0 if home_odds == '-' else float(home_odds)
+        away_odds = 0 if away_odds == '-' else float(away_odds)
 
         home_vector = np.append(W[home_idx], home_odds)
         away_vector = np.append(H[away_idx], away_odds)
