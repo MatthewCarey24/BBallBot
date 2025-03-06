@@ -127,7 +127,7 @@ def objective(
     
     # Define hyperparameters to optimize
     params = {
-        'nmf_n_components': trial.suggest_int('nmf_n_components', 5, 6),
+        'nmf_n_components': trial.suggest_int('nmf_n_components', 5, 7),
         'alpha_H': trial.suggest_float('alpha_H', 0.0001, 0.1001, step=0.005),
         'alpha_W': trial.suggest_float('alpha_W', 0.0001, 0.1001, step=0.005),
         'first_layer_neurons': trial.suggest_int('first_layer_neurons', 1, 20),
@@ -135,7 +135,7 @@ def objective(
         'solver': trial.suggest_categorical('solver', ['sgd', 'adam']),
         'alpha': trial.suggest_float('alpha', 1e1, 5e1, log=True),
         'learning_rate': trial.suggest_categorical('learning_rate', ['constant', 'adaptive']),
-        'max_iter': trial.suggest_int('max_iter', 2000, 2001),
+        'max_iter': trial.suggest_int('max_iter', 20000, 20001),
         'learning_rate_init': trial.suggest_float('learning_rate_init', 0.0001, 0.1001, log=True),
     }
     
@@ -171,7 +171,8 @@ def train_and_evaluate(
     year: int,
     frac_test: float,
     n_trials: int,
-    starting_wealth: float
+    starting_wealth: float,
+    use_saved_params: bool = False
 ) -> Tuple[float, float, float]:
     # Set random seeds for reproducibility
     set_random_seeds()
@@ -184,19 +185,50 @@ def train_and_evaluate(
         frac_test: Fraction of data to use for testing
         n_trials: Number of Optuna trials
         starting_wealth: Initial wealth for profit calculation
+        use_saved_params: If True, use previously saved parameters instead of optimizing
         
     Returns:
         Tuple of (accuracy, profit, profit_percentage)
     """
-    # Create and run Optuna study with fixed random seed
-    sampler = optuna.samplers.TPESampler(seed=RANDOM_STATE)
-    study = optuna.create_study(direction='maximize', sampler=sampler)
-    study.optimize(
-        lambda trial: objective(trial, df_path, frac_test),
-        n_trials=n_trials
-    )
+    params_path = PARAMS_FILENAME.format(year=year)
     
-    best_trial = study.best_trial
+    if use_saved_params and os.path.exists(params_path):
+        # Load previously saved parameters
+        with open(params_path, 'rb') as f:
+            best_params = pickle.load(f)
+        print(f"Using saved parameters from {params_path}")
+        
+        # Create features with saved parameters
+        df = pd.read_csv(df_path)
+        X, y = create_features(
+            df,
+            frac_test,
+            best_params['nmf_n_components'],
+            best_params['alpha_H'],
+            best_params['alpha_W']
+        )
+        
+        # Create a dummy trial to store parameters
+        study = optuna.create_study(direction='maximize')
+        trial = optuna.trial.create_trial(
+            params=best_params,
+            distributions={},
+            value=0.0  # Placeholder value
+        )
+        best_trial = trial
+        
+        # Save trial data
+        save_trial_data(0, X, y)
+    else:
+        # Create and run Optuna study with fixed random seed for reproducibility
+        sampler = optuna.samplers.TPESampler(seed=RANDOM_STATE)  # Use the same random state
+        study = optuna.create_study(direction='maximize', sampler=sampler)
+        study.optimize(
+            lambda trial: objective(trial, df_path, frac_test),
+            n_trials=n_trials
+        )
+        best_trial = study.best_trial
+    
     print(f"Best trial: Value={best_trial.value}, Params={best_trial.params}")
     
     # Get full dataset for final model

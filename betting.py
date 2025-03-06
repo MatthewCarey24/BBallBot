@@ -42,7 +42,7 @@ def get_team_info(df_odds: pd.DataFrame, index: int, is_home_team: bool) -> Tupl
     
     return team, win_odds, loss_odds
 
-def print_bet_info(team: str, odds: float, bet_amount: float, result: str) -> None:
+def print_bet_info(team: str, odds: float, bet_amount: float, result: str, curr_wealth: int) -> None:
     """
     Print information about a bet and its outcome.
     
@@ -51,7 +51,9 @@ def print_bet_info(team: str, odds: float, bet_amount: float, result: str) -> No
         odds: Moneyline odds for the bet
         bet_amount: Amount wagered
         result: "win" or "loss"
+        curr_wealth: How much money you have
     """
+    print(f'Current wealth: {curr_wealth}')
     print(f'Betting ${bet_amount:.2f} on {team} with odds: {odds}')
     if result == "win":
         if odds > 0:
@@ -69,10 +71,10 @@ def calculate_frac_wealth(win_odds: float, loss_odds: float, y_proba: np.ndarray
         win_odds: Moneyline odds for the team being bet on
         loss_odds: Moneyline odds for the opposing team
         y_proba: Model's predicted probabilities
-        index: Index of the current game
+        index: Index of the current game within the test set (not of all games)
         
     Returns:
-        Fraction of wealth to bet (between 0.1 and 1.0)
+        Fraction of wealth to bet (between 0.1 and 0.5)
     """
     proba_win = float(max(y_proba[index][0], y_proba[index][1]))
     proba_lose = 1.0 - proba_win
@@ -80,8 +82,8 @@ def calculate_frac_wealth(win_odds: float, loss_odds: float, y_proba: np.ndarray
     percent_gain = float(win_odds / 100) if win_odds > 0 else float(100 / abs(win_odds))
     frac_wealth = float(proba_win - (proba_lose / percent_gain))
 
-    # Ensure fraction is between 0.1 and 1.0
-    return max(min(frac_wealth, 1.0), 0.1)
+    # Ensure fraction is between 0.01 and 0.2
+    return max(frac_wealth, 0)
 
 def test_profit(
     df_path: str,
@@ -130,6 +132,7 @@ def test_profit(
         if current_time is None or (game_time - current_time).total_seconds() > 10800:
             # Process any pending bets from previous time slot
             for bet in current_bets:
+                print_bet_info(bet['team'], bet['odds'], bet['amount'], bet['result'], wealth)
                 if bet['result'] == 'win':
                     if bet['odds'] > 0:
                         wealth += float((bet['odds'] / 100) * bet['amount'])
@@ -154,6 +157,7 @@ def test_profit(
         
         if frac_wealth > 0:
             current_bets.append({
+                'team': team,
                 'amount': bet_amount,
                 'odds': win_odds,
                 'result': 'win' if y_pred[i] == y_test[i] else 'loss'
@@ -166,6 +170,7 @@ def test_profit(
     
     # Process any remaining bets
     for bet in current_bets:
+        print_bet_info(bet['team'], bet['odds'], bet['amount'], bet['result'], wealth)
         if bet['result'] == 'win':
             if bet['odds'] > 0:
                 wealth += float((bet['odds'] / 100) * bet['amount'])
@@ -181,81 +186,53 @@ def test_profit(
     
     return float(wealth), float(total_stake)
 
-def calculate_profit(
-    y_true: np.ndarray,
-    y_pred: np.ndarray,
-    df_odds: pd.DataFrame,
-    starting_wealth: float
-) -> float:
+def _adapt_for_profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame, stake: float) -> float:
     """
-    Calculate profit for model evaluation.
+    Adapter function to use test_profit for model evaluation scoring.
     
     Args:
         y_true: True outcomes
         y_pred: Predicted outcomes
         df_odds: DataFrame containing odds data
-        starting_wealth: Initial bankroll
+        stake: Initial stake amount
         
     Returns:
         Final wealth after all bets
     """
-    wealth = float(starting_wealth)
+    import tempfile
+    import os
     
-    # Convert date and time columns to datetime if they're not already
-    if 'datetime' not in df_odds.columns:
-        df_odds['datetime'] = pd.to_datetime(df_odds['Date'] + ' ' + df_odds['Time'])
+    # Create dummy probabilities if needed for test_profit
+    y_proba = np.zeros((len(y_true), 2))
+    for i, pred in enumerate(y_pred):
+        y_proba[i][int(pred)] = 1.0
     
-    current_time = None
-    current_bets = []
+    # Save DataFrame to a temporary file
+    with tempfile.NamedTemporaryFile(suffix='.csv', delete=False) as temp_file:
+        temp_path = temp_file.name
+        df_odds.to_csv(temp_path, index=False)
     
-    for i in range(len(y_true)):
-        game_time = df_odds.loc[i, 'datetime']
+    try:
+        # Use a small frac_test value since we're using the entire dataset
+        frac_test = 0.001
         
-        # If this is a new time or more than 3 hours from current time
-        if current_time is None or (game_time - current_time).total_seconds() > 10800:
-            # Process any pending bets from previous time slot
-            for bet in current_bets:
-                if bet['result'] == 'win':
-                    if bet['odds'] > 0:
-                        wealth += float((bet['odds'] / 100.0) * bet['amount'])
-                    else:
-                        wealth += float((100.0 / abs(bet['odds'])) * bet['amount'])
-                else:
-                    wealth -= bet['amount']
-            
-            # Reset for new time slot
-            current_time = game_time
-            current_bets = []
+        # Suppress print statements from test_profit
+        import sys
+        from io import StringIO
+        original_stdout = sys.stdout
+        sys.stdout = StringIO()
         
-        odds_val = df_odds.loc[i, 'Home Odds'] if y_true[i] == 1 else df_odds.loc[i, 'Away Odds']
-        odds = float(odds_val)
-        
-        if odds > 0:
-            frac_wealth = float(0.5 - (0.5 / (odds/100.0)))
-        else:
-            abs_odds = abs(float(odds))
-            frac_wealth = float(0.5 - (0.5 / (100.0/abs_odds)))
-        
-        # Use current wealth instead of starting_wealth
-        bet_amount = float(wealth * frac_wealth)
-        
-        current_bets.append({
-            'amount': bet_amount,
-            'odds': odds,
-            'result': 'win' if y_pred[i] == y_true[i] else 'loss'
-        })
-    
-    # Process any remaining bets
-    for bet in current_bets:
-        if bet['result'] == 'win':
-            if bet['odds'] > 0:
-                wealth += float((bet['odds'] / 100.0) * bet['amount'])
-            else:
-                wealth += float((100.0 / abs(bet['odds'])) * bet['amount'])
-        else:
-            wealth -= bet['amount']
-    
-    return float(wealth)
+        try:
+            # Call test_profit and get only the final wealth
+            final_wealth, _ = test_profit(temp_path, y_pred, y_true, y_proba, stake, frac_test)
+            return float(final_wealth)
+        finally:
+            # Restore stdout
+            sys.stdout = original_stdout
+    finally:
+        # Clean up the temporary file
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
 
 def profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame, stake: float) -> float:
     """
@@ -270,7 +247,7 @@ def profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame,
     Returns:
         Profit score
     """
-    return calculate_profit(y_true, y_pred, df_odds, stake)
+    return _adapt_for_profit_scorer(y_true, y_pred, df_odds, stake)
 
 def create_profit_scorer(df_odds: pd.DataFrame, stake: float) -> Any:
     """
