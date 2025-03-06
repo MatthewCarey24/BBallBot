@@ -170,7 +170,7 @@ def enhanced_scrape(year):
     all_data = []  # List to store all match data
     
     try:
-        base_url = f'https://www.oddsportal.com/basketball/usa/nba-{year-1}-{year}/results/'
+        base_url = f'https://www.oddsportal.com/basketball/usa/nba-{year-1}-{year}/results/' if year != 2025 else 'https://www.oddsportal.com/basketball/usa/nba/results/'
         
         # Only process one page for testing
         for page in range(2, 28):
@@ -185,6 +185,8 @@ def enhanced_scrape(year):
             # Process the page and add to total matches
             page_data, matches_on_page = process_page(driver, wait, page)
             all_data.extend(page_data)  # Add this page's data to all_data
+            if matches_on_page == 0:
+                break
             total_matches += matches_on_page
             print(f"\nProcessed {matches_on_page} matches on page {page}")
             print(f"Total matches so far: {total_matches}")
