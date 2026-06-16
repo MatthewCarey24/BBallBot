@@ -13,7 +13,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from betting import test_profit
-from data_processor import create_features
+from features.combined import build_feature_matrix
+from features.ratings import EloSystem
 
 # ---------------------------------------------------------------------------
 # Default fixed hyperparameters (used in backtest to skip costly Optuna)
@@ -95,26 +96,20 @@ def run_single_season(
     """
     df = pd.read_csv(df_path)
     train_size = int(len(df) * (1 - frac_test))
-    df_train = df.iloc[:train_size]
 
-    # Build NMF features on training portion only
-    X_train_full, y_train_full = create_features(
-        df_train,
-        0.0,  # use all training rows
-        params["nmf_n_components"],
-        params["alpha_H"],
-        params["alpha_W"],
-    )
-
-    # Build features for full dataset to get the test split
-    X_full, y_full = create_features(
+    # Build the full feature matrix once (NMF + Elo + form), then split.
+    # NMF fits and Elo updates only on the training portion (leakage-safe).
+    X_full, y_full = build_feature_matrix(
         df,
+        EloSystem(),
         frac_test,
         params["nmf_n_components"],
         params["alpha_H"],
         params["alpha_W"],
     )
 
+    X_train_full = X_full[:train_size]
+    y_train_full = y_full[:train_size]
     X_test = X_full[train_size:]
     y_test = y_full[train_size:]
 
@@ -143,6 +138,7 @@ def run_single_season(
         "year": year,
         "seed": seed,
         "accuracy": accuracy,
+        "favorite_accuracy": _favorite_accuracy(df, train_size),
         "profit": profit,
         "profit_pct": profit_pct,
         "brier_score": brier,
@@ -205,13 +201,16 @@ def summarize_backtest(results_df: pd.DataFrame) -> dict:
     """
     summary: dict = {}
 
-    for metric in ("accuracy", "profit_pct", "brier_score"):
+    for metric in ("accuracy", "favorite_accuracy", "profit_pct", "brier_score"):
         summary[f"{metric}_mean"] = float(results_df[metric].mean())
         summary[f"{metric}_std"] = float(results_df[metric].std())
 
+    # Edge of the model over the always-bet-favorite baseline
+    summary["accuracy_edge"] = summary["accuracy_mean"] - summary["favorite_accuracy_mean"]
+
     # Best-of-year aggregation
     per_year = (
-        results_df.groupby("year")[["accuracy", "profit_pct", "brier_score"]]
+        results_df.groupby("year")[["accuracy", "favorite_accuracy", "profit_pct", "brier_score"]]
         .mean()
         .reset_index()
     )
@@ -228,12 +227,25 @@ def print_backtest_report(results_df: pd.DataFrame) -> None:
     print(sep)
 
     per_year = (
-        results_df.groupby("year")[["accuracy", "profit_pct", "brier_score", "n_test_games"]]
-        .agg({"accuracy": "mean", "profit_pct": "mean", "brier_score": "mean", "n_test_games": "first"})
+        results_df.groupby("year")[
+            ["accuracy", "favorite_accuracy", "profit_pct", "brier_score", "n_test_games"]
+        ]
+        .agg(
+            {
+                "accuracy": "mean",
+                "favorite_accuracy": "mean",
+                "profit_pct": "mean",
+                "brier_score": "mean",
+                "n_test_games": "first",
+            }
+        )
         .reset_index()
     )
 
-    header = f"{'Year':>6}  {'Test Games':>10}  {'Accuracy':>10}  {'Profit %':>10}  {'Brier':>8}"
+    header = (
+        f"{'Year':>6}  {'Test Games':>10}  {'Accuracy':>10}  "
+        f"{'Favorite':>10}  {'Profit %':>10}  {'Brier':>8}"
+    )
     print(header)
     print("-" * len(header))
 
@@ -242,6 +254,7 @@ def print_backtest_report(results_df: pd.DataFrame) -> None:
             f"{int(row['year']):>6}  "
             f"{int(row['n_test_games']):>10}  "
             f"{row['accuracy']:>10.4f}  "
+            f"{row['favorite_accuracy']:>10.4f}  "
             f"{row['profit_pct']*100:>9.2f}%  "
             f"{row['brier_score']:>8.4f}"
         )
@@ -252,17 +265,63 @@ def print_backtest_report(results_df: pd.DataFrame) -> None:
         f"{'AGGREGATE':>6}  "
         f"{'':>10}  "
         f"{summary['accuracy_mean']:>10.4f}  "
+        f"{summary['favorite_accuracy_mean']:>10.4f}  "
         f"{summary['profit_pct_mean']*100:>9.2f}%  "
         f"{summary['brier_score_mean']:>8.4f}"
     )
     acc_std_str = f"±{summary['accuracy_std']:.4f}"
+    fav_std_str = f"±{summary['favorite_accuracy_std']:.4f}"
     pct_std_str = f"±{summary['profit_pct_std'] * 100:.2f}%"
     brier_std_str = f"±{summary['brier_score_std']:.4f}"
     print(
         f"{'(±std)':>6}  "
         f"{'':>10}  "
         f"{acc_std_str:>10}  "
+        f"{fav_std_str:>10}  "
         f"{pct_std_str:>10}  "
         f"{brier_std_str:>8}"
     )
     print(sep)
+    print(f"Model edge over always-bet-favorite: {summary['accuracy_edge']*100:+.2f} pp")
+    print(sep)
+
+
+def _discover_season_paths(data_dir: str) -> list:
+    """Return season CSV paths in chronological (year) order."""
+    paths = []
+    for name in os.listdir(data_dir):
+        if name.startswith("odds_data_") and name.endswith(".csv"):
+            paths.append(os.path.join(data_dir, name))
+    return sorted(paths)
+
+
+def main() -> None:
+    """CLI entry point: run the walk-forward backtest and print the report."""
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Walk-forward backtest for BBallBot.")
+    parser.add_argument(
+        "--data-dir",
+        default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "odds_data"),
+        help="Directory containing odds_data_<year>.csv files.",
+    )
+    parser.add_argument("--frac-test", type=float, default=0.2, help="Fraction of each season held out for testing.")
+    parser.add_argument("--starting-wealth", type=float, default=1000.0, help="Initial bankroll for the Kelly sim.")
+    parser.add_argument("--n-seeds", type=int, default=5, help="Number of random seeds to average over.")
+    args = parser.parse_args()
+
+    data_paths = _discover_season_paths(args.data_dir)
+    if not data_paths:
+        raise SystemExit(f"No odds_data_<year>.csv files found in {args.data_dir}")
+
+    results = run_walk_forward(
+        data_paths,
+        frac_test=args.frac_test,
+        starting_wealth=args.starting_wealth,
+        n_seeds=args.n_seeds,
+    )
+    print_backtest_report(results)
+
+
+if __name__ == "__main__":
+    main()

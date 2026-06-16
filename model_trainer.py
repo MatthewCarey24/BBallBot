@@ -24,7 +24,8 @@ from config import (
     TRIAL_X_FILENAME,
     TRIAL_Y_FILENAME,
 )
-from data_processor import create_features
+from features.combined import build_feature_matrix
+from features.ratings import EloSystem
 
 
 def create_model(params: Dict[str, Any]) -> Pipeline:
@@ -143,15 +144,17 @@ def objective(
     # Read data and get training portion only
     df = pd.read_csv(df_path)
     train_size = int(len(df) * (1 - frac_test))
-    df_train = df.iloc[:train_size]
+    df_train = df.iloc[:train_size].reset_index(drop=True)
 
-    # Create features using only training data
-    X, y = create_features(
+    # Create features (NMF + Elo + form) using only training data.
+    # A fresh EloSystem is used so ratings only learn from training games.
+    X, y = build_feature_matrix(
         df_train,  # Only use training portion for feature creation
-        0.2,  # Use 20% of training data for validation
+        EloSystem(),
+        0.2,  # Use 20% of training data for validation (NMF/Elo update boundary)
         params['nmf_n_components'],
         params['alpha_H'],
-        params['alpha_W']
+        params['alpha_W'],
     )
 
     # Split training data into train and validation
@@ -200,27 +203,12 @@ def train_and_evaluate(
             best_params = pickle.load(f)
         print(f"Using saved parameters from {params_path}")
 
-        # Create features with saved parameters
-        df = pd.read_csv(df_path)
-        X, y = create_features(
-            df,
-            frac_test,
-            best_params['nmf_n_components'],
-            best_params['alpha_H'],
-            best_params['alpha_W']
-        )
-
         # Create a dummy trial to store parameters
-        study = optuna.create_study(direction='maximize')
-        trial = optuna.trial.create_trial(
+        best_trial = optuna.trial.create_trial(
             params=best_params,
             distributions={},
             value=0.0  # Placeholder value
         )
-        best_trial = trial
-
-        # Save trial data
-        save_trial_data(0, X, y)
     else:
         # Create and run Optuna study with fixed random seed for reproducibility
         sampler = optuna.samplers.TPESampler(seed=RANDOM_STATE)  # Use the same random state
@@ -233,44 +221,45 @@ def train_and_evaluate(
 
     print(f"Best trial: Value={best_trial.value}, Params={best_trial.params}")
 
-    # Get full dataset for final model
+    # Build the full feature matrix once (NMF + Elo + form), then split.
+    # NMF fits and Elo updates only on the training portion (leakage-safe);
+    # form features are pre-game by construction.
     df = pd.read_csv(df_path)
     train_size = int(len(df) * (1 - frac_test))
-    df_train = df.iloc[:train_size]  # Only use training portion
 
-    # Create features for final model using only training data
-    X_train, y_train = create_features(
-        df_train,
-        0.0,  # No test split needed since we're using all training data
+    X, y = build_feature_matrix(
+        df,
+        EloSystem(),
+        frac_test,
         best_trial.params['nmf_n_components'],
         best_trial.params['alpha_H'],
-        best_trial.params['alpha_W']
+        best_trial.params['alpha_W'],
     )
+
+    X_train = np.array(X[:train_size])
+    y_train = np.array(y[:train_size])
+    X_test = np.array(X[train_size:])
+    y_test = np.array(y[train_size:])
+
+    # Persist the feature matrix for reproducibility/inspection
+    save_trial_data(0, X, y)
 
     # Create and train final model with best parameters
     best_model = create_model(best_trial.params)
     best_model.fit(X_train, y_train.ravel())
 
-    # Wrap with isotonic calibration (prefit — no refitting the base MLP)
-    calibrated_model = CalibratedClassifierCV(best_model, method='isotonic', cv='prefit')
+    # Wrap with isotonic calibration without refitting the base MLP.
+    # sklearn >= 1.6 removed cv='prefit' in favour of FrozenEstimator; fall
+    # back to cv='prefit' on older versions so we support scikit-learn >= 1.3.
+    try:
+        from sklearn.frozen import FrozenEstimator
+        calibrated_model = CalibratedClassifierCV(FrozenEstimator(best_model), method='isotonic')
+    except ImportError:
+        calibrated_model = CalibratedClassifierCV(best_model, method='isotonic', cv='prefit')
     calibrated_model.fit(X_train, y_train.ravel())
 
     # Save model and trial info
     save_best_trial(best_trial, year)
-
-    # Create features for full dataset to get test portion
-    features = create_features(
-        df,
-        frac_test,
-        best_trial.params['nmf_n_components'],
-        best_trial.params['alpha_H'],
-        best_trial.params['alpha_W']
-    )
-    X, y = features  # Explicitly unpack tuple
-
-    # Get test portion and ensure numpy array types
-    X_test = np.array(X[train_size:])
-    y_test = np.array(y[train_size:])
 
     # Evaluate on test set using calibrated model
     y_pred = np.array(calibrated_model.predict(X_test))
