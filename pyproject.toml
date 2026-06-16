@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.backends.legacy:build"
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "bballbot"
@@ -27,6 +27,12 @@ dev = [
 [project.scripts]
 bballbot = "main:main"
 
+[tool.setuptools.packages.find]
+include = ["evaluation*", "features*"]
+
+[tool.setuptools]
+py-modules = ["config", "data_processor", "model_trainer", "betting", "utils", "main"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py311"
@@ -34,6 +40,12 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
 ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# Selenium scrapers set up sys.path / driver options before importing modules.
+"scrape_odds.py" = ["E402"]
+"enhanced_scrape.py" = ["E402"]
+"msi_scrape.py" = ["E402"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,21 +1,19 @@
 """Walk-forward backtesting across multiple NBA seasons."""
 
-import sys
 import os
+import sys
 
 # Allow flat imports from the project root
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-import numpy as np
 import pandas as pd
+from sklearn.metrics import accuracy_score, brier_score_loss
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score, brier_score_loss
 
-from data_processor import create_features
 from betting import test_profit
-
+from data_processor import create_features
 
 # ---------------------------------------------------------------------------
 # Default fixed hyperparameters (used in backtest to skip costly Optuna)
@@ -257,11 +255,14 @@ def print_backtest_report(results_df: pd.DataFrame) -> None:
         f"{summary['profit_pct_mean']*100:>9.2f}%  "
         f"{summary['brier_score_mean']:>8.4f}"
     )
+    acc_std_str = f"±{summary['accuracy_std']:.4f}"
+    pct_std_str = f"±{summary['profit_pct_std'] * 100:.2f}%"
+    brier_std_str = f"±{summary['brier_score_std']:.4f}"
     print(
         f"{'(±std)':>6}  "
         f"{'':>10}  "
-        f"{'±'+f\"{summary['accuracy_std']:.4f}\":>10}  "
-        f"{'±'+f\"{summary['profit_pct_std']*100:.2f}%\":>10}  "
-        f"{'±'+f\"{summary['brier_score_std']:.4f}\":>8}"
+        f"{acc_std_str:>10}  "
+        f"{pct_std_str:>10}  "
+        f"{brier_std_str:>8}"
     )
     print(sep)

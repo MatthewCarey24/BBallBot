@@ -1,7 +1,7 @@
 """Tests for the data_processor module."""
 
-import sys
 import os
+import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -9,8 +9,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from data_processor import get_team_indices, create_win_loss_matrix, prepare_x_y
-
+from data_processor import create_win_loss_matrix, get_team_indices, prepare_x_y
 
 # ---------------------------------------------------------------------------
 # Fixtures

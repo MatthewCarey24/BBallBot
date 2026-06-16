@@ -1,7 +1,7 @@
 """Characterization tests for the betting module."""
 
-import sys
 import os
+import sys
 
 # Ensure the project root is on the path so flat imports work
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -9,8 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import numpy as np
 import pytest
 
-from betting import calculate_implied_proba, calculate_frac_wealth, roi
-
+from betting import calculate_frac_wealth, calculate_implied_proba, roi
 
 # ---------------------------------------------------------------------------
 # calculate_implied_proba
@@ -54,10 +53,16 @@ class TestCalculateFracWealth:
         assert frac >= 0
 
     def test_zero_when_edge_is_negative(self):
-        """When model probability is below break-even, Kelly returns 0."""
-        # proba_win=0.45, odds=-110 → edge is negative
-        y_proba = self._make_proba(0.45)
-        frac = calculate_frac_wealth(-110, 110, y_proba, 0)
+        """When the max model probability implies no edge, Kelly returns 0.
+
+        calculate_frac_wealth uses max(p[0], p[1]) as proba_win, so we need a
+        scenario where even the higher probability yields a negative Kelly
+        fraction.  With odds=-500 (break-even ≈ 0.833) and max prob=0.60,
+        the raw Kelly is negative and is clamped to 0.
+        """
+        # max prob = 0.60, break-even for -500 ≈ 0.833 → negative edge
+        y_proba = self._make_proba(0.60)
+        frac = calculate_frac_wealth(-500, 500, y_proba, 0)
         assert frac == 0.0
 
     def test_kelly_cap_never_exceeds_one(self):
@@ -67,10 +72,18 @@ class TestCalculateFracWealth:
         assert frac <= 1.0
 
     def test_kelly_fraction_parameter_scales_output(self):
-        """Halving kelly_fraction should roughly halve the output."""
+        """Halving kelly_fraction should halve the output when below the max_fraction cap.
+
+        We choose odds and proba so the raw Kelly * kelly_fraction stays below
+        the default max_fraction=0.05, ensuring the cap does not interfere.
+        """
+        # proba_win = max(0.35, 0.65) = 0.65; odds = +100 → percent_gain = 1.0
+        # raw Kelly = 0.65 - 0.35/1.0 = 0.30
+        # with kelly_fraction=0.1 → 0.03  (< 0.05 cap)
+        # with kelly_fraction=0.05 → 0.015 (< 0.05 cap)
         y_proba = self._make_proba(0.65)
-        frac_full = calculate_frac_wealth(-110, 110, y_proba, 0, kelly_fraction=1.0)
-        frac_half = calculate_frac_wealth(-110, 110, y_proba, 0, kelly_fraction=0.5)
+        frac_full = calculate_frac_wealth(100, -100, y_proba, 0, kelly_fraction=0.10, max_fraction=0.05)
+        frac_half = calculate_frac_wealth(100, -100, y_proba, 0, kelly_fraction=0.05, max_fraction=0.05)
         if frac_full > 0:
             assert abs(frac_half - frac_full * 0.5) < 1e-9
 

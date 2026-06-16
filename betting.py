@@ -5,18 +5,20 @@ Note: for best Kelly performance, callers should pass *calibrated* probabilities
 tend to be overconfident and lead to over-betting.
 """
 
-import pandas as pd
+from typing import Any, Tuple
+
 import numpy as np
-from typing import Tuple, Dict, Any
+import pandas as pd
 from sklearn.metrics import make_scorer
+
 
 def calculate_implied_proba(odds: float) -> float:
     """
     Calculate implied probability from moneyline odds.
-    
+
     Args:
         odds: Moneyline odds
-        
+
     Returns:
         Implied probability of victory
     """
@@ -28,29 +30,29 @@ def calculate_implied_proba(odds: float) -> float:
 def get_team_info(df_odds: pd.DataFrame, index: int, is_home_team: bool) -> Tuple[str, float, float]:
     """
     Get team and odds information for a specific game.
-    
+
     Args:
         df_odds: DataFrame containing odds data
         index: Row index in the DataFrame
         is_home_team: Whether to get home team info (True) or away team info (False)
-        
+
     Returns:
         Tuple of (team name, win odds, opposing team odds)
     """
     team_column = "Home Team" if is_home_team else "Away Team"
     win_odds_column = "Home Odds" if is_home_team else "Away Odds"
     loss_odds_column = "Away Odds" if is_home_team else "Home Odds"
-    
+
     team = str(df_odds.loc[index, team_column])
     win_odds = float(df_odds.loc[index, win_odds_column])
     loss_odds = float(df_odds.loc[index, loss_odds_column])
-    
+
     return team, win_odds, loss_odds
 
 def print_bet_info(team: str, odds: float, bet_amount: float, result: str, curr_wealth: int) -> None:
     """
     Print information about a bet and its outcome.
-    
+
     Args:
         team: Name of the team bet on
         odds: Moneyline odds for the bet
@@ -137,19 +139,18 @@ def test_profit(
     start_of_test = int(len(df_odds) * (1 - frac_test))
     wealth = float(starting_wealth)
     total_stake = 0.0
-    
+
     # Convert date and time columns to datetime
     df_odds['datetime'] = pd.to_datetime(df_odds['Date'] + ' ' + df_odds['Time'])
-    
+
     # Group games by date to process concurrent games together
-    current_games = []
     current_time = None
     current_bets = []
-    
+
     for i in range(len(y_test)):
         index = int(i + start_of_test)
         game_time = df_odds.loc[index, 'datetime']
-        
+
         # If this is a new time or more than 3 hours from current time
         if current_time is None or (game_time - current_time).total_seconds() > 10800:
             # Process any pending bets from previous time slot
@@ -164,19 +165,19 @@ def test_profit(
                 else:
                     wealth -= bet['amount']
                     bets_lost += 1
-            
+
             # Reset for new time slot
             current_time = game_time
             current_bets = []
-            
+
         is_home_team = bool(y_pred[i] == 1)
         team, win_odds, loss_odds = get_team_info(df_odds, index, is_home_team)
-        
+
         # Calculate bet using current wealth instead of starting_wealth
-        frac_wealth = calculate_frac_wealth(win_odds, loss_odds, y_proba, i)
+        frac_wealth = calculate_frac_wealth(win_odds, loss_odds, y_proba, i, kelly_fraction, max_fraction)
         bet_amount = float(frac_wealth * wealth)
         total_stake += bet_amount
-        
+
         if frac_wealth > 0:
             current_bets.append({
                 'team': team,
@@ -189,7 +190,7 @@ def test_profit(
                 no_bet_win += 1
             else:
                 no_bet_loss += 1
-    
+
     # Process any remaining bets
     for bet in current_bets:
         print_bet_info(bet['team'], bet['odds'], bet['amount'], bet['result'], wealth)
@@ -202,48 +203,48 @@ def test_profit(
         else:
             wealth -= bet['amount']
             bets_lost += 1
-    
+
     print(f'Bets Won: {bets_won}\nBets Lost: {bets_lost}\nWouldve Won: {no_bet_win}\nWouldve Lost: {no_bet_loss}\nTotal Bets: {bets_won + bets_lost}\n')
     print(f'Good Call Ratio: {(bets_won+no_bet_loss)/(bets_won+bets_lost+no_bet_loss+no_bet_win)}')
-    
+
     return float(wealth), float(total_stake)
 
 def _adapt_for_profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame, stake: float) -> float:
     """
     Adapter function to use test_profit for model evaluation scoring.
-    
+
     Args:
         y_true: True outcomes
         y_pred: Predicted outcomes
         df_odds: DataFrame containing odds data
         stake: Initial stake amount
-        
+
     Returns:
         Final wealth after all bets
     """
-    import tempfile
     import os
-    
+    import tempfile
+
     # Create dummy probabilities if needed for test_profit
     y_proba = np.zeros((len(y_true), 2))
     for i, pred in enumerate(y_pred):
         y_proba[i][int(pred)] = 1.0
-    
+
     # Save DataFrame to a temporary file
     with tempfile.NamedTemporaryFile(suffix='.csv', delete=False) as temp_file:
         temp_path = temp_file.name
         df_odds.to_csv(temp_path, index=False)
-    
+
     try:
         # Use a small frac_test value since we're using the entire dataset
         frac_test = 0.001
-        
+
         # Suppress print statements from test_profit
         import sys
         from io import StringIO
         original_stdout = sys.stdout
         sys.stdout = StringIO()
-        
+
         try:
             # Call test_profit and get only the final wealth
             final_wealth, _ = test_profit(temp_path, y_pred, y_true, y_proba, stake, frac_test)
@@ -259,13 +260,13 @@ def _adapt_for_profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd
 def profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame, stake: float) -> float:
     """
     Custom scorer for model evaluation using profit.
-    
+
     Args:
         y_true: True outcomes
         y_pred: Predicted outcomes
         df_odds: DataFrame containing odds data
         stake: Initial stake amount
-        
+
     Returns:
         Profit score
     """
@@ -274,12 +275,25 @@ def profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame,
 def create_profit_scorer(df_odds: pd.DataFrame, stake: float) -> Any:
     """
     Create a scorer function for use in cross-validation.
-    
+
     Args:
         df_odds: DataFrame containing odds data
         stake: Initial stake amount
-        
+
     Returns:
         Scorer function for use with sklearn
     """
     return make_scorer(profit_scorer, df_odds=df_odds, stake=stake)
+
+
+def roi(profit: float, starting_wealth: float) -> float:
+    """Return on investment as a fraction of starting bankroll.
+
+    Args:
+        profit: Net profit (positive) or loss (negative).
+        starting_wealth: Initial bankroll.
+
+    Returns:
+        ROI expressed as a fraction (e.g. 0.20 means 20 % return).
+    """
+    return profit / starting_wealth

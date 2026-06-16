@@ -1,5 +1,13 @@
 cline_scrap_odds.py
 node_modules/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
 best*
 debug*
 *.pkl
