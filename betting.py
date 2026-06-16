@@ -1,4 +1,9 @@
-"""Module for betting-related calculations in BBallBot"""
+"""Module for betting-related calculations in BBallBot.
+
+Note: for best Kelly performance, callers should pass *calibrated* probabilities
+(e.g. from CalibratedClassifierCV) rather than raw MLP softmax outputs, which
+tend to be overconfident and lead to over-betting.
+"""
 
 import pandas as pd
 import numpy as np
@@ -63,18 +68,32 @@ def print_bet_info(team: str, odds: float, bet_amount: float, result: str, curr_
     elif result == "loss":
         print(f'Lost ${bet_amount:.2f}')
 
-def calculate_frac_wealth(win_odds: float, loss_odds: float, y_proba: np.ndarray, index: int) -> float:
+def calculate_frac_wealth(
+    win_odds: float,
+    loss_odds: float,
+    y_proba: np.ndarray,
+    index: int,
+    kelly_fraction: float = 0.25,
+    max_fraction: float = 0.05,
+) -> float:
     """
-    Calculate fraction of wealth to bet using Kelly Criterion.
-    
+    Calculate fraction of wealth to bet using the fractional Kelly Criterion.
+
+    The raw Kelly fraction is scaled by *kelly_fraction* (fractional Kelly) and
+    then capped at *max_fraction* to limit variance.  The result is always in
+    the range [0, max_fraction].
+
     Args:
-        win_odds: Moneyline odds for the team being bet on
-        loss_odds: Moneyline odds for the opposing team
-        y_proba: Model's predicted probabilities
-        index: Index of the current game within the test set (not of all games)
-        
+        win_odds: Moneyline odds for the team being bet on.
+        loss_odds: Moneyline odds for the opposing team (unused in formula,
+            retained for API compatibility).
+        y_proba: Model's predicted probabilities, shape (n_games, 2).
+        index: Index of the current game within the test set.
+        kelly_fraction: Fraction of full Kelly to bet (default 0.25 = quarter-Kelly).
+        max_fraction: Hard cap on the fraction of bankroll risked (default 0.05).
+
     Returns:
-        Fraction of wealth to bet (between 0.1 and 0.5)
+        Fraction of current wealth to stake, in [0, max_fraction].
     """
     proba_win = float(max(y_proba[index][0], y_proba[index][1]))
     proba_lose = 1.0 - proba_win
@@ -82,8 +101,7 @@ def calculate_frac_wealth(win_odds: float, loss_odds: float, y_proba: np.ndarray
     percent_gain = float(win_odds / 100) if win_odds > 0 else float(100 / abs(win_odds))
     frac_wealth = float(proba_win - (proba_lose / percent_gain))
 
-    # Ensure fraction is between 0.01 and 0.2
-    return max(frac_wealth, 0)
+    return min(max(frac_wealth * kelly_fraction, 0), max_fraction)
 
 def test_profit(
     df_path: str,
@@ -91,21 +109,25 @@ def test_profit(
     y_test: np.ndarray,
     y_proba: np.ndarray,
     starting_wealth: float,
-    frac_test: float
+    frac_test: float,
+    kelly_fraction: float = 0.25,
+    max_fraction: float = 0.05,
 ) -> Tuple[float, float]:
     """
     Calculate profit/loss from betting based on model predictions.
-    
+
     Args:
-        df_path: Path to the odds data CSV file
-        y_pred: Model's predictions
-        y_test: True outcomes
-        y_proba: Model's predicted probabilities
-        starting_wealth: Initial bankroll
-        frac_test: Fraction of data used for testing
-        
+        df_path: Path to the odds data CSV file.
+        y_pred: Model's predictions.
+        y_test: True outcomes.
+        y_proba: Model's predicted probabilities.
+        starting_wealth: Initial bankroll.
+        frac_test: Fraction of data used for testing.
+        kelly_fraction: Fractional Kelly multiplier passed to calculate_frac_wealth.
+        max_fraction: Hard cap on bankroll fraction passed to calculate_frac_wealth.
+
     Returns:
-        Tuple of (final wealth, total amount staked)
+        Tuple of (final wealth, total amount staked).
     """
     bets_won = 0
     bets_lost = 0
