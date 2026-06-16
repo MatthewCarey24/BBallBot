@@ -8,6 +8,12 @@ RANDOM_STATE = 41  # Used for NMF initialization and MLPClassifier, NOT for trai
 FRAC_TEST = 0.05  # Fraction of season to use for testing (uses latter portion of season)
 STARTING_WEALTH = 1000  # Initial bankroll for betting simulation
 
+# Feature / betting strategy
+USE_ODDS_FEATURE = False  # If False, the model never sees the line; odds are only a betting benchmark
+KELLY_FRACTION = 0.25  # Fractional Kelly multiplier (quarter-Kelly)
+MAX_BET_FRACTION = 0.05  # Hard cap on fraction of bankroll per bet
+EDGE_THRESHOLD = 0.03  # Only bet when model prob exceeds vig-free market prob by this much
+
 # NMF parameters
 NMF_MAX_ITER = 20000  # Maximum iterations for NMF convergence
 NMF_INIT = 'nndsvdar'  # Initialization method for NMF

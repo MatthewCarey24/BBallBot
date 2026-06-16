@@ -40,6 +40,7 @@ def build_feature_matrix(
     use_elo: bool = True,
     use_form: bool = True,
     use_nmf: bool = True,
+    use_odds: bool = True,
     form_window: int = 10,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Build the full feature matrix by combining selected feature blocks.
@@ -61,7 +62,10 @@ def build_feature_matrix(
         nmf_alpha_W: L2 regularisation on W.
         use_elo: Include Elo features.
         use_form: Include rolling form features.
-        use_nmf: Include NMF + odds features.
+        use_nmf: Include NMF latent-factor features.
+        use_odds: Include the market implied-probability columns (part of the
+            NMF block). Set False to train an *independent* model that never
+            sees the line — the odds are then only a betting-layer benchmark.
         form_window: Rolling window (in games) for form features.
 
     Returns:
@@ -77,7 +81,9 @@ def build_feature_matrix(
     # Block 1 — NMF latent factors + implied-probability odds
     # ------------------------------------------------------------------
     if use_nmf:
-        X_nmf, y = create_features(df, frac_test, nmf_n_components, nmf_alpha_H, nmf_alpha_W)
+        X_nmf, y = create_features(
+            df, frac_test, nmf_n_components, nmf_alpha_H, nmf_alpha_W, include_odds=use_odds
+        )
         feature_blocks.append(X_nmf)
     else:
         # Still need y labels

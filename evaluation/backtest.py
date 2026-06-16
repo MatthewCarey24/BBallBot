@@ -7,15 +7,13 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pandas as pd
-from sklearn.calibration import CalibratedClassifierCV
 from sklearn.metrics import accuracy_score, brier_score_loss
-from sklearn.neural_network import MLPClassifier
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
 
 from betting import test_profit
+from config import EDGE_THRESHOLD, KELLY_FRACTION, MAX_BET_FRACTION, USE_ODDS_FEATURE
 from features.combined import build_feature_matrix
 from features.ratings import EloSystem
+from model_trainer import fit_calibrated
 
 # ---------------------------------------------------------------------------
 # Default fixed hyperparameters (used in backtest to skip costly Optuna)
@@ -31,23 +29,6 @@ DEFAULT_PARAMS = {
     "learning_rate": "adaptive",
     "learning_rate_init": 0.001,
 }
-
-
-def _create_model(params: dict, random_state: int = 42) -> Pipeline:
-    """Build a StandardScaler + MLPClassifier pipeline from *params*."""
-    return Pipeline([
-        ("scaler", StandardScaler()),
-        ("clf", MLPClassifier(
-            hidden_layer_sizes=(params["first_layer_neurons"],),
-            activation=params["activation"],
-            solver=params["solver"],
-            alpha=params["alpha"],
-            learning_rate=params["learning_rate"],
-            learning_rate_init=params["learning_rate_init"],
-            max_iter=20000,
-            random_state=random_state,
-        )),
-    ])
 
 
 def _favorite_accuracy(df: pd.DataFrame, start_idx: int) -> float:
@@ -74,11 +55,12 @@ def _favorite_accuracy(df: pd.DataFrame, start_idx: int) -> float:
     return correct / total if total > 0 else float("nan")
 
 
-def tune_season(df_path: str, frac_test: float, n_trials: int) -> dict:
+def tune_season(df_path: str, frac_test: float, n_trials: int, use_odds: bool = USE_ODDS_FEATURE) -> dict:
     """Run Optuna on a single season's training portion and return best params.
 
     Reuses the production ``objective`` so backtest tuning matches how
-    ``train_and_evaluate`` selects hyperparameters per year.
+    ``train_and_evaluate`` selects hyperparameters per year. ``use_odds`` is
+    threaded through so a with-odds vs without-odds A/B tunes consistently.
     """
     import optuna
 
@@ -89,7 +71,7 @@ def tune_season(df_path: str, frac_test: float, n_trials: int) -> dict:
     optuna.logging.set_verbosity(optuna.logging.WARNING)
     sampler = optuna.samplers.TPESampler(seed=RANDOM_STATE)
     study = optuna.create_study(direction="maximize", sampler=sampler)
-    study.optimize(lambda trial: objective(trial, df_path, frac_test), n_trials=n_trials)
+    study.optimize(lambda trial: objective(trial, df_path, frac_test, use_odds=use_odds), n_trials=n_trials)
     return study.best_trial.params
 
 
@@ -100,11 +82,13 @@ def run_single_season(
     frac_test: float,
     starting_wealth: float,
     seed: int = 42,
+    use_odds: bool = USE_ODDS_FEATURE,
 ) -> dict:
     """Train on the training portion of one season CSV and evaluate on the test portion.
 
-    Mirrors the production path: a calibrated MLP (isotonic) over the
-    NMF + Elo + form feature matrix.
+    Mirrors the production path: an independent calibrated MLP over the
+    NMF + Elo + form feature matrix, with value-betting against the vig-free
+    market line.
 
     Args:
         df_path: Path to the season CSV.
@@ -113,6 +97,8 @@ def run_single_season(
         frac_test: Fraction of games to hold out for testing.
         starting_wealth: Initial bankroll for the Kelly sim.
         seed: Random seed for the MLP.
+        use_odds: Include the market line as a model feature (for A/B testing
+            the independent-model design). Defaults to the project setting.
 
     Returns:
         Dict with keys: year, seed, accuracy, favorite_accuracy, profit,
@@ -130,6 +116,7 @@ def run_single_season(
         params["nmf_n_components"],
         params["alpha_H"],
         params["alpha_W"],
+        use_odds=use_odds,
     )
 
     X_train_full = X_full[:train_size]
@@ -137,16 +124,8 @@ def run_single_season(
     X_test = X_full[train_size:]
     y_test = y_full[train_size:]
 
-    model = _create_model(params, random_state=seed)
-    model.fit(X_train_full, y_train_full.ravel())
-
-    # Calibrate without refitting the base MLP (production parity).
-    try:
-        from sklearn.frozen import FrozenEstimator
-        calibrated = CalibratedClassifierCV(FrozenEstimator(model), method="isotonic")
-    except ImportError:
-        calibrated = CalibratedClassifierCV(model, method="isotonic", cv="prefit")
-    calibrated.fit(X_train_full, y_train_full.ravel())
+    # Fit + held-out calibration (production parity), with per-seed MLP init.
+    calibrated = fit_calibrated(params, X_train_full, y_train_full, random_state=seed)
 
     y_pred = calibrated.predict(X_test)
     y_proba = calibrated.predict_proba(X_test)
@@ -159,7 +138,12 @@ def run_single_season(
     _old_stdout = _sys.stdout
     _sys.stdout = _StringIO()
     try:
-        wealth, total_stake = test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test)
+        wealth, total_stake = test_profit(
+            df_path, y_pred, y_test, y_proba, starting_wealth, frac_test,
+            kelly_fraction=KELLY_FRACTION,
+            max_fraction=MAX_BET_FRACTION,
+            edge_threshold=EDGE_THRESHOLD,
+        )
     finally:
         _sys.stdout = _old_stdout
 
@@ -185,6 +169,7 @@ def run_walk_forward(
     starting_wealth: float = 1000.0,
     n_seeds: int = 5,
     n_trials: int = 0,
+    use_odds: bool = USE_ODDS_FEATURE,
 ) -> pd.DataFrame:
     """Run walk-forward backtest across all seasons and multiple random seeds.
 
@@ -203,6 +188,8 @@ def run_walk_forward(
         n_seeds: Number of random seeds to average over.
         n_trials: Optuna trials per season. 0 = skip tuning and use
             ``base_params`` for every season.
+        use_odds: Include the market line as a model feature (A/B switch for
+            the independent-model design).
 
     Returns:
         DataFrame with columns: year, seed, accuracy, favorite_accuracy,
@@ -223,7 +210,7 @@ def run_walk_forward(
         # Tune once per season (per-year training); reuse across seeds.
         if n_trials > 0:
             print(f"Tuning {year} ({n_trials} trials)...")
-            season_params = tune_season(path, frac_test, n_trials)
+            season_params = tune_season(path, frac_test, n_trials, use_odds=use_odds)
         else:
             season_params = base_params
 
@@ -235,6 +222,7 @@ def run_walk_forward(
                 frac_test=frac_test,
                 starting_wealth=starting_wealth,
                 seed=seed,
+                use_odds=use_odds,
             )
             records.append(result)
 
@@ -363,6 +351,11 @@ def main() -> None:
         default=0,
         help="Optuna trials per season (per-year tuning). 0 uses fixed DEFAULT_PARAMS.",
     )
+    parser.add_argument(
+        "--use-odds",
+        action="store_true",
+        help="Include the market line as a model feature (A/B vs the independent model).",
+    )
     args = parser.parse_args()
 
     data_paths = _discover_season_paths(args.data_dir)
@@ -375,6 +368,7 @@ def main() -> None:
         starting_wealth=args.starting_wealth,
         n_seeds=args.n_seeds,
         n_trials=args.n_trials,
+        use_odds=args.use_odds,
     )
     print_backtest_report(results)
 

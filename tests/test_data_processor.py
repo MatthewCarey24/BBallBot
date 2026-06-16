@@ -143,6 +143,15 @@ class TestPrepareXY:
         assert len(X) == len(simple_df)
         assert len(y) == len(simple_df)
 
+    def test_excludes_odds_when_disabled(self, simple_df):
+        """include_odds=False drops the two implied-prob columns → 2*n_components."""
+        n_components = 3
+        team_indices = get_team_indices(simple_df)
+        n_teams = len(team_indices)
+        W, H = self._make_nmf_matrices(n_teams, n_components)
+        X, _ = prepare_x_y(team_indices, simple_df, W, H, include_odds=False)
+        assert X.shape[1] == 2 * n_components
+
     def test_missing_odds_handled_without_error(self, df_with_missing_odds):
         """'-' odds values must not raise an exception."""
         n_components = 2

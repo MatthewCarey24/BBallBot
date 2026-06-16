@@ -27,6 +27,28 @@ def calculate_implied_proba(odds: float) -> float:
     else:
         return float(1 / ((odds / 100) + 1))
 
+def vig_free_prob(win_odds: float, loss_odds: float) -> float:
+    """Vig-free (no-juice) market probability for the *win_odds* side.
+
+    Bookmaker implied probabilities sum to more than 1 (the overround / vig).
+    Normalising the two sides by their sum removes the juice and yields the
+    market's true estimate of the win probability for the team priced at
+    ``win_odds``.
+
+    Args:
+        win_odds: Moneyline odds for the team in question.
+        loss_odds: Moneyline odds for the opponent.
+
+    Returns:
+        The de-vigged market probability in [0, 1] for the ``win_odds`` side.
+    """
+    implied_win = calculate_implied_proba(win_odds)
+    implied_loss = calculate_implied_proba(loss_odds)
+    total = implied_win + implied_loss
+    if total <= 0:
+        return 0.5
+    return float(implied_win / total)
+
 def get_team_info(df_odds: pd.DataFrame, index: int, is_home_team: bool) -> Tuple[str, float, float]:
     """
     Get team and odds information for a specific game.
@@ -77,9 +99,16 @@ def calculate_frac_wealth(
     index: int,
     kelly_fraction: float = 0.25,
     max_fraction: float = 0.05,
+    edge_threshold: float = 0.0,
 ) -> float:
     """
     Calculate fraction of wealth to bet using the fractional Kelly Criterion.
+
+    A bet is only placed when the model's win probability exceeds the
+    *vig-free* market probability by at least *edge_threshold* — i.e. when the
+    model thinks the team is more likely to win than the de-vigged line
+    implies.  This is what turns the model's independent estimate into a
+    value-betting decision rather than a restatement of the market.
 
     The raw Kelly fraction is scaled by *kelly_fraction* (fractional Kelly) and
     then capped at *max_fraction* to limit variance.  The result is always in
@@ -87,18 +116,25 @@ def calculate_frac_wealth(
 
     Args:
         win_odds: Moneyline odds for the team being bet on.
-        loss_odds: Moneyline odds for the opposing team (unused in formula,
-            retained for API compatibility).
+        loss_odds: Moneyline odds for the opposing team (used for the vig-free
+            edge comparison).
         y_proba: Model's predicted probabilities, shape (n_games, 2).
         index: Index of the current game within the test set.
         kelly_fraction: Fraction of full Kelly to bet (default 0.25 = quarter-Kelly).
         max_fraction: Hard cap on the fraction of bankroll risked (default 0.05).
+        edge_threshold: Minimum (model prob − vig-free market prob) required to
+            place a bet (default 0.0 = bet on any positive edge).
 
     Returns:
         Fraction of current wealth to stake, in [0, max_fraction].
     """
     proba_win = float(max(y_proba[index][0], y_proba[index][1]))
     proba_lose = 1.0 - proba_win
+
+    # Value gate: only bet when the model beats the de-vigged market line.
+    market_prob = vig_free_prob(win_odds, loss_odds)
+    if proba_win - market_prob < edge_threshold:
+        return 0.0
 
     percent_gain = float(win_odds / 100) if win_odds > 0 else float(100 / abs(win_odds))
     frac_wealth = float(proba_win - (proba_lose / percent_gain))
@@ -114,6 +150,7 @@ def test_profit(
     frac_test: float,
     kelly_fraction: float = 0.25,
     max_fraction: float = 0.05,
+    edge_threshold: float = 0.0,
 ) -> Tuple[float, float]:
     """
     Calculate profit/loss from betting based on model predictions.
@@ -127,6 +164,7 @@ def test_profit(
         frac_test: Fraction of data used for testing.
         kelly_fraction: Fractional Kelly multiplier passed to calculate_frac_wealth.
         max_fraction: Hard cap on bankroll fraction passed to calculate_frac_wealth.
+        edge_threshold: Minimum edge over the vig-free market to place a bet.
 
     Returns:
         Tuple of (final wealth, total amount staked).
@@ -174,7 +212,7 @@ def test_profit(
         team, win_odds, loss_odds = get_team_info(df_odds, index, is_home_team)
 
         # Calculate bet using current wealth instead of starting_wealth
-        frac_wealth = calculate_frac_wealth(win_odds, loss_odds, y_proba, i, kelly_fraction, max_fraction)
+        frac_wealth = calculate_frac_wealth(win_odds, loss_odds, y_proba, i, kelly_fraction, max_fraction, edge_threshold)
         bet_amount = float(frac_wealth * wealth)
         total_stake += bet_amount
 
@@ -208,6 +246,68 @@ def test_profit(
     print(f'Good Call Ratio: {(bets_won+no_bet_loss)/(bets_won+bets_lost+no_bet_loss+no_bet_win)}')
 
     return float(wealth), float(total_stake)
+
+def simulate_bankroll(
+    odds_df: pd.DataFrame,
+    y_pred: np.ndarray,
+    y_true: np.ndarray,
+    y_proba: np.ndarray,
+    starting_wealth: float,
+    kelly_fraction: float = 0.25,
+    max_fraction: float = 0.05,
+    edge_threshold: float = 0.0,
+) -> Tuple[float, float]:
+    """Simulate value-betting over a slice of games (no I/O, no printing).
+
+    A lightweight counterpart to :func:`test_profit` for use inside the Optuna
+    objective: it takes the games' odds directly as a DataFrame slice rather
+    than re-reading a CSV, and settles every bet independently (no
+    concurrent-game time grouping).
+
+    Args:
+        odds_df: DataFrame slice aligned row-for-row with ``y_pred``/``y_true``;
+            must contain ``Home Odds`` and ``Away Odds``.
+        y_pred: Predicted labels (1 = home win) for each game.
+        y_true: True labels.
+        y_proba: Predicted probabilities, shape (n_games, 2).
+        starting_wealth: Initial bankroll.
+        kelly_fraction: Fractional Kelly multiplier.
+        max_fraction: Hard cap on bankroll fraction per bet.
+        edge_threshold: Minimum edge over the vig-free market to bet.
+
+    Returns:
+        Tuple of (final wealth, total amount staked).
+    """
+    odds_df = odds_df.reset_index(drop=True)
+    wealth = float(starting_wealth)
+    total_stake = 0.0
+
+    for i in range(len(y_pred)):
+        is_home = bool(y_pred[i] == 1)
+        win_col, loss_col = ("Home Odds", "Away Odds") if is_home else ("Away Odds", "Home Odds")
+
+        win_raw = odds_df.loc[i, win_col]
+        loss_raw = odds_df.loc[i, loss_col]
+        win_odds = 100.0 if win_raw == '-' else float(win_raw)
+        loss_odds = 100.0 if loss_raw == '-' else float(loss_raw)
+
+        frac_wealth = calculate_frac_wealth(
+            win_odds, loss_odds, y_proba, i, kelly_fraction, max_fraction, edge_threshold
+        )
+        if frac_wealth <= 0:
+            continue
+
+        bet_amount = float(frac_wealth * wealth)
+        total_stake += bet_amount
+
+        if y_pred[i] == y_true[i]:
+            gain = (win_odds / 100) if win_odds > 0 else (100 / abs(win_odds))
+            wealth += float(gain * bet_amount)
+        else:
+            wealth -= bet_amount
+
+    return float(wealth), float(total_stake)
+
 
 def _adapt_for_profit_scorer(y_true: np.ndarray, y_pred: np.ndarray, df_odds: pd.DataFrame, stake: float) -> float:
     """

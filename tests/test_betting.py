@@ -7,9 +7,16 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import numpy as np
+import pandas as pd
 import pytest
 
-from betting import calculate_frac_wealth, calculate_implied_proba, roi
+from betting import (
+    calculate_frac_wealth,
+    calculate_implied_proba,
+    roi,
+    simulate_bankroll,
+    vig_free_prob,
+)
 
 # ---------------------------------------------------------------------------
 # calculate_implied_proba
@@ -93,6 +100,77 @@ class TestCalculateFracWealth:
         cap = 0.02
         frac = calculate_frac_wealth(100, -100, y_proba, 0, kelly_fraction=1.0, max_fraction=cap)
         assert frac <= cap
+
+
+# ---------------------------------------------------------------------------
+# vig_free_prob
+# ---------------------------------------------------------------------------
+
+class TestVigFreeProb:
+    def test_two_sides_sum_to_one(self):
+        """The de-vigged probabilities of both sides must sum to 1."""
+        home = vig_free_prob(-110, -110)
+        away = vig_free_prob(-110, -110)
+        assert home + away == pytest.approx(1.0)
+
+    def test_equal_odds_gives_half(self):
+        """Symmetric -110/-110 line is a true coin flip after removing vig."""
+        assert vig_free_prob(-110, -110) == pytest.approx(0.5)
+
+    def test_is_below_raw_implied(self):
+        """De-vigged probability is lower than the raw implied (vig removed)."""
+        raw = calculate_implied_proba(-150)
+        novig = vig_free_prob(-150, 130)
+        assert novig < raw
+
+
+# ---------------------------------------------------------------------------
+# calculate_frac_wealth — edge gate
+# ---------------------------------------------------------------------------
+
+class TestEdgeThreshold:
+    def _make_proba(self, p_home: float) -> np.ndarray:
+        return np.array([[1 - p_home, p_home]])
+
+    def test_no_bet_when_edge_below_threshold(self):
+        """Model barely above the market should not clear a 10% threshold."""
+        # -110/-110 → market 0.5; model 0.55 → edge 0.05 < 0.10
+        y_proba = self._make_proba(0.55)
+        frac = calculate_frac_wealth(-110, -110, y_proba, 0, edge_threshold=0.10)
+        assert frac == 0.0
+
+    def test_bets_when_edge_clears_threshold(self):
+        """Model well above the market should bet through the threshold."""
+        # -110/-110 → market 0.5; model 0.70 → edge 0.20 > 0.10
+        y_proba = self._make_proba(0.70)
+        frac = calculate_frac_wealth(-110, -110, y_proba, 0, edge_threshold=0.10)
+        assert frac > 0.0
+
+
+# ---------------------------------------------------------------------------
+# simulate_bankroll
+# ---------------------------------------------------------------------------
+
+class TestSimulateBankroll:
+    def test_winning_value_bet_grows_bankroll(self):
+        odds_df = pd.DataFrame({"Home Odds": [100], "Away Odds": [-100]})
+        y_pred = np.array([1])
+        y_true = np.array([1])
+        y_proba = np.array([[0.2, 0.8]])  # confident home, market 0.5 → edge
+        wealth, stake = simulate_bankroll(odds_df, y_pred, y_true, y_proba, 1000.0)
+        assert wealth > 1000.0
+        assert stake > 0.0
+
+    def test_no_edge_means_no_stake(self):
+        odds_df = pd.DataFrame({"Home Odds": [-110], "Away Odds": [-110]})
+        y_pred = np.array([1])
+        y_true = np.array([1])
+        y_proba = np.array([[0.48, 0.52]])  # below market+threshold
+        wealth, stake = simulate_bankroll(
+            odds_df, y_pred, y_true, y_proba, 1000.0, edge_threshold=0.05
+        )
+        assert stake == 0.0
+        assert wealth == 1000.0
 
 
 # ---------------------------------------------------------------------------

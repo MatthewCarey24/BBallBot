@@ -53,7 +53,7 @@ def create_win_loss_matrix(team_indices: Dict[str, int], df: pd.DataFrame, frac_
 
     return np.divide(wins_matrix, games_matrix, out=np.zeros_like(wins_matrix), where=games_matrix != 0)
 
-def prepare_x_y(team_indices: Dict[str, int], df: pd.DataFrame, W: np.ndarray, H: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+def prepare_x_y(team_indices: Dict[str, int], df: pd.DataFrame, W: np.ndarray, H: np.ndarray, include_odds: bool = True) -> Tuple[np.ndarray, np.ndarray]:
     """
     Prepare feature vectors and labels for model training.
 
@@ -62,16 +62,24 @@ def prepare_x_y(team_indices: Dict[str, int], df: pd.DataFrame, W: np.ndarray, H
     produces features on a uniform [0, 1] scale that the MLP can learn from
     more easily.
 
+    When ``include_odds`` is False the implied-probability columns are omitted
+    entirely.  This is the intended setup for an *independent* model: the
+    market line is then used only as a benchmark in the betting layer, not as a
+    predictor the model can copy.
+
     Args:
         team_indices: Dictionary mapping team names to their indices
         df: DataFrame containing game matchups and outcomes
         W: Home team latent vectors from NMF (shape: n_teams × n_components)
         H: Away team latent vectors from NMF (shape: n_teams × n_components)
+        include_odds: If True (default) append home/away implied win
+            probabilities to each game's feature vector.
 
     Returns:
         Tuple of (X, y) where:
-            X: feature matrix of shape (n_games, 2*(n_components+1)) —
-               last two features are home and away implied win probabilities.
+            X: feature matrix of shape (n_games, 2*(n_components+1)) when
+               ``include_odds`` is True, else (n_games, 2*n_components) —
+               the last feature of each half is the implied win probability.
             y: binary label array (1 = home win).
     """
     games: List[np.ndarray] = []
@@ -80,20 +88,25 @@ def prepare_x_y(team_indices: Dict[str, int], df: pd.DataFrame, W: np.ndarray, H
     for _, row in df.iterrows():
         home_idx = team_indices[row['Home Team']]
         away_idx = team_indices[row['Away Team']]
-        # Handle missing or invalid odds values.
-        # '-' means no line was posted; we use 0.5 (even money) as a neutral
-        # prior rather than 0, which would break the implied-probability scale.
-        home_odds_raw = row['Home Odds']
-        away_odds_raw = row['Away Odds']
 
-        home_odds = 100 if home_odds_raw == '-' else float(home_odds_raw)
-        away_odds = 100 if away_odds_raw == '-' else float(away_odds_raw)
+        if include_odds:
+            # Handle missing or invalid odds values.
+            # '-' means no line was posted; we use 0.5 (even money) as a neutral
+            # prior rather than 0, which would break the implied-probability scale.
+            home_odds_raw = row['Home Odds']
+            away_odds_raw = row['Away Odds']
 
-        home_implied = calculate_implied_proba(home_odds)
-        away_implied = calculate_implied_proba(away_odds)
+            home_odds = 100 if home_odds_raw == '-' else float(home_odds_raw)
+            away_odds = 100 if away_odds_raw == '-' else float(away_odds_raw)
 
-        home_vector = np.append(W[home_idx], home_implied)
-        away_vector = np.append(H[away_idx], away_implied)
+            home_implied = calculate_implied_proba(home_odds)
+            away_implied = calculate_implied_proba(away_odds)
+
+            home_vector = np.append(W[home_idx], home_implied)
+            away_vector = np.append(H[away_idx], away_implied)
+        else:
+            home_vector = W[home_idx]
+            away_vector = H[away_idx]
 
         feature_vector = np.hstack([home_vector, away_vector])
         games.append(feature_vector)
@@ -101,7 +114,7 @@ def prepare_x_y(team_indices: Dict[str, int], df: pd.DataFrame, W: np.ndarray, H
 
     return np.array(games), np.array(labels)
 
-def create_features(df: pd.DataFrame, frac_test: float, n_components: int, alpha_H: float, alpha_W: float) -> Tuple[np.ndarray, np.ndarray]:
+def create_features(df: pd.DataFrame, frac_test: float, n_components: int, alpha_H: float, alpha_W: float, include_odds: bool = True) -> Tuple[np.ndarray, np.ndarray]:
     """
     Create feature matrices using NMF decomposition of the win/loss matrix.
 
@@ -111,6 +124,7 @@ def create_features(df: pd.DataFrame, frac_test: float, n_components: int, alpha
         n_components: Number of components for NMF
         alpha_H: L2 regularization parameter for H matrix
         alpha_W: L2 regularization parameter for W matrix
+        include_odds: If True (default) append implied-probability odds columns.
 
     Returns:
         Tuple of (X, y) arrays for model training
@@ -130,4 +144,4 @@ def create_features(df: pd.DataFrame, frac_test: float, n_components: int, alpha
     W = nmf.fit_transform(win_ratio_matrix)
     H = nmf.components_.T
 
-    return prepare_x_y(team_indices, df, W, H)
+    return prepare_x_y(team_indices, df, W, H, include_odds=include_odds)
