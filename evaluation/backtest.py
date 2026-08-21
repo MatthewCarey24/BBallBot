@@ -2,6 +2,7 @@
 
 import os
 import sys
+from io import StringIO
 
 # Allow flat imports from the project root
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -14,6 +15,8 @@ from sklearn.preprocessing import StandardScaler
 
 from betting import test_profit
 from data_processor import create_features
+from features.combined import build_feature_matrix
+from features.ratings import EloSystem
 
 # ---------------------------------------------------------------------------
 # Default fixed hyperparameters (used in backtest to skip costly Optuna)
@@ -194,6 +197,137 @@ def run_walk_forward(
             records.append(result)
 
     return pd.DataFrame(records)
+
+
+def run_season_with_features(
+    df_path: str,
+    year: int,
+    params: dict,
+    frac_test: float,
+    starting_wealth: float,
+    elo_system: "EloSystem",
+    use_nmf: bool = True,
+    use_elo: bool = True,
+    use_form: bool = True,
+    seed: int = 42,
+) -> dict:
+    """Train/eval one season using a configurable set of feature blocks.
+
+    Unlike ``run_single_season`` (NMF-only), this builds the feature matrix via
+    ``build_feature_matrix`` so Elo and rolling-form blocks can be toggled on.
+    The passed ``elo_system`` is mutated (ratings update on the training portion)
+    so callers can carry ratings across seasons by reusing one instance.
+
+    Returns the same result dict shape as ``run_single_season``.
+    """
+    df = pd.read_csv(df_path)
+    train_size = int(len(df) * (1 - frac_test))
+
+    # Build the whole-season matrix once; NMF win-loss matrix and Elo updates
+    # both respect the frac_test boundary internally, so no test leakage.
+    X_full, y_full = build_feature_matrix(
+        df,
+        elo_system,
+        frac_test,
+        params["nmf_n_components"],
+        params["alpha_H"],
+        params["alpha_W"],
+        use_elo=use_elo,
+        use_form=use_form,
+        use_nmf=use_nmf,
+    )
+
+    X_train, y_train = X_full[:train_size], y_full[:train_size]
+    X_test, y_test = X_full[train_size:], y_full[train_size:]
+
+    model = _create_model(params, random_state=seed)
+    model.fit(X_train, y_train.ravel())
+
+    y_pred = model.predict(X_test)
+    y_proba = model.predict_proba(X_test)
+
+    accuracy = float(accuracy_score(y_test, y_pred))
+    brier = float(brier_score_loss(y_test, y_proba[:, 1]))
+
+    _old_stdout = sys.stdout
+    sys.stdout = StringIO()
+    try:
+        wealth, total_stake = test_profit(df_path, y_pred, y_test, y_proba, starting_wealth, frac_test)
+    finally:
+        sys.stdout = _old_stdout
+
+    profit = float(wealth - starting_wealth)
+    profit_pct = float(profit / total_stake) if total_stake > 0 else 0.0
+
+    return {
+        "year": year,
+        "seed": seed,
+        "accuracy": accuracy,
+        "profit": profit,
+        "profit_pct": profit_pct,
+        "brier_score": brier,
+        "n_test_games": int(len(y_test)),
+    }
+
+
+def run_feature_comparison(
+    data_paths: list,
+    configs: dict,
+    base_params: dict | None = None,
+    frac_test: float = 0.2,
+    starting_wealth: float = 1000.0,
+    n_seeds: int = 5,
+    elo_decay: float = 0.33,
+) -> dict:
+    """Compare feature-block configurations with a walk-forward, Elo-carryover run.
+
+    Args:
+        data_paths: Season CSV paths (any order; sorted chronologically here).
+        configs: Mapping of config name -> dict of feature flags, e.g.
+            ``{"nmf_only": {"use_nmf": True, "use_elo": False, "use_form": False}}``.
+        base_params: Fixed hyperparameters (defaults to DEFAULT_PARAMS).
+        frac_test: Test fraction per season.
+        starting_wealth: Initial bankroll.
+        n_seeds: MLP seeds averaged over.
+        elo_decay: Regression-to-mean applied between seasons.
+
+    Returns:
+        Mapping of config name -> results DataFrame.
+    """
+    if base_params is None:
+        base_params = DEFAULT_PARAMS
+
+    paths = sorted(data_paths)
+    out: dict = {}
+
+    for config_name, flags in configs.items():
+        records = []
+        for seed in range(n_seeds):
+            # Fresh Elo per seed; ratings carry across seasons within a seed.
+            elo = EloSystem()
+            for path in paths:
+                basename = os.path.basename(path)
+                try:
+                    year = int(basename.replace("odds_data_", "").replace(".csv", ""))
+                except ValueError:
+                    year = 0
+                records.append(
+                    run_season_with_features(
+                        df_path=path,
+                        year=year,
+                        params=base_params,
+                        frac_test=frac_test,
+                        starting_wealth=starting_wealth,
+                        elo_system=elo,
+                        seed=seed,
+                        **flags,
+                    )
+                )
+                # Regress ratings toward the mean before the next season.
+                elo.decay_toward_mean(elo_decay)
+        out[config_name] = pd.DataFrame(records)
+
+    return out
 
 
 def summarize_backtest(results_df: pd.DataFrame) -> dict:
